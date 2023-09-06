@@ -17,6 +17,9 @@ pbdev(){
 Vsion2="$(Xem https://github.com/ReVanced/$1/releases | grep -om1 'ReVanced/'$1'/releases/tag/.*dev*..\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion2##*/}/$1-${Vsion2##*/}$3.$2" "lib/$1.$2"; }
 
+# Tải json
+vjson="$(Xem https://github.com/ReVanced/revanced-patches | grep -om1 'ReVanced/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
+
 # tải apk
 TaiYT(){
 urrl="https://www.apkmirror.com"
@@ -48,8 +51,6 @@ checkzip "lib/revanced-patches.jar"
 checkzip "lib/revanced-integrations.apk"
 echo
 
-java -jar "$lib1" list-patches -v | grep -m1 'copy-video-url'
-echo
 chmod 777 $lib2
 
 # Load dữ liệu cài đặt 
@@ -57,10 +58,7 @@ chmod 777 $lib2
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Lấy dữ liệu phiên bản YouTube..."
-for kck in $Vik; do
-Vidon="$(java -jar "$lib1" -a "$lib3" -b "$lib2" -l --with-versions | grep -m1 "$kck" | tr ' ' '\n' | sed -e "s| |\n|g" | tail -n2 | sed -e "s|\n||g")"
-[ "$Vidon" ] && break
-done
+Vidon="$(Xem "https://github.com/ReVanced/revanced-patches/releases/download/v$vjson/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
