@@ -50,7 +50,7 @@ echo
 
 java -jar "$lib1" list-patches
 
-java -jar "$lib1" -a "$lib3" -b "$lib2" -l --with-versions | grep -m1 'copy-video-url'
+java -jar "$lib1" list-patches --with-versions | grep -m1 'copy-video-url'
 echo
 chmod 777 $lib2
 
