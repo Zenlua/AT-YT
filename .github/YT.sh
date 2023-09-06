@@ -117,14 +117,15 @@ TaiYT 'YouTube.apk' "$kkk1" & TaiYT 'YouTube.apks' "$kkk2"
 Loading apk/YouTube.apk.txt apk/YouTube.apks.txt
 
 # Xem xét apk
-if [ "$TYPE" == 'true' ];then
-if [ "$(unzip -l apk/YouTube.apk | grep -cm1 'base.apk')" == 1 ];then
+
+if [ "$(unzip -l apk/YouTube.apk 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
 echo "- Thay đổi apks thành apk."
 mv apk/YouTube.apk apk/YouTube.apk2
 mv apk/YouTube.apks apk/YouTube.apk
 mv apk/YouTube.apk2 apk/YouTube.apks
 fi
 
+if [ "$TYPE" == 'true' ];then
 [ -e $HOME/apk/YouTube.apks ] || echo "- Hủy quá trình xây dựng do không có file apks"
 [ -e $HOME/apk/YouTube.apks ] || exit 1;
 fi
