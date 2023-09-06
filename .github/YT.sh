@@ -138,13 +138,14 @@ fi
 
 
 if [ "$TYPE" == 'true' ];then
-[ -e apk/YouTube.apks ] || echo "- Hủy quá trình do không có file apks"
-[ -e apk/YouTube.apks ] || exit 1;
 lib='lib/*/*'
-# Xoá lib
 unzip -qo "apk/YouTube.apk" lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
+if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
+else
+mv apk/YouTube.apk Tav/base.apk
+fi
 fi
 
 # Copy 
