@@ -37,6 +37,7 @@ sleep 1
 gfdgv=$(($gfdgv + 1))
 if [ "$gfdgv" == 30 ];then
 echo "- Quá thời gian cho phép, vì thiếu file apks...";
+break
 fi
 fi
 done; }
