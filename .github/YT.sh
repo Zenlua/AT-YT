@@ -122,9 +122,9 @@ echo "- Thay đổi apks thành apk."
 mv apk/YouTube.apk apk/YouTube.apk2
 mv apk/YouTube.apks apk/YouTube.apk
 mv apk/YouTube.apk2 apk/YouTube.apks
+fi
 [ -e $HOME/apk/YouTube.apks ] || echo "- Hủy quá trình xây dựng do không có file apks"
 [ -e $HOME/apk/YouTube.apks ] || exit 1;
-fi
 
 [ "$TYPE" == 'true' ] && lib='lib/*/*'
 
