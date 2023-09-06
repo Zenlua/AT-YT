@@ -3,22 +3,6 @@
 
 # YT-EXT <br/>[![YT-EXT](https://github.com/kakathic/YT-AT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/kakathic/YT-AT/actions/workflows/XInstall.yml) [![EXT-AUTO](https://github.com/kakathic/YT-AT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/kakathic/YT-AT/actions/workflows/XAuto.yml)
 
-> Notes Error nearest: YT-EXT temporarily the apk source does not have an apkm file in some versions will repair itself if their source uploads the apkm file
-
-# Infor
-
-- YouTube mod tool auto, and auto update.
-
-- `Auto`: it will automatically update when a new version is available.
-
-- `Build`: only update when manual build is safe and error-free.
-
-- `YT-RE`: Revanced default mod
-
-- `YT-EXT`: Revanced Extended mod
-
-- Turn off auto-update of Youtube manually in play store, because haven't found out how to turn it off in magisk module
-
 **Use Revanced cli**
 ---
 
