@@ -126,20 +126,19 @@ mv apk/YouTube.apk2 apk/YouTube.apks
 fi
 
 if [ "$TYPE" == 'true' ];then
-[ -e $HOME/apk/YouTube.apks ] || echo "- Hủy quá trình xây dựng do không có file apks"
-[ -e $HOME/apk/YouTube.apks ] || exit 1;
+[ -e apk/YouTube.apks ] || echo "- Hủy quá trình do không có file apks"
+[ -e apk/YouTube.apks ] || exit 1;
+lib='lib/*/*'
+# Xoá lib
+unzip -qo "apk/YouTube.apk" lib/$DEVICE/* -d Tav
+mv -f Tav/lib/$DEVICE Tav/lib/$ach
+unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 fi
-
-[ "$TYPE" == 'true' ] && lib='lib/*/*'
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 
-# Xoá lib
-unzip -qo "apk/YouTube.apk" lib/$DEVICE/* -d Tav
-mv -f Tav/lib/$DEVICE Tav/lib/$ach
-[ "$TYPE" == 'true' ] && unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
