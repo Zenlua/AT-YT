@@ -111,19 +111,31 @@ kkk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-andro
 kkk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
 
 # Tải
-TaiYT 'YouTube.apk' "$kkk1" & TaiYT 'YouTube.apks' "$kkk2"
+TaiYT 'YouTube1' "$kkk1" & TaiYT 'YouTube2' "$kkk2"
 
 # Chờ tải xong
-Loading apk/YouTube.apk.txt apk/YouTube.apks.txt
+Loading apk/YouTube1.txt apk/YouTube2.txt
 
 # Xem xét apk
 
-if [ "$(unzip -l apk/YouTube.apk 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
+if [ -e apk/YouTube1 ];then
+if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
 echo "- Thay đổi apks thành apk."
-mv apk/YouTube.apk apk/YouTube.apk2
-mv apk/YouTube.apks apk/YouTube.apk
-mv apk/YouTube.apk2 apk/YouTube.apks
+mv apk/YouTube1 apk/YouTube.apks
+else
+mv apk/YouTube1 apk/YouTube.apk
 fi
+fi
+
+if [ -e apk/YouTube2 ];then
+if [ "$(unzip -l apk/YouTube2 | grep -cm1 'base.apk')" == 1 ];then
+echo "- Thay đổi apks thành apk."
+mv apk/YouTube2 apk/YouTube.apks
+else
+mv apk/YouTube2 apk/YouTube.apk
+fi
+fi
+
 
 if [ "$TYPE" == 'true' ];then
 [ -e apk/YouTube.apks ] || echo "- Hủy quá trình do không có file apks"
