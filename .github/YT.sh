@@ -19,7 +19,6 @@ Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion2##*/}/$1-${Vsio
 
 # Tải json
 vjson="$(Xem https://github.com/ReVanced/revanced-patches | grep -om1 'ReVanced/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
-echo $vjson
 
 # tải apk
 TaiYT(){
@@ -59,7 +58,7 @@ chmod 777 $lib2
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Lấy dữ liệu phiên bản YouTube..."
-Vidon="$(Xem "https://github.com/ReVanced/revanced-patches/releases/download/v$vjson/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+Vidon="$(Xem "https://github.com/ReVanced/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
