@@ -117,14 +117,17 @@ TaiYT 'YouTube.apk' "$kkk1" & TaiYT 'YouTube.apks' "$kkk2"
 Loading apk/YouTube.apk.txt apk/YouTube.apks.txt
 
 # Xem xét apk
+if [ "$TYPE" == 'true' ];then
 if [ "$(unzip -l apk/YouTube.apk | grep -cm1 'base.apk')" == 1 ];then
 echo "- Thay đổi apks thành apk."
 mv apk/YouTube.apk apk/YouTube.apk2
 mv apk/YouTube.apks apk/YouTube.apk
 mv apk/YouTube.apk2 apk/YouTube.apks
 fi
+
 [ -e $HOME/apk/YouTube.apks ] || echo "- Hủy quá trình xây dựng do không có file apks"
 [ -e $HOME/apk/YouTube.apks ] || exit 1;
+fi
 
 [ "$TYPE" == 'true' ] && lib='lib/*/*'
 
@@ -135,7 +138,7 @@ cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 # Xoá lib
 unzip -qo "apk/YouTube.apk" lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
-unzip -qo apk/YouTube.apks 'base.apk' -d Tav
+[ "$TYPE" == 'true' ] && unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
