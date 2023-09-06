@@ -48,9 +48,7 @@ checkzip "lib/revanced-patches.jar"
 checkzip "lib/revanced-integrations.apk"
 echo
 
-java -jar "$lib1" list-patches
-
-java -jar "$lib1" list-patches --with-versions | grep -m1 'copy-video-url'
+java -jar "$lib1" list-patches -v | grep -m1 'copy-video-url'
 echo
 chmod 777 $lib2
 
