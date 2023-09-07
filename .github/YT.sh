@@ -146,7 +146,7 @@ lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 else
-mv apk/YouTube.apk Tav/base.apk
+cp apk/YouTube.apk Tav/base.apk
 fi
 unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
@@ -156,6 +156,7 @@ fi
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 
+echo "- Xoá lib thừa."
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
