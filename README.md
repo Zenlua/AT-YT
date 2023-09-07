@@ -1,6 +1,10 @@
 
 # YT-RE - YT-EXT <br/>[![YT-RE](https://github.com/Zelooooo/AT-YT/actions/workflows/Install.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Install.yml) [![RE-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml) <br/>[![YT-EXT](https://github.com/Zelooooo/AT-YT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XInstall.yml) [![EXT-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml)
 
+- Build, Edit: is the manual build version
+
+- Auto: is the version that automatically builds every day.
+
 **Use Revanced cli**
 ---
 
