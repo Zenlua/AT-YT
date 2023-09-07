@@ -107,10 +107,10 @@ kkk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-andro
 kkk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
 
 # Tải
-TaiYT 'YouTube.apk' "$kkk1" & TaiYT 'YouTube.apks' "$kkk2"
+TaiYT 'YouTube1' "$kkk1" & TaiYT 'YouTube2' "$kkk2"
 
 # Chờ tải xong
-Loading apk/YouTube.apk.txt apk/YouTube.apks.txt
+Loading apk/YouTube1.txt apk/YouTube2.txt
 
 # Xem xét apk
 [ "$(file apk/YouTube1 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube1
