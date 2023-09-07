@@ -27,28 +27,6 @@ Taive "$uak2" "apk/$1"
 echo "Link: $uak2"
 [ "$(file apk/$1 | grep -cm1 'Zip')" == 1 ] && echo > "apk/$1.txt" || ( echo "! Lỗi tải file $1"; exit 1; ); }
 
-# Tải tool cli
-echo "- Tải tool cli, patches, integrations..."
-if [ "$DEV" == "Develop" ];then
-echo "  Dùng Dev"
-echo
-pbdev inotia00/revanced-cli revanced-cli jar -all
-pbdev YT-Advanced/ReX-patches revanced-patches jar
-pbdev YT-Advanced/ReX-integrations revanced-integrations apk
-else
-echo "  Dùng Sta"
-echo
-pbsta inotia00/revanced-cli revanced-cli jar -all
-pbsta YT-Advanced/ReX-patches revanced-patches jar
-pbsta YT-Advanced/ReX-integrations revanced-integrations apk
-fi
-
-# kiểm tra tải tool
-checkzip "lib/revanced-cli.jar"
-checkzip "lib/revanced-patches.jar"
-checkzip "lib/revanced-integrations.apk"
-echo
-
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/Ytx.md
 
@@ -86,7 +64,6 @@ VER="$Vidon"
 Kad=Auto
 V=U
 if [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
-echo
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
@@ -95,6 +72,28 @@ VER="$VERSION"
 Kad=Edit
 V=N
 fi
+
+echo
+# Tải tool cli
+echo "- Tải tool cli, patches, integrations..."
+if [ "$DEV" == "Develop" ];then
+echo "  Dùng Dev"
+echo
+pbdev inotia00/revanced-cli revanced-cli jar -all
+pbdev YT-Advanced/ReX-patches revanced-patches jar
+pbdev YT-Advanced/ReX-integrations revanced-integrations apk
+else
+echo "  Dùng Sta"
+echo
+pbsta inotia00/revanced-cli revanced-cli jar -all
+pbsta YT-Advanced/ReX-patches revanced-patches jar
+pbsta YT-Advanced/ReX-integrations revanced-integrations apk
+fi
+
+# kiểm tra tải tool
+checkzip "lib/revanced-cli.jar"
+checkzip "lib/revanced-patches.jar"
+checkzip "lib/revanced-integrations.apk"
 
 Upenv V "$V"
 Upenv Kad "$Kad"
@@ -144,7 +143,7 @@ if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
-unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
 else
 cp apk/YouTube.apk Tav/base.apk
