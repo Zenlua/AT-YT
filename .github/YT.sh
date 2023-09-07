@@ -143,13 +143,13 @@ fi
 
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-mv -f Tav/lib/$DEVICE Tav/lib/$ach
 if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 else
 mv apk/YouTube.apk Tav/base.apk
 fi
+unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
+mv -f Tav/lib/$DEVICE Tav/lib/$ach
 fi
 
 # Copy 
