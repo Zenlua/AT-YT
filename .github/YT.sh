@@ -67,7 +67,6 @@ VER="$Vidon"
 Kad=Auto
 V=U
 if [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-Z${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
-echo
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
@@ -146,7 +145,6 @@ if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
-ls Tav
 else
 cp apk/YouTube.apk Tav/base.apk
 fi
