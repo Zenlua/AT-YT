@@ -119,6 +119,7 @@ Loading apk/YouTube1.txt apk/YouTube2.txt
 # Xem xét apk
 
 if [ -e apk/YouTube1 ];then
+[ "$(file apk/YouTube1 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube1
 if [ "$(unzip -l apk/YouTube1 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
 echo "- apk1 thành apks."
 mv apk/YouTube1 apk/YouTube.apks
@@ -129,6 +130,7 @@ fi
 fi
 
 if [ -e apk/YouTube2 ];then
+[ "$(file apk/YouTube2 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube2
 if [ "$(unzip -l apk/YouTube2 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
 echo "- apk2 thành apks."
 mv apk/YouTube2 apk/YouTube.apks
@@ -141,7 +143,7 @@ fi
 
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
-[ -e apk/YouTube.apk ] && unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
 if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
