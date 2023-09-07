@@ -119,7 +119,7 @@ file apk/YouTube2
 ls apk
 
 if [ -e apk/YouTube1 ];then
-if [ "$(unzip -l apk/YouTube1 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
+if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
 echo "- apk1 thành apks."
 mv apk/YouTube1 apk/YouTube.apks
 else
@@ -129,7 +129,7 @@ fi
 fi
 
 if [ -e apk/YouTube2 ];then
-if [ "$(unzip -l apk/YouTube2 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
+if [ "$(unzip -l apk/YouTube2 | grep -cm1 'base.apk')" == 1 ];then
 echo "- apk2 thành apks."
 mv apk/YouTube2 apk/YouTube.apks
 else
