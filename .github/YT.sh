@@ -1,3 +1,4 @@
+
 # load dữ liệu 
 lib1="lib/revanced-cli.jar"
 lib2="lib/revanced-patches.jar"
@@ -28,28 +29,6 @@ uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | 
 Taive "$uak2" "apk/$1"
 echo "Link: $uak2"
 [ "$(file apk/$1 | grep -cm1 'Zip')" == 1 ] && echo > "apk/$1.txt"; }
-
-# Tải tool cli
-echo "- Tải tool cli, patches, integrations..."
-if [ "$DEV" == "Develop" ];then
-echo "  Dùng Dev"
-echo
-pbdev revanced-cli jar -all
-pbdev revanced-patches jar
-pbdev revanced-integrations apk
-else
-echo "  Dùng Sta"
-echo
-pbsta revanced-cli jar -all
-pbsta revanced-patches jar
-pbsta revanced-integrations apk
-fi
-
-# kiểm tra tải tool
-checkzip "lib/revanced-cli.jar"
-checkzip "lib/revanced-patches.jar"
-checkzip "lib/revanced-integrations.apk"
-echo
 
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/YouTube.md
@@ -98,6 +77,28 @@ Kad=Edit
 V=N
 fi
 
+echo
+# Tải tool cli
+echo "- Tải tool cli, patches, integrations..."
+if [ "$DEV" == "Develop" ];then
+echo "  Dùng Dev"
+echo
+pbdev revanced-cli jar -all
+pbdev revanced-patches jar
+pbdev revanced-integrations apk
+else
+echo "  Dùng Sta"
+echo
+pbsta revanced-cli jar -all
+pbsta revanced-patches jar
+pbsta revanced-integrations apk
+fi
+
+# kiểm tra tải tool
+checkzip "lib/revanced-cli.jar"
+checkzip "lib/revanced-patches.jar"
+checkzip "lib/revanced-integrations.apk"
+
 Upenv V "$V"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
@@ -143,7 +144,7 @@ if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
-unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
 ls Tav
 else
