@@ -113,6 +113,8 @@ TaiYT 'YouTube1' "$kkk1" & TaiYT 'YouTube2' "$kkk2"
 Loading apk/YouTube1.txt apk/YouTube2.txt
 
 # Xem xét apk
+file apk/YouTube1
+file apk/YouTube2
 [ "$(file apk/YouTube1 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube1
 [ "$(file apk/YouTube2 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube2
 
