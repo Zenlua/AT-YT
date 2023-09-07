@@ -1,7 +1,7 @@
 
 # YT-RE <br/>[![YT-RE](https://github.com/Zelooooo/AT-YT/actions/workflows/Install.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Install.yml) [![RE-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml)
 
-# YT-EXT <br/>[![YT-EXT](https://github.com/kakathic/YT-AT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/kakathic/YT-AT/actions/workflows/XInstall.yml) [![EXT-AUTO](https://github.com/kakathic/YT-AT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/kakathic/YT-AT/actions/workflows/XAuto.yml)
+# YT-EXT <br/>[![YT-EXT](https://github.com/Zelooooo/AT-YT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XInstall.yml) [![EXT-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml)
 
 **Use Revanced cli**
 ---
