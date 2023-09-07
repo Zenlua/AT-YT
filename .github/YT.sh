@@ -145,6 +145,7 @@ if [ -e apk/YouTube.apks ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
+ls Tav
 else
 cp apk/YouTube.apk Tav/base.apk
 fi
