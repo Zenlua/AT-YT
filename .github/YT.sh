@@ -51,8 +51,6 @@ checkzip "lib/revanced-patches.jar"
 checkzip "lib/revanced-integrations.apk"
 echo
 
-chmod 777 $lib2
-
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/YouTube.md
 
@@ -105,7 +103,7 @@ Upenv Kad "$Kad"
 Upenv VER "$VER"
 echo
 
-echo "- Tải YouTube apk apks..."
+echo "- Tải YouTube $VER apk, apks..."
 # Tải YouTube apk
 kkk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 kkk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
