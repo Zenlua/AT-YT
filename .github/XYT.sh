@@ -117,6 +117,7 @@ file apk/YouTube1
 file apk/YouTube2
 [ "$(file apk/YouTube1 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube1
 [ "$(file apk/YouTube2 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube2
+ls apk
 
 if [ -e apk/YouTube1 ];then
 if [ "$(unzip -l apk/YouTube1 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
