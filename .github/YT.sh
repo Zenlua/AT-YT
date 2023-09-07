@@ -120,29 +120,31 @@ Loading apk/YouTube1.txt apk/YouTube2.txt
 
 if [ -e apk/YouTube1 ];then
 if [ "$(unzip -l apk/YouTube1 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
-echo "- Thay đổi apks thành apk."
+echo "- apk1 thành apks."
 mv apk/YouTube1 apk/YouTube.apks
 else
+echo "- apk1 thành apk."
 mv apk/YouTube1 apk/YouTube.apk
 fi
 fi
 
 if [ -e apk/YouTube2 ];then
 if [ "$(unzip -l apk/YouTube2 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
-echo "- Thay đổi apks thành apk."
+echo "- apk2 thành apks."
 mv apk/YouTube2 apk/YouTube.apks
 else
+echo "- apk2 thành apk."
 mv apk/YouTube2 apk/YouTube.apk
 fi
 fi
 
-echo 123
+
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav >/dev/null 2>/dev/null
+[ -e apk/YouTube.apk ] && unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 mv -f Tav/lib/$DEVICE Tav/lib/$ach
 if [ -e apk/YouTube.apks ];then
-unzip -qo apk/YouTube.apks 'base.apk' -d Tav >/dev/null 2>/dev/null
+unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 else
 mv apk/YouTube.apk Tav/base.apk
 fi
