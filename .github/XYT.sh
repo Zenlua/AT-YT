@@ -15,6 +15,8 @@ echo "- Url: https://github.com/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1#
 pbdev(){
 Vsion2="$(Xem https://github.com/$1/releases | grep -om1 ''$1'/releases/tag/.*dev*..\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 Taive "https://github.com/$1/releases/download/v${Vsion2##*/}/$2-${Vsion2##*/}$4.$3" "lib/$2.$3"; }
+# Tải json
+vjson="$(Xem https://github.com/YT-Advanced/ReX-patches | grep -om1 'YT-Advanced/ReX-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 
 # tải apk
 TaiYT(){
@@ -47,21 +49,12 @@ checkzip "lib/revanced-patches.jar"
 checkzip "lib/revanced-integrations.apk"
 echo
 
-# kiểm tra chi tiết
-#ls -lh lib
-
-java -jar "$lib1" -a "$lib3" -b "$lib2" -l --with-versions | grep -m1 "custom-playback-speed"
-echo
-
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/Ytx.md
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Patches YouTube mới nhất..."
-for kck in $Vik; do
-Vidon="$(java -jar "$lib1" -a "$lib3" -b "$lib2" -l --with-versions | grep -m1 "$kck" | tr ' ' '\n' | sed -e "s| |\n|g" | tail -n2 | sed -e "s|\n||g")"
-[ "$Vidon" ] && break
-done
+Vidon="$(Xem "https://github.com/YT-Advanced/ReX-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
@@ -92,7 +85,7 @@ elif [ "$VERSION" == 'Autu' ];then
 VER="$Vidon"
 Kad=Auto
 V=U
-if [ "$(Xem https://github.com/kakathic/YT-AT/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
+if [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
 echo
 echo "! Là phiên bản mới nhất."
 exit 0
@@ -120,52 +113,74 @@ TaiYT 'YouTube.apk' "$kkk1" & TaiYT 'YouTube.apks' "$kkk2"
 Loading apk/YouTube.apk.txt apk/YouTube.apks.txt
 
 # Xem xét apk
-if [ "$(unzip -l apk/YouTube.apk | grep -cm1 'base.apk')" == 1 ];then
-echo "! Thay đổi apks thành apk."
-mv apk/YouTube.apk apk/YouTube.apk2
-mv apk/YouTube.apks apk/YouTube.apk
-mv apk/YouTube.apk2 apk/YouTube.apks
+[ "$(file apk/YouTube1 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube1
+[ "$(file apk/YouTube2 | grep -cm1 Zip)" == 1 ] || rm -fr apk/YouTube2
+
+if [ -e apk/YouTube1 ];then
+if [ "$(unzip -l apk/YouTube1 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
+echo "- apk1 thành apks."
+mv apk/YouTube1 apk/YouTube.apks
+else
+echo "- apk1 thành apk."
+mv apk/YouTube1 apk/YouTube.apk
+fi
 fi
 
-[ "$TYPE" == 'true' ] && lib='lib/*/*'
+if [ -e apk/YouTube2 ];then
+if [ "$(unzip -l apk/YouTube2 >/dev/null 2>/dev/null | grep -cm1 'base.apk')" == 1 ];then
+echo "- apk2 thành apks."
+mv apk/YouTube2 apk/YouTube.apks
+else
+echo "- apk2 thành apk."
+mv apk/YouTube2 apk/YouTube.apk
+fi
+fi
+
+
+if [ "$TYPE" == 'true' ];then
+lib='lib/*/*'
+if [ -e apk/YouTube.apks ];then
+unzip -qo apk/YouTube.apks 'base.apk' -d Tav
+unzip -qo Tav/base.apk lib/$DEVICE/* -d Tav
+mv -f Tav/lib/$DEVICE Tav/lib/$ach
+else
+cp apk/YouTube.apk Tav/base.apk
+fi
+fi
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 
-# Xoá lib
-unzip -qo "apk/YouTube.apk" lib/$DEVICE/* -d Tav
-mv -f Tav/lib/$DEVICE Tav/lib/$ach
-unzip -qo apk/YouTube.apks 'base.apk' -d Tav
+echo "- Xoá lib thừa."
 zip -qr apk/YouTube.apk -d $lib
 
-#if [ "$(java -jar "$lib1" -a "$lib3" -b "$lib2" -l --with-versions | grep -m1 "custom-playback-speed" | grep -cm1 "$VER")" != 1 ]; then
 # Xử lý revanced patches
 if [ "$Vidon" != "$VER" ];then
 echo "- Chuyển đổi phiên bản $VER"
-unzip -qo "lib/revanced-patches.jar" -d jar
-for vak in $(grep -Rl "$Vidon" jar); do
+unzip -qo "$lib2" -d $HOME/jar
+for vak in $(grep -Rl "$Vidon" $HOME/jar); do
 cp -rf $vak test
 XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VERSION" | XHex)/" | ZHex > $vak
 done
-cd jar
-zip -qr "$HOME/lib/revanced-patches.jar" *
+cd $HOME/jar
+rm -fr $lib2
+zip -qr "$HOME/$lib2" *
 cd $HOME
 fi
-#fi
 
 # MOD YouTube 
 (
 
 echo "▼ Bắt đầu quá trình xây dựng..."
-java -Djava.io.tmpdir=$HOME -jar $lib1 -b $lib2 -m $lib3 -a apk/YouTube.apk -o YT.apk \
--t tmp $Tof $Ton $Mro $theme $feature > Log.txt 2>> Log.txt
+java -Djava.io.tmpdir=$HOME -jar "$lib1" patch -b "$lib2" -m "$lib3" apk/YouTube.apk -o YT.apk \
+$Tof $Ton $Mro $theme $feature > Log.txt 2>> Log.txt
 sed '/WARNING: warn: removing resource/d' Log.txt
 echo > 2.txt
 
 ) & (
 
-Loading "tmp/res/values" "tmp/res/values" >/dev/null
+Loading "revanced-resource-cache/res/values" "revanced-resource-cache/res/values" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
 echo > 1.txt
 
@@ -202,7 +217,7 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-X'$V'notes.json"
 }' > "Up-X$V$ach$amoled2.json"
 
-echo 'Update '$(date)', YouTube: '$VER', Version: '${VER//./}', Download: https://github.com/kakathic/YT-AT/releases ' > Up-X${V}notes.json
+echo 'Update '$(date)', YouTube: '$VER', Version: '${VER//./}', Download: https://github.com/'$GITHUB_REPOSITORY'/releases ' > Up-X${V}notes.json
 
 # Tạo module magisk
 cd $HOME/.github/Modun
