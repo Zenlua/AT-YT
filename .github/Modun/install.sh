@@ -33,7 +33,8 @@ ui_print
 on_install() {
 [ -e "$TMPDIR/$ARCH" ] || abort "    This module only supports $ARCH devices
 "
-
+ui_print2 "Processing"
+ui_print
 # Giải nén
 cp -f $TMPDIR/sqlite3 $MODPATH/sqlite3 >&2
 cp -f $TMPDIR/YT.sh $MODPATH >&2
