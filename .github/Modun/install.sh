@@ -20,21 +20,12 @@ settings put global package_verifier_enable 0
 
 # Giới thiệu
 print_modname() {
-
-if [ "$(settings get system system_locales)" == "vi-VN" ];then
-TT="EAQCAICEN5XGC5DFEBKGKY3IMNXW2YTBNZVTUIBRHEYDGNBZGAZDMMBUGAYTOCQKEAQCAICUMVWGKZ3SMFWTUICAORXW63DWNYFA===="
-else
-TT="EAQCAICEN5XGC5DFHIQGQ5DUOA5C6L3QMF4XAYLMFZWWKL3LMFVWC5DINFRQUCRAEAQCAVDFNRSWO4TBNU5CAQDUN5XWY5TOBI======"
-fi
-
 ui_print
 ui_print2 "Name: $(Getp name)"
 ui_print
 ui_print2 "Version: $(Getp version)"
 ui_print
 ui_print2 "Author: $(Getp author)"
-ui_print
-ui_print2 "$TT" | base32 -d
 ui_print
 }
 
@@ -43,11 +34,7 @@ on_install() {
 [ -e "$TMPDIR/$ARCH" ] || abort "    This module only supports $ARCH devices
 "
 
-ui_print2 "Processing"
-ui_print
-
 # Giải nén
-
 cp -f $TMPDIR/sqlite3 $MODPATH/sqlite3 >&2
 cp -f $TMPDIR/YT.sh $MODPATH >&2
 [ -e /vendor/overlay/Pip.apk ] || unzip -qo "$ZIPFILE" "system/*" -d $MODPATH >&2
