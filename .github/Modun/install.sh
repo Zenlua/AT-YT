@@ -73,8 +73,6 @@ ui_print
 abort
 fi
 
-[ "$TT" ] || abort "Copyright infringement"
-
 ui_print2 "Complete"
 ui_print
 
