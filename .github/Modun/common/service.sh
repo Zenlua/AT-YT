@@ -6,7 +6,7 @@ done
 MODPATH="${0%/*}"
 . $MODPATH/YT.sh
 
-if [ "$(ls -l $MODPATH/base.apk | awk '{print $5}')" == "$(cat $MODPATH/SIZE)" ];then
+if [ "$(ls -l $(linkAPK) | awk '{print $5}')" == "$(cat $MODPATH/SIZE)" ];then
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
 [ -e $MODPATH/lib ] && cpLIB $MODPATH/lib "$(linkAPK)"
 offCH
