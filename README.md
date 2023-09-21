@@ -1,5 +1,6 @@
 
-# YT-RE - YT-EXT <br/>[![RE-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml) [![EXT-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml)
+# YT-RE - YT-EXT 
+[![RE-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml) [![EXT-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml)
 
 > Build, Edit: is the manual build version
 
