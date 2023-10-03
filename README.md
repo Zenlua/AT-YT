@@ -26,7 +26,7 @@
 
 - You can build your own version with models suitable for your machine. 
 
-   > [Instructions](https://github.com/kakathic/YT-AT/blob/Vip/.github/Tools/Auto.md)
+   > [Instructions](https://github.com/Zelooooo/AT-YT/blob/Vip/.github/Tools/Auto.md)
 
 **Microg**
 ---
@@ -49,7 +49,7 @@
 
 - I don't know many languages, you can contribute languages ​​at the link below.
 
-   > [Language](https://github.com/kakathic/YT-AT/tree/Vip/.github/Language)
+   > [Language](https://github.com/Zelooooo/AT-YT/tree/Vip/.github/Language)
 
 - Or submit the language file to the issue.
 
