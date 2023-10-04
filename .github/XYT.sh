@@ -80,15 +80,16 @@ if [ "$DEV" == "Develop" ];then
 echo "  Dùng Dev"
 echo
 pbdev inotia00/revanced-cli revanced-cli jar -all
-pbdev YT-Advanced/ReX-patches revanced-patches jar
-pbdev YT-Advanced/ReX-integrations revanced-integrations apk
+pbdev inotia00/revanced-patches revanced-patches jar
+pbdev inotia00/revanced-integrations revanced-integrations apk
 else
 echo "  Dùng Sta"
 echo
 pbsta inotia00/revanced-cli revanced-cli jar -all
-pbsta YT-Advanced/ReX-patches revanced-patches jar
-pbsta YT-Advanced/ReX-integrations revanced-integrations apk
+pbsta inotia00/revanced-patches revanced-patches jar
+pbsta inotia00/revanced-integrations revanced-integrations apk
 fi
+
 
 # kiểm tra tải tool
 checkzip "lib/revanced-cli.jar"
