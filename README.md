@@ -15,7 +15,7 @@
 
 - See the version that Revanced they support for the latest build.
 
-   > [Re-Patches](https://github.com/revanced/revanced-patches)
+   > [Revanced](https://github.com/revanced/revanced-patches) | [Inotia00](https://github.com/inotia00/revanced-patches)
 
 - The latest Youtube version
 
