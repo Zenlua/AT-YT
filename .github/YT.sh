@@ -43,7 +43,19 @@ echo "Link: $uak2"
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Lấy dữ liệu phiên bản YouTube..."
-Vidon="$(Xem "https://github.com/ReVanced/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+#Vidon="$(
+Xem "https://github.com/ReVanced/revanced-patches/releases/download/v${vjson##*/}/patches.json" > 1.json
+#| jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+
+while true; do
+fhjfn=$(($fhjfn + 1))
+Vclass="$(/data/local/tmp/jq -r ".[$fhjfn].compatiblePackages[0].name" 1.json 2>/dev/null)"
+Vidon="$(/data/local/tmp/jq -r ".[$fhjfn].compatiblePackages[0].versions[]" 1.json 2>/dev/null | tac | head -n1)"
+if [ "$Vclass" == "com.google.android.youtube" ] && [ "$Vidon" ];then
+echo "$Vclass - $Vidon"
+break
+fi
+done
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
