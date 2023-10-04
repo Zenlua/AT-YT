@@ -24,6 +24,8 @@ echo "- Url: https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$1-
 
 # Tải json
 if [ "$DEV" == "Develop" ];then
+Vop='-DEV'
+Vop2=D
 vjson="$(Xem https://github.com/ReVanced/revanced-patches/releases | grep -om1 'ReVanced/revanced-patches/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 else
 vjson="$(Xem https://github.com/ReVanced/revanced-patches | grep -om1 'ReVanced/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
@@ -80,20 +82,20 @@ fi
 echo "  $Vidon"
 if [ "$VERSION" == 'Auto' ];then
 VER="$Vidon"
-Kad=Build
-V=V
+Kad=Build$Vop
+V=V$Vop2
 elif [ "$VERSION" == 'Autu' ];then
 VER="$Vidon"
-Kad=Auto
-V=U
+Kad=Auto$Vop
+V=U$Vop2
 if [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-Z${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
 else
 VER="$VERSION"
-Kad=Edit
-V=N
+Kad=Edit$Vop
+V=N$Vop2
 fi
 
 echo
