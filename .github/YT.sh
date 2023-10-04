@@ -23,7 +23,11 @@ echo "- Url: https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$1-
 }
 
 # Tải json
+if [ "$DEV" == "Develop" ];then
+vjson="$(Xem https://github.com/ReVanced/revanced-patches/releases | grep -om1 'ReVanced/revanced-patches/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
+else
 vjson="$(Xem https://github.com/ReVanced/revanced-patches | grep -om1 'ReVanced/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
+fi
 
 # tải apk
 TaiYT(){
