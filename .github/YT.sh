@@ -49,8 +49,8 @@ Xem "https://github.com/ReVanced/revanced-patches/releases/download/v${vjson##*/
 
 while true; do
 fhjfn=$(($fhjfn + 1))
-Vclass="$(/data/local/tmp/jq -r ".[$fhjfn].compatiblePackages[0].name" 1.json 2>/dev/null)"
-Vidon="$(/data/local/tmp/jq -r ".[$fhjfn].compatiblePackages[0].versions[]" 1.json 2>/dev/null | tac | head -n1)"
+Vclass="$(jq -r ".[$fhjfn].compatiblePackages[0].name" 1.json 2>/dev/null)"
+Vidon="$(jq -r ".[$fhjfn].compatiblePackages[0].versions[]" 1.json 2>/dev/null | tac | head -n1)"
 if [ "$Vclass" == "com.google.android.youtube" ] && [ "$Vidon" ];then
 echo "$Vclass - $Vidon"
 break
