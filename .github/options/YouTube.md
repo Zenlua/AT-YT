@@ -6,6 +6,6 @@
 # Features are turned off
 Tof="
 
--e \"Custom branding\"
+-e appName
 
 "
