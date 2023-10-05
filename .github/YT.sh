@@ -54,7 +54,6 @@ fhjfn=$(($fhjfn + 1))
 Vclass="$(jq -r ".[$fhjfn].compatiblePackages[0].name" 1.json 2>/dev/null)"
 Vidon="$(jq -r ".[$fhjfn].compatiblePackages[0].versions[]" 1.json 2>/dev/null | tac | head -n1)"
 if [ "$Vclass" == "com.google.android.youtube" ] && [ "$Vidon" ];then
-echo "$Vclass - $Vidon"
 break
 fi
 done
