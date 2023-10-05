@@ -62,7 +62,7 @@ done
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
 [ "$AMOLED" == 'true' ] || theme='-e theme'
-[ "$TYPE" == 'true' ] && Mro='-e "Vanced MicroG support"'
+[ "$TYPE" == 'true' ] && Mro='-e "Vanced\ MicroG\ support"'
 
 # Xoá lib dựa vào abi
 if [ "$DEVICE" == "arm64-v8a" ];then
