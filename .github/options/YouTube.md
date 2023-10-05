@@ -4,8 +4,6 @@
 #Ton=""
 
 # Features are turned off
-Tof="
-
--e appName
-
-"
+Tof='
+-e "Custom branding"
+'
