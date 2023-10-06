@@ -14,7 +14,7 @@ User="User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53
 
 # Tính năng 
 for kskn in $FEATURE; do
-echo "-e $kskn" >> feature
+echo "-e \"$kskn\"" >> feature
 done
 [ -e feature ] && feature="$(cat feature)"
 
