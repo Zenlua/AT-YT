@@ -209,7 +209,7 @@ sleep 2
 
 for kvc in $(ls $HOME/.github/Language); do
 mkdir -p $HOME/revanced-resource-cache/res/${kvc%.*}
-sed -i "/<\/resources>/d" $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml 2>/dev/null
+[ -e $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml ] && sed -i "/<\/resources>/d" $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
 [ -e $HOME/revanced-resource-cache/res/${kvc%.*} ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
 echo '</resources>' >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
 done
