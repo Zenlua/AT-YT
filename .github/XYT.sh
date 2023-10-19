@@ -36,8 +36,8 @@ Vidon="$(Xem "https://github.com/inotia00/revanced-patches/releases/download/v${
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
-[ "$AMOLED" == 'true' ] || theme='-e theme'
-[ "$TYPE" == 'true' ] && Mro="-e microg-support"
+[ "$AMOLED" == 'true' ] || theme='-e Theme'
+[ "$TYPE" == 'true' ] && Mro='-e "MicroG support"'
 
 # Xoá lib dựa vào abi
 if [ "$DEVICE" == "arm64-v8a" ];then
@@ -174,7 +174,7 @@ fi
 
 echo "▼ Bắt đầu quá trình xây dựng..."
 java -Djava.io.tmpdir=$HOME -jar "$lib1" patch -b "$lib2" -m "$lib3" apk/YouTube.apk -o YT.apk \
-$Tof $Ton $Mro $theme $feature > Log.txt 2>> Log.txt
+""$Tof $Ton $Mro $theme $feature"" > Log.txt 2>> Log.txt
 sed '/WARNING: warn: removing resource/d' Log.txt
 echo > 2.txt
 
