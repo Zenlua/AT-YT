@@ -13,9 +13,3 @@ Tof="
 -e custom-branding-icon-revancify-blue
 "
 
-# check vison
-Vik="
-custom-video-speed
-custom-seekbar-color
-custom-branding-name
-"
