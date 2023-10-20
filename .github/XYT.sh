@@ -217,7 +217,7 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-X'$V'notes.json"
 }' > "Up-X$V$ach$amoled2.json"
 
-echo 'Update '$(date)'\nYouTube: '$VER'\nVersion: '${VER//./}'' > Up-X${V}notes.json
+echo 'Update '$(date)' YouTube: '$VER' Version: '${VER//./}'' > Up-X${V}notes.json
 
 # Tạo module magisk
 cd $HOME/.github/Modun
