@@ -125,7 +125,7 @@ echo "- apk1 thành apk."
 mv apk/YouTube1 apk/YouTube.apk
 fi
 else
-echo "- không có file apk1'
+echo "- không có file apk1"
 fi
 
 if [ -e apk/YouTube2 ];then
@@ -137,7 +137,7 @@ echo "- apk2 thành apk."
 mv apk/YouTube2 apk/YouTube.apk
 fi
 else
-echo "- không có file apk2'
+echo "- không có file apk2"
 fi
 
 
