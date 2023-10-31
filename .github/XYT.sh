@@ -180,13 +180,13 @@ echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk \
 "$Tof $Ton $Mro $theme $feature" > Log.txt 2>> Log.txt"
 sed '/WARNING: warn: removing resource/d' Log.txt
-echo > 2.txt
+echo '- Quá trình xây dựng xong.' | tee 2.txt
 
 ) & (
 
 Loading "revanced-resource-cache/res/values" "revanced-resource-cache/res/values" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
-echo > 1.txt
+echo '- Quá trình ghép string xong' | tee 1.txt
 
 )
 
