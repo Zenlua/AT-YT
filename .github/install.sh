@@ -42,3 +42,17 @@ fi
 fi
 done; }
 
+checklog(){
+while true; do
+if [ "$(grep -cm1 "$1" "$2")" == 1 ];then
+echo "Đã tìm thấy:  $1"
+break
+else
+sleep 1
+gfdgv=$(($gfdgv + 1))
+if [ "$gfdgv" -ge 70 ];then
+echo "- Quá thời gian cho phép, sẽ tự bỏ qua...";
+break
+fi
+fi
+done; }
