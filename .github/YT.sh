@@ -205,7 +205,8 @@ echo > 2.txt
 
 sleep 5
 Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
-zip -qr apk/YouTube.apk -d res/*
+rm -fr apk/YouTube.apk
+zip -qr $(echo */YouTube.apk) -d res/*
 
 for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/*/res/${kvc%.*})"
