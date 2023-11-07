@@ -203,15 +203,16 @@ echo > 2.txt
 
 ) & (
 
-Loading "revanced-resource-cache/res/values" "revanced-resource-cache/res/values" >/dev/null
+sleep 3
+Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
-sleep 2
 
 for kvc in $(ls $HOME/.github/Language); do
-mkdir -p $HOME/revanced-resource-cache/res/${kvc%.*}
-[ -e $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml ] && sed -i "/<\/resources>/d" $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
-[ -e $HOME/revanced-resource-cache/res/${kvc%.*} ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
-echo '</resources>' >> $HOME/revanced-resource-cache/res/${kvc%.*}/strings.xml
+Tmk="$(echo $HOME/*/res/${kvc%.*})"
+mkdir -p $Tmk
+[ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
+[ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
+echo '</resources>' >> $Tmk/strings.xml
 done
 
 echo > 1.txt
