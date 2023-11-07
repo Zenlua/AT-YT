@@ -204,9 +204,10 @@ echo > 2.txt
 ) & (
 
 sleep 5
-Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
-rm -fr apk/YouTube.apk
-zip -qr $(echo */YouTube.apk) -d res/*
+zip -qr apk/YouTube.apk -d res/*
+
+checklog 'Decoding resources' Log.txt
+sleep 3
 
 for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/*/res/${kvc%.*})"
