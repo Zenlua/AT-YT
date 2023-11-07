@@ -185,7 +185,6 @@ echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 ) & (
 
 sleep 5
-Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
 echo '- Quá trình xoá rác xong' | tee 1.txt
 
