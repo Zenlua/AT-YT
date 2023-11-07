@@ -215,7 +215,8 @@ mkdir -p $Tmk
 echo '</resources>' >> $Tmk/strings.xml
 done
 
-echo > 1.txt
+echo '- Quá trình ghép string xong' | tee 1.txt
+
 
 )
 
