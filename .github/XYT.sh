@@ -184,7 +184,8 @@ echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 
 ) & (
 
-Loading "revanced-resource-cache/res/values" "revanced-resource-cache/res/values" >/dev/null
+sleep 3
+Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
 echo '- Quá trình ghép string xong' | tee 1.txt
 
@@ -221,7 +222,7 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-X'$V'notes.json"
 }' > "Up-X$V$ach$amoled2.json"
 
-echo 'Update '$(date)' YouTube: '$VER' Version: '${VER//./}'' > Up-X${V}notes.json
+echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}'\n Auto by kakathic' > Up-X${V}notes.json
 
 # Tạo module magisk
 cd $HOME/.github/Modun
