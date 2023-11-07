@@ -203,7 +203,7 @@ echo > 2.txt
 
 ) & (
 
-sleep 3
+sleep 7
 Loading "$(echo */res/values)" "$(echo */res/values)" >/dev/null
 zip -qr apk/YouTube.apk -d res/*
 
