@@ -2,7 +2,7 @@
 
 checkYT(){
 for Tkvi in $( find /data/app | grep com.google.android.youtube | grep 'base.apk' ); do
-[ "$Tkvi" ] && su -mm -c umount -l "$Tkvi"
+[ "$Tkvi" ] && umount -l "$Tkvi"
 done
 for Vhkdd in $(find /data/app -name *com.google.android.youtube*); do
 [ "$Vhkdd" ] && rm -fr "$Vhkdd"
@@ -23,7 +23,7 @@ cpLIB(){ cp -af $1 ${2%/*}; }
 
 mountYT(){
 chcon u:object_r:apk_data_file:s0 "$1"
-su -mm -c mount -o bind "$1" "$2"; }
+mount -o bind "$1" "$2"; }
 
 offCH(){
 Sqlite3=$MODPATH/sqlite3
