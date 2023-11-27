@@ -6,6 +6,8 @@
 
 > Auto: is the version that automatically builds every day.
 
+> Ksu and magisk support
+
 **Use Revanced cli**
 ---
 
