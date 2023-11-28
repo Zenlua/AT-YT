@@ -205,7 +205,7 @@ cd $HOME
 
 # Tạo module.prop
 echo 'id=YouTube
-name=YouTube PiP Ext '$Kad'
+name=YouTube Ext '$Kad'
 author=kakathic
 description=Build '$(date)', YouTube edited tool by Revanced mod added disable play store updates, mod rounded pip window.
 version='$VER'
