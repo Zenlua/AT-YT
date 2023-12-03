@@ -177,21 +177,21 @@ fi
 (
 
 echo "▼ Bắt đầu quá trình xây dựng..."
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk \
-"$Tof $Ton $Mro $theme $feature" 2>&1 | tee Log.txt"
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" 2>&1 > Log.txt
 sed '/WARNING: warn: removing resource/d' Log.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 
 ) & (
 
 sleep 5
-zip -qr apk/YouTube.apk -d res/*
+zip -qr apk/YouTube.apk -d res/* | tee bcdd.txt
 echo '- Quá trình xoá rác xong' | tee 1.txt
 
 )
 
 # Chờ xây dựng xong
-Loading "1.txt" "2.txt" >/dev/null
+Loading "1.txt" "2.txt"
+
 if [ "$TYPE" == 'true' ];then
 mv YT.apk $HOME/Tav/YouTube.apk
 else
