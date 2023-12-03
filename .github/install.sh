@@ -36,7 +36,7 @@ else
 sleep 1
 gfdgv=$(($gfdgv + 1))
 if [ "$gfdgv" -ge 70 ];then
-echo "- Quá thời gian cho phép, vì thiếu file apks...";
+echo "- Quá thời gian cho phép, vì $1...";
 break
 fi
 fi
