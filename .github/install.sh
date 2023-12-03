@@ -27,6 +27,7 @@ apksign () { java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.git
 Upenv(){ echo "$1=$2" >> $GITHUB_ENV; }
 checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không không thấy file ${1##*/}"; exit 1; ); }
 checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
+
 Loading(){
 while true; do
 if [ -e "$1" ] && [ -e "$2" ];then
@@ -35,7 +36,7 @@ break
 else
 sleep 1
 gfdgv=$(($gfdgv + 1))
-if [ "$gfdgv" -ge 70 ];then
+if [ "$gfdgv" -ge 100 ];then
 echo "- Quá thời gian cho phép, vì $1...";
 break
 fi
