@@ -37,13 +37,6 @@
 
    > [Instructions](https://github.com/Zelooooo/AT-YT/blob/Vip/.github/Tools/Auto.md)
 
-**Microg**
----
-
-- Use to log non-root version, click on the link below to download.
-
-   > [mMicroG](https://github.com/inotia00/mMicroG/releases)
-
 **Add-on Download**
 ---
 
