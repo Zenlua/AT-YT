@@ -8,6 +8,12 @@
 
 > Ksu and magisk support
 
+**Notify latest**
+---
+
+- Fix GmsCore YT-RE
+- New update 18.45.43 YT-RE
+
 **Use Revanced cli**
 ---
 
