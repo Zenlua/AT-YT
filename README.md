@@ -2,20 +2,20 @@
 # YT-RE - YT-EXT 
 [![RE-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/Auto.yml) [![EXT-AUTO](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml/badge.svg)](https://github.com/Zelooooo/AT-YT/actions/workflows/XAuto.yml)
 
-> Build, Edit: is the manual build version
++ Build, Edit: is the manual build version
 
-> Auto: is the version that automatically builds every day.
++ Auto: is the version that automatically builds every day.
 
-> Ksu and magisk support
++ Ksu and magisk support
 
-**Note latest**
+**Latest**
 ---
 
 + Fix GmsCore YT-RE
 
 + New update 18.45.43 YT-RE
 
-**Use Revanced cli**
+**Revanced CLI**
 ---
 
 - This is the mod Youtube tool from Revanced, they made it, let support them.
