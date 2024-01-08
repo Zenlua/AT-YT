@@ -18,7 +18,7 @@
 **Revanced CLI**
 ---
 
-- This is the mod Youtube tool from Revanced, they made it, let support them.
+- All support issues in this group
 
    > [Telegram](https://t.me/toolmod)
 
