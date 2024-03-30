@@ -6,7 +6,7 @@ on:
       - '.github/workflows/XAuto.yml'
       - '.github/XYT.sh'
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '00 00 2 * *'
 permissions: write-all
 jobs:
   build1:
