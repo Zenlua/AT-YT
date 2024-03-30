@@ -24,7 +24,11 @@
 
 - See the version that Revanced they support for the latest build.
 
-   > [Revanced](https://github.com/revanced/revanced-patches) | [Inotia00](https://github.com/inotia00/revanced-patches) | [Gmscore](https://github.com/ReVanced/GmsCore)
+   > [Revanced](https://github.com/revanced/revanced-patches) | [Inotia00](https://github.com/inotia00/revanced-patches)
+
+- Additional app for the no-root version
+
+   >  [Gmscore](https://github.com/ReVanced/GmsCore)
 
 - The latest Youtube version
 
