@@ -28,7 +28,7 @@
 
 - Additional app for the no-root version
 
-   >  [Gmscore](https://github.com/ReVanced/GmsCore)
+   >  [GmsCore](https://github.com/ReVanced/GmsCore)
 
 - The latest Youtube version
 
