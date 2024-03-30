@@ -63,14 +63,19 @@ elif [ "$VERSION" == 'Autu' ];then
 VER="$Vidon"
 Kad=Auto
 V=U
-if [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
-echo "! Là phiên bản mới nhất."
-exit 0
-fi
 else
 VER="$VERSION"
 Kad=Edit
 V=N
+fi
+
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
+
+if [ "$VERSION" == 'Autu' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
+echo "! Là phiên bản mới nhất."
+exit 0
 fi
 
 echo
@@ -96,9 +101,6 @@ checkzip "lib/revanced-cli.jar"
 checkzip "lib/revanced-patches.jar"
 checkzip "lib/revanced-integrations.apk"
 
-Upenv V "$V"
-Upenv Kad "$Kad"
-Upenv VER "$VER"
 echo
 
 echo "- Tải YouTube $VER apk, apks..."
