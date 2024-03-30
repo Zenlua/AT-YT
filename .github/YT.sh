@@ -97,7 +97,7 @@ Upenv V "$V"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
 
-if [ "$VERSION" == 'Autu' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-Z${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
+if [ "$VERSION" == 'Autu' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
@@ -244,16 +244,16 @@ author=kakathic
 description=Build '$(date)', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
 versionCode='${VER//./}'
-updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-Z'$V$ach$amoled2'.json
+updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$ach$amoled2'.json
 ' > $HOME/.github/Modun/module.prop
 
 # Tạo json
 echo '{
 "version": "'$VER'",
 "versionCode": "'${VER//./}'",
-"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Z'$V$VER'/YT-Magisk-'$VER'-'$ach$amoled2'.Zip",
-"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-Z'$V'notes.json"
-}' > Up-Z$V$ach$amoled2.json
+"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'$V$VER'/YT-Magisk-'$VER'-'$ach$amoled2'.Zip",
+"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
+}' > Up-K$V$ach$amoled2.json
 
 echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-Z${V}notes.json
 
