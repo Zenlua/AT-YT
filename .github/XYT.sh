@@ -69,14 +69,14 @@ Kad=Edit
 V=N
 fi
 
-Upenv V "$V"
-Upenv Kad "$Kad"
-Upenv VER "$VER"
-
-if [ "$VERSION" == 'Autu' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ];then
+if [[ "$VERSION" == 'Autu' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
+
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
 
 echo
 # Tải tool cli
