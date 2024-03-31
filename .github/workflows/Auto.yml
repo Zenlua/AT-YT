@@ -8,6 +8,8 @@ on:
   schedule:
     - cron: '00 00 2 * *'
 permissions: write-all
+env:
+    GH_TOKEN: ${{ github.token }}
 jobs:
   build1:
     name: 'Buid arm64 root'
