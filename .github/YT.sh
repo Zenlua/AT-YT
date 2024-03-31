@@ -1,4 +1,5 @@
-
+env
+exit
 # load dữ liệu 
 lib1="lib/revanced-cli.jar"
 lib2="lib/revanced-patches.jar"
