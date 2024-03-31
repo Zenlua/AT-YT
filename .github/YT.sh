@@ -78,7 +78,8 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-echo -e "#### Changelog $Vidon YouTube\n\`\`\`" > Log.txt
+echo -e "> Changelog $Vidon\n" > Log.txt
+echo "\`\`\`" >> Log.txt
 
 echo "  $Vidon"
 if [ "$VERSION" == 'Auto' ];then
