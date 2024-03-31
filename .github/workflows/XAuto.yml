@@ -37,6 +37,7 @@ jobs:
           name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           tag_name: X${{ env.V }}${{ env.VER }}
           files: Up/*
+          body_path: Log.txt
       - name: Upload Json
         uses: softprops/action-gh-release@v1
         with:
@@ -72,6 +73,7 @@ jobs:
           name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           tag_name: X${{ env.V }}${{ env.VER }}
           files: Up/*
+          body_path: Log.txt
   build3:
     name: 'Buid arm64 amoled root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -101,6 +103,7 @@ jobs:
           name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           tag_name: X${{ env.V }}${{ env.VER }}
           files: Up/*
+          body_path: Log.txt
       - name: Upload Json
         uses: softprops/action-gh-release@v1
         with:
@@ -137,3 +140,4 @@ jobs:
           name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           tag_name: X${{ env.V }}${{ env.VER }}
           files: Up/*
+          body_path: Log.txt
