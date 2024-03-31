@@ -93,10 +93,20 @@ Kad=Edit$Vop
 V=N$Vop2
 fi
 
+echo $VERSION
+
+
+
 if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
+
+if [ 1 == 1 ] && [ 2 == 2 ];then
+echo 123
+fi
+
+exit 0
 
 Upenv V "$V"
 Upenv Kad "$Kad"
