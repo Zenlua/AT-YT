@@ -54,7 +54,8 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-echo -e "#### Changelog $Vidon YouTube\n```" > Log.txt
+echo -e "> Changelog $Vidon\n" > Log.txt
+echo "\`\`\`" >> Log.txt
 
 echo "  $Vidon"
 if [ "$VERSION" == 'Auto' ];then
@@ -184,7 +185,7 @@ echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" >> Log.txt 2>> Log.txt
 #sed '/WARNING: warn: removing resource/d' Log.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
-echo "```" >> Log.txt
+echo "\`\`\`" >> Log.txt
 
 ) & (
 
