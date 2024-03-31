@@ -54,7 +54,7 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-echo -e "<details><summary>Log build $Vidon</summary>\n<p>\n" > Log.txt
+echo -e "<details><summary>See log</summary>\n<p>\n" > Log.txt
 
 echo "  $Vidon"
 if [ "$VERSION" == 'Auto' ];then
