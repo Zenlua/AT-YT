@@ -93,7 +93,8 @@ Kad=Edit$Vop
 V=N$Vop2
 fi
 
-Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}"
+echo "https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json"
+#| grep -cm1 "${VER//./}"
 
 if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
