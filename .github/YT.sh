@@ -93,19 +93,14 @@ Kad=Edit$Vop
 V=N$Vop2
 fi
 
-echo "https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json"
-#| grep -cm1 "${VER//./}"
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
 
 if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
 exit 0
 fi
-
-exit 0
-
-Upenv V "$V"
-Upenv Kad "$Kad"
-Upenv VER "$VER"
 
 echo
 # Tải tool cli
