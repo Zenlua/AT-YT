@@ -77,6 +77,8 @@ Upenv VER "$VER"
 
 if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
+gh run cancel $GITHUB_RUN_ID
+sleep 10
 exit 0
 fi
 
