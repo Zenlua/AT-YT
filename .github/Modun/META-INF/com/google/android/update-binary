@@ -25,11 +25,61 @@ ZIPFILE=$3
 
 mount /data 2>/dev/null
 
-[ -f /data/adb/magisk/util_functions.sh ] || require_new_magisk
+if [ -f /data/adb/magisk/util_functions.sh ];then
 . /data/adb/magisk/util_functions.sh
 [ $MAGISK_VER_CODE -lt 20400 ] && require_new_magisk
-
 install_module
 [ -e $MODPATH/YouTube.apk ] && am start com.google.android.youtube >&2
+exit 0
+fi
+
+ui_print() {
+echo -e "ui_print $1\nui_print" >> /proc/self/fd/$OUTFD
+}
+grant(){
+chcon -Rh $3 "$1" || chcon $3 "$1"
+chmod -R $2 "$1" || chmod $2 "$1"
+chown -Rh 0:0 "$1" || chown 0:0 "$1"
+}
+
+mount /system_root 2>/dev/null
+
+ui_print " "
+ui_print "- Youtube..."
+mkdir -p /data/YouTube/tmp /data/YouTube/apk /system_root/product/app/YouTube
+unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
+tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
+mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
+mv -f /data/YouTube/lib /data/YouTube/apk
+mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
+grant /data/YouTube 755 u:object_r:system_file:s0
+
+if [ -e /system_root/product/etc/init/init.miui.opconfig.rc ];then
+[ "$(grep -cm1 YouTube /system_root/product/etc/init/init.miui.opconfig.rc)" == 1 ] || echo "
+on post-fs-data
+    mount none /data/YouTube/tmp /product/app/YouTube bind rec
+on property:ro.boot.selinux=permissive
+    chmod 440 /sys/fs/selinux/policy
+    write /sys/fs/selinux/enforce 1
+    chmod 640 /sys/fs/selinux/enforce
+on property:sys.boot_completed=1
+    mount none /data/YouTube/apk /product/app/YouTube bind rec
+" >> /system_root/product/etc/init/init.miui.opconfig.rc
+else
+echo "on post-fs-data
+    mount none /data/YouTube/tmp /product/app/YouTube bind rec
+on property:ro.boot.selinux=permissive
+    chmod 440 /sys/fs/selinux/policy
+    write /sys/fs/selinux/enforce 1
+    chmod 640 /sys/fs/selinux/enforce
+on property:sys.boot_completed=1
+    mount none /data/YouTube/apk /product/app/YouTube bind rec
+" > /system_root/product/etc/init/init.miui.opconfig.rc
+fi
+chmod 644 /system_root/product/etc/init/init.miui.opconfig.rc
+
+ui_print " "
+ui_print "- Done"
+ui_print " "
 
 exit 0
