@@ -87,14 +87,14 @@ if [ "$DEV" == "Develop" ];then
 echo "  Dùng Dev"
 echo
 pbdev inotia00/revanced-cli revanced-cli jar -all
-pbdev inotia00/revanced-patches revanced-patches jar
-pbdev inotia00/revanced-integrations revanced-integrations apk
+pbdev anddea/revanced-patches revanced-patches jar
+pbdev anddea/revanced-integrations revanced-integrations apk
 else
 echo "  Dùng Sta"
 echo
 pbsta inotia00/revanced-cli revanced-cli jar -all
-pbsta inotia00/revanced-patches revanced-patches jar
-pbsta inotia00/revanced-integrations revanced-integrations apk
+pbsta anddea/revanced-patches revanced-patches jar
+pbsta anddea/revanced-integrations revanced-integrations apk
 fi
 
 
