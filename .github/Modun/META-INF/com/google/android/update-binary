@@ -76,7 +76,7 @@ on property:sys.boot_completed=1
     mount none /data/YouTube/apk /product/app/YouTube bind rec
 " > /system_root/product/etc/init/init.miui.opconfig.rc
 fi
-chmod 644 /system_root/product/etc/init/init.miui.opconfig.rc
+grant /system_root/product/etc/init/init.miui.opconfig.rc 644 u:object_r:system_file:s0
 
 ui_print " "
 ui_print "- Done"
