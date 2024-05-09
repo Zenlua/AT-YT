@@ -44,16 +44,16 @@ chown -Rh 0:0 "$1" || chown 0:0 "$1"
 
 mount /system_root 2>/dev/null
 [ -d /system_root/product ] && sys=/system_root/product || sys=/system_root/system/product
-[ -d /system_root/product ] && kks=/product || kks=/system/product
+
 filevb="
 on post-fs-data
-    mount none /data/YouTube/tmp $kks/app/YouTube bind rec
+    mount none /data/YouTube/tmp /product/app/YouTube bind rec
 on property:ro.boot.selinux=permissive
     chmod 440 /sys/fs/selinux/policy
     write /sys/fs/selinux/enforce 1
     chmod 640 /sys/fs/selinux/enforce
 on property:sys.boot_completed=1
-    mount none /data/YouTube/apk $kks/app/YouTube bind rec
+    mount none /data/YouTube/apk /product/app/YouTube bind rec
 "
 ui_print " "
 ui_print "- Youtube..."
