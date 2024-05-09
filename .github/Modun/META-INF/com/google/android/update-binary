@@ -43,19 +43,9 @@ chown -Rh 0:0 "$1" || chown 0:0 "$1"
 }
 
 mount /system_root 2>/dev/null
+[ -d /system_root/product ] && sys=/system_root/product || sys=/system_root/system/product
 
-ui_print " "
-ui_print "- Youtube..."
-mkdir -p /data/YouTube/tmp /data/YouTube/apk /system_root/product/app/YouTube
-unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
-tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
-mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
-mv -f /data/YouTube/lib /data/YouTube/apk
-mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
-grant /data/YouTube 755 u:object_r:system_file:s0
-
-if [ -e /system_root/product/etc/init/init.miui.opconfig.rc ];then
-[ "$(grep -cm1 YouTube /system_root/product/etc/init/init.miui.opconfig.rc)" == 1 ] || echo "
+filevb='
 on post-fs-data
     mount none /data/YouTube/tmp /product/app/YouTube bind rec
 on property:ro.boot.selinux=permissive
@@ -64,19 +54,23 @@ on property:ro.boot.selinux=permissive
     chmod 640 /sys/fs/selinux/enforce
 on property:sys.boot_completed=1
     mount none /data/YouTube/apk /product/app/YouTube bind rec
-" >> /system_root/product/etc/init/init.miui.opconfig.rc
+'
+ui_print " "
+ui_print "- Youtube..."
+mkdir -p /data/YouTube/tmp /data/YouTube/apk $sys/app/YouTube
+unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
+tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
+mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
+mv -f /data/YouTube/lib /data/YouTube/apk
+mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
+grant /data/YouTube 755 u:object_r:system_file:s0
+
+if [ -e $sys/etc/init/init.miui.opconfig.rc ];then
+[ "$(grep -cm1 YouTube $sys/etc/init/init.miui.opconfig.rc)" == 1 ] || echo "$filevb" >> $sys/etc/init/init.miui.opconfig.rc
 else
-echo "on post-fs-data
-    mount none /data/YouTube/tmp /product/app/YouTube bind rec
-on property:ro.boot.selinux=permissive
-    chmod 440 /sys/fs/selinux/policy
-    write /sys/fs/selinux/enforce 1
-    chmod 640 /sys/fs/selinux/enforce
-on property:sys.boot_completed=1
-    mount none /data/YouTube/apk /product/app/YouTube bind rec
-" > /system_root/product/etc/init/init.miui.opconfig.rc
+echo "$filevb" > $sys/etc/init/init.miui.opconfig.rc
 fi
-grant /system_root/product/etc/init/init.miui.opconfig.rc 644 u:object_r:system_file:s0
+grant $sys/etc/init/init.miui.opconfig.rc 644 u:object_r:system_file:s0
 
 ui_print " "
 ui_print "- Done"
