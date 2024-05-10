@@ -59,6 +59,8 @@ ui_print " "
 ui_print "- Kakathic"
 ui_print " "
 ui_print "- Start install Youtube..."
+
+rm -fr /data/YouTube
 mkdir -p /data/YouTube/tmp /data/YouTube/apk $sys/app/YouTube
 unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
 tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
