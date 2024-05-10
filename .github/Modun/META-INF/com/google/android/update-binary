@@ -76,8 +76,8 @@ echo "$filevb" > $sys/etc/init/init.miui.opconfig.rc
 fi
 grant $sys/etc/init/init.miui.opconfig.rc 644 u:object_r:system_file:s0
 
-[ "$(grep -cm1 YouTube $sys/etc/init/init.miui.opconfig.rc)" == 1 ] || ui_print "- System error is (RO) cannot install !"
-[ "$(grep -cm1 YouTube $sys/etc/init/init.miui.opconfig.rc)" == 1 ] || exit 1
+[ -e $sys/app/YouTube ] || ui_print "- System error is (RO) cannot install !"
+[ -e $sys/app/YouTube ] || exit 1
 
 ui_print " "
 ui_print "- Done"
