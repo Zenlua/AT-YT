@@ -32,6 +32,7 @@ permissions: write-all
 jobs:
   build1:
     name: 'Buid arm64 root'
+    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -67,6 +68,7 @@ jobs:
           prerelease: true
   build2:
     name: 'Buid arm64 no-root'
+    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -95,6 +97,7 @@ jobs:
           body_path: Log.txt
   build3:
     name: 'Buid arm64 amoled root'
+    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -131,6 +134,7 @@ jobs:
           prerelease: true
   build4:
     name: 'Buid arm64 amoled no-root'
+    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
