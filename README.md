@@ -7,6 +7,8 @@
 
 + Ksu and magisk support
 
++ Recovery supports system/product(rw) requirements
+
 **Revanced CLI**
 ---
 
