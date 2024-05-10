@@ -28,13 +28,6 @@
 
    > [Apkmirror](https://www.apkmirror.com/apk/google-inc/youtube/)
 
-**Build YouTube**
----
-
-- You can build your own version with models suitable for your machine. 
-
-   > [Instructions](https://github.com/Zenlua/AT-YT/blob/Vip/.github/Tools/Auto.md)
-
 **Add-on Download**
 ---
 
