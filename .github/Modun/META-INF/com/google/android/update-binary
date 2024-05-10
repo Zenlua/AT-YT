@@ -56,6 +56,8 @@ on property:sys.boot_completed=1
     mount none /data/YouTube/apk /product/app/YouTube bind rec
 "
 ui_print " "
+ui_print "- Kakathic"
+ui_print " "
 ui_print "- Youtube..."
 mkdir -p /data/YouTube/tmp /data/YouTube/apk $sys/app/YouTube
 unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
