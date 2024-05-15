@@ -5,9 +5,7 @@
 
 + Auto: is the version that automatically builds every day.
 
-+ Ksu and magisk support
-
-+ Recovery supports system/product(rw) requirements
++ Support for root management software, and flash recovery
 
 **Revanced CLI**
 ---
