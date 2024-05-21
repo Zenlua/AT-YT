@@ -221,11 +221,11 @@ mkdir -p $Tmk
 [ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
 [ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
 echo '</resources>' >> $Tmk/strings.xml
+ls $Tmk/strings.xml
 done
 
+cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
-ls $Tmk
-ls $HOME/*/res/${kvc%.*}
 
 )
 
