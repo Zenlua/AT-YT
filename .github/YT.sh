@@ -224,7 +224,8 @@ echo '</resources>' >> $Tmk/strings.xml
 done
 
 echo '- Quá trình ghép string xong' | tee 1.txt
-
+ls $Tmk
+ls $HOME/*/res/${kvc%.*}
 
 )
 
