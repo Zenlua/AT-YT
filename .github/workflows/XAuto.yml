@@ -6,7 +6,7 @@ on:
       - '.github/workflows/XAuto.yml'
       - '.github/XYT.sh'
   schedule:
-    - cron: '00 00 2 * *'
+    - cron: '0 23 1/2 * *'
 permissions: write-all
 env:
     GH_TOKEN: ${{ github.token }}
