@@ -224,14 +224,14 @@ mkdir -p $Tmk
 echo '</resources>' >> $Tmk/strings.xml
 done
 
-ls -1 $HOME/tmp
+ls -1 $HOME/tmp/*
 #cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
 
 )
 
 # Chờ xây dựng xong
-Loading "1.txt" "2.txt" >/dev/null
+Loading "1.txt" "2.txt"
 if [ "$TYPE" == 'true' ];then
 mv YT.apk $HOME/Tav/YouTube.apk
 else
