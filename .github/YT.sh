@@ -212,7 +212,7 @@ echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 sleep 5
 zip -qr apk/YouTube.apk -d res/*
 
-Loading "tmp/patcher/apk/res/values-vi" "tmp/patcher/apk/res/values" 
+checklog 'Decoding resources' Log2.txt
 sleep 3
 
 for kvc in $(ls $HOME/.github/Language); do
