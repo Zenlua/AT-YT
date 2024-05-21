@@ -201,8 +201,8 @@ fi
 (
 
 echo "▼ Bắt đầu quá trình xây dựng..."
-java -Djava.io.tmpdir=$HOME -jar $lib1 patch
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature" >> Log2.txt 2>> Log2.txt"
+#java -Djava.io.tmpdir=$HOME -jar $lib1 patch
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -t tmp -o YT.apk "$Tof $Ton $Mro $theme $feature" >> Log2.txt 2>> Log2.txt"
 #sed '/WARNING: warn: removing resource/d' Log2.txt
 cat Log2.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
@@ -213,18 +213,18 @@ grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 sleep 5
 zip -qr apk/YouTube.apk -d res/*
 
-checklog 'Decoding resources' Log2.txt
-sleep 9
+Loading "tmp/res/values-vi" "tmp/res/values" 
+sleep 3
 
 for kvc in $(ls $HOME/.github/Language); do
-Tmk="$(echo $HOME/*/res/${kvc%.*})"
+Tmk="$(echo $HOME/tmp/res/${kvc%.*})"
 mkdir -p $Tmk
 [ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
 [ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
 echo '</resources>' >> $Tmk/strings.xml
 done
 
-ls -1 $HOME
+ls -1 $HOME/tmp
 #cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
 
