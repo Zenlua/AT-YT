@@ -223,8 +223,8 @@ mkdir -p $Tmk
 echo '</resources>' >> $Tmk/strings.xml
 done
 
-ls -1 $HOME/*/res
-cat $HOME/*/res/values-vi/strings.xml
+ls -1 $HOME
+#cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
 
 )
