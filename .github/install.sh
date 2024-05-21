@@ -9,7 +9,7 @@ sudo apt install zipalign bash 2>/dev/null >/dev/null
 cd $HOME
 
 # Tạo thư mục
-mkdir -p apk lib tmp jar Tav Up
+mkdir -p apk lib tmp jar Tav Up rmp
 User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
 
 # Tính năng 
