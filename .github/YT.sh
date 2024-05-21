@@ -220,7 +220,7 @@ for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/YT-temporary-files/patcher/apk/res/${kvc%.*})"
 mkdir -p $Tmk
 [ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
-[ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
+[ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e '/encoding=/d' -e "/resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
 echo '</resources>' >> $Tmk/strings.xml
 done
 
