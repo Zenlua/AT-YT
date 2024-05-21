@@ -210,7 +210,7 @@ Bạn sẽ không được thông báo về bất kỳ sự kiện không mong m
     <string name="revanced_hide_floating_microphone_button_title" public="false">Ẩn nút micrô nổi</string>
     <string name="revanced_hide_for_you_shelf_summary_off" public="false">Kệ được hiển thị</string>
     <string name="revanced_hide_for_you_shelf_summary_on" public="false">Kệ bị ẩn</string>
-    <string name="revanced_hide_for_you_shelf_title" public="false">Ẩn kệ 'Dành cho bạn' trong trang kênh</string>
+    <string name="revanced_hide_for_you_shelf_title" public="false">Ẩn kệ \'Dành cho bạn\' trong trang kênh</string>
     <string name="revanced_hide_fullscreen_ads_feature_not_available_toast" public="false">Ẩn quảng cáo toàn màn hình chỉ hoạt động với các thiết bị cũ hơn</string>
     <string name="revanced_hide_fullscreen_ads_summary_off" public="false">Quảng cáo toàn màn hình được hiển thị</string>
     <string name="revanced_hide_fullscreen_ads_summary_on" public="false">Quảng cáo toàn màn hình bị ẩn
@@ -254,7 +254,7 @@ Tính năng này chỉ khả dụng cho các thiết bị cũ hơn</string>
     <string name="revanced_hide_info_panels_title" public="false">Ẩn bảng thông tin</string>
     <string name="revanced_hide_join_membership_button_summary_off" public="false">Nút được hiển thị</string>
     <string name="revanced_hide_join_membership_button_summary_on" public="false">Nút bị ẩn</string>
-    <string name="revanced_hide_join_membership_button_title" public="false">Ẩn nút 'Tham gia'</string>
+    <string name="revanced_hide_join_membership_button_title" public="false">Ẩn nút \'Tham gia\'</string>
     <string name="revanced_hide_keyword_content_about_summary" public="false">Trang chủ/Đăng ký/Kết quả tìm kiếm được lọc để ẩn nội dung khớp với các cụm từ khóa
 
 Hạn chế
@@ -277,8 +277,8 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_hide_keyword_content_subscriptions_summary_off" public="false">Video trong tab đăng ký không được lọc theo từ khóa</string>
     <string name="revanced_hide_keyword_content_subscriptions_summary_on" public="false">Video trong tab đăng ký được lọc theo từ khóa</string>
     <string name="revanced_hide_keyword_content_subscriptions_title" public="false">Ẩn video đăng ký theo từ khóa</string>
-    <string name="revanced_hide_keyword_toast_invalid_common" public="false">Từ khoá không khả dụng. Không thể sử dụng: '%s' làm bộ lọc</string>
-    <string name="revanced_hide_keyword_toast_invalid_length" public="false">Từ khoá không khả dụng. '%1$s' có ít hơn %2$d ký tự</string>
+    <string name="revanced_hide_keyword_toast_invalid_common" public="false">Từ khoá không khả dụng. Không thể sử dụng: \'%s\' làm bộ lọc</string>
+    <string name="revanced_hide_keyword_toast_invalid_length" public="false">Từ khoá không khả dụng. \'%1$s\' có ít hơn %2$d ký tự</string>
     <string name="revanced_hide_latest_posts_ads_summary_off" public="false">Bài viết mới nhất được hiển thị</string>
     <string name="revanced_hide_latest_posts_ads_summary_on" public="false">Bài viết mới nhất bị ẩn</string>
     <string name="revanced_hide_latest_posts_ads_title" public="false">Ẩn bài viết mới nhất</string>
@@ -305,7 +305,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_hide_navigation_button_labels_title" public="false">Ẩn nhãn nút điều hướng</string>
     <string name="revanced_hide_notify_me_button_summary_off" public="false">Nút được hiển thị</string>
     <string name="revanced_hide_notify_me_button_summary_on" public="false">Nút bị ẩn</string>
-    <string name="revanced_hide_notify_me_button_title" public="false">Ẩn nút 'Thông báo cho tôi'</string>
+    <string name="revanced_hide_notify_me_button_title" public="false">Ẩn nút \'Thông báo cho tôi\'</string>
     <string name="revanced_hide_paid_promotion_label_summary_off" public="false">Nhãn quảng cáo trả phí được hiển thị</string>
     <string name="revanced_hide_paid_promotion_label_summary_on" public="false">Nhãn quảng cáo trả phí bị ẩn</string>
     <string name="revanced_hide_paid_promotion_label_title" public="false">Ẩn nhãn khuyến mại trả phí</string>
@@ -376,7 +376,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_hide_report_button_title" public="false">Ẩn báo cáo</string>
     <string name="revanced_hide_search_result_recommendations_summary_off" public="false">Khuyến nghị được hiển thị</string>
     <string name="revanced_hide_search_result_recommendations_summary_on" public="false">Đề xuất bị ẩn</string>
-    <string name="revanced_hide_search_result_recommendations_title" public="false">Ẩn đề xuất 'Mọi người cũng đã xem'</string>
+    <string name="revanced_hide_search_result_recommendations_title" public="false">Ẩn đề xuất \'Mọi người cũng đã xem\'</string>
     <string name="revanced_hide_search_result_shelf_header_summary_off" public="false">Tiêu đề giá được hiển thị</string>
     <string name="revanced_hide_search_result_shelf_header_summary_on" public="false">Tiêu đề giá bị ẩn</string>
     <string name="revanced_hide_search_result_shelf_header_title" public="false">Ẩn tiêu đề giá kết quả tìm kiếm</string>
@@ -472,7 +472,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_hide_shorts_video_title_title" public="false">Ẩn tiêu đề video</string>
     <string name="revanced_hide_show_more_button_summary_off" public="false">Nút được hiển thị</string>
     <string name="revanced_hide_show_more_button_summary_on" public="false">Nút bị ẩn</string>
-    <string name="revanced_hide_show_more_button_title" public="false">Ẩn nút 'Hiển thị thêm'</string>
+    <string name="revanced_hide_show_more_button_title" public="false">Ẩn nút \'Hiển thị thêm\'</string>
     <string name="revanced_hide_subscribers_community_guidelines_summary_off" public="false">Nguyên tắc cộng đồng của người đăng ký được hiển thị</string>
     <string name="revanced_hide_subscribers_community_guidelines_summary_on" public="false">Nguyên tắc cộng đồng của người đăng ký bị ẩn</string>
     <string name="revanced_hide_subscribers_community_guidelines_title" public="false">Ẩn nguyên tắc cộng đồng của người đăng ký</string>
@@ -499,7 +499,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_hide_video_quality_menu_footer_title" public="false">Ẩn chân trang menu chất lượng video</string>
     <string name="revanced_hide_visit_store_button_summary_off" public="false">Nút được hiển thị</string>
     <string name="revanced_hide_visit_store_button_summary_on" public="false">Nút bị ẩn</string>
-    <string name="revanced_hide_visit_store_button_title" public="false">Ẩn nút 'Truy cập cửa hàng' trên các trang kênh</string>
+    <string name="revanced_hide_visit_store_button_title" public="false">Ẩn nút \'Truy cập cửa hàng\' trên các trang kênh</string>
     <string name="revanced_hide_web_search_results_summary_off" public="false">Kết quả tìm kiếm trên web được hiển thị</string>
     <string name="revanced_hide_web_search_results_summary_on" public="false">Kết quả tìm kiếm trên web bị ẩn</string>
     <string name="revanced_hide_web_search_results_title" public="false">Ẩn kết quả tìm kiếm trên web</string>
@@ -674,7 +674,7 @@ Bạn đã sẵn sàng gửi chưa?</string>
     <string name="revanced_sb_segments_preview" public="false">Xem trước/Tóm tắt/Nối</string>
     <string name="revanced_sb_segments_preview_sum" public="false">Bộ sưu tập các clip hiển thị những gì sắp diễn ra hoặc những gì đã xảy ra trong video hoặc trong các video khác của loạt phim, trong đó tất cả thông tin được lặp lại ở nơi khác</string>
     <string name="revanced_sb_segments_selfpromo" public="false">Không trả phí/Tự quảng cáo</string>
-    <string name="revanced_sb_segments_selfpromo_sum" public="false">Tương tự như 'Nhà tài trợ' ngoại trừ việc không trả tiền hoặc tự quảng cáo. Bao gồm các phần về hàng hóa, quyên góp hoặc thông tin về những người họ đã cộng tác cùng</string>
+    <string name="revanced_sb_segments_selfpromo_sum" public="false">Tương tự như \'Nhà tài trợ\' ngoại trừ việc không trả tiền hoặc tự quảng cáo. Bao gồm các phần về hàng hóa, quyên góp hoặc thông tin về những người họ đã cộng tác cùng</string>
     <string name="revanced_sb_segments_sponsor" public="false">Nhà tài trợ</string>
     <string name="revanced_sb_segments_sponsor_sum" public="false">Quảng cáo trả phí, giới thiệu trả phí và quảng cáo trực tiếp. Không nhằm mục đích tự quảng cáo hoặc giới thiệu miễn phí tới các mục đích/người sáng tạo/trang web/sản phẩm mà họ thích</string>
     <string name="revanced_sb_settings_copy" public="false">Sao chép</string>
