@@ -213,8 +213,8 @@ grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 sleep 5
 zip -qr apk/YouTube.apk -d res/*
 
-Loading "tmp/res/values-vi" "tmp/res/values" 
-sleep 3
+#Loading "tmp/res/values-vi" "tmp/res/values" 
+sleep 6
 
 for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/tmp/res/${kvc%.*})"
@@ -224,7 +224,7 @@ mkdir -p $Tmk
 echo '</resources>' >> $Tmk/strings.xml
 done
 
-ls -1 $HOME/tmp/*
+ls -1 $HOME/tmp/*/*/*
 #cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
 
