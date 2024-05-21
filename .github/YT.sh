@@ -202,7 +202,7 @@ fi
 
 echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature" >> Log2.txt 2>> Log2.txt"
-sed '/WARNING: warn: removing resource/d' Log2.txt
+#sed '/WARNING: warn: removing resource/d' Log2.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 
@@ -212,7 +212,7 @@ sleep 5
 zip -qr apk/YouTube.apk -d res/*
 
 checklog 'Decoding resources' Log2.txt
-sleep 3
+sleep 4
 
 for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/*/res/${kvc%.*})"
