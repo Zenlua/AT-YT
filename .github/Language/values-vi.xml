@@ -535,7 +535,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_restore_old_video_quality_menu_summary_off" public="false">Menu chất lượng video cũ không được hiển thị</string>
     <string name="revanced_restore_old_video_quality_menu_summary_on" public="false">Menu chất lượng video cũ được hiển thị</string>
     <string name="revanced_restore_old_video_quality_menu_title" public="false">Khôi phục menu chất lượng video cũ</string>
-    <string name="revanced_ryd_about" public="false">Về</string>
+    <string name="revanced_ryd_about" public="false">Giới thiệu</string>
     <string name="revanced_ryd_attribution_summary" public="false">Dữ liệu được cung cấp bởi API Return YouTube Dislike. Nhấn vào đây để tìm hiểu thêm</string>
     <string name="revanced_ryd_attribution_title" public="false">Trở lạiYouTubeDislike.com</string>
     <string name="revanced_ryd_compact_layout_summary_off" public="false">Nút thích được tạo kiểu để có giao diện đẹp nhất</string>
@@ -552,7 +552,7 @@ Các từ viết hoa ở giữa phải nhập bằng cách viết hoa (ví dụ:
     <string name="revanced_ryd_failure_connection_timeout" public="false">Lượt không thích tạm thời không khả dụng (API đã hết thời gian chờ)</string>
     <string name="revanced_ryd_failure_generic" public="false">Không có lượt không thích (%s)</string>
     <string name="revanced_ryd_failure_ryd_enabled_while_playing_video_then_user_voted" public="false">Tải lại video để bình chọn bằng cách sử dụng Return YouTube Dislike</string>
-    <string name="revanced_ryd_settings_title" public="false">Trả lại lượt không thích trên YouTube</string>
+    <string name="revanced_ryd_settings_title" public="false">Trả lại dislikes</string>
     <string name="revanced_ryd_shorts_summary_off" public="false">Ẩn số lượt không thích trên Shorts</string>
     <string name="revanced_ryd_shorts_summary_on" public="false">Số lượt không thích hiển thị trên video ngắn</string>
     <string name="revanced_ryd_shorts_summary_on_disclaimer" public="false">Lượt không thích hiển thị trên Shorts
@@ -579,7 +579,7 @@ Hạn chế: Lượt không thích có thể không xuất hiện ở chế đ�
     <string name="revanced_ryd_toast_on_connection_error_summary_on" public="false">Bánh mì nướng được hiển thị nếu không có tính năng Trả lại lượt không thích trên YouTube</string>
     <string name="revanced_ryd_toast_on_connection_error_title" public="false">Hiển thị bánh mì nướng nếu API không có sẵn</string>
     <string name="revanced_ryd_video_likes_hidden_by_video_owner" public="false">Ẩn giấu</string>
-    <string name="revanced_sb_about" public="false">Về</string>
+    <string name="revanced_sb_about" public="false">Giới thiệu</string>
     <string name="revanced_sb_about_api" public="false">nhà tài trợ.ajay.app</string>
     <string name="revanced_sb_about_api_sum" public="false">Dữ liệu được cung cấp bởi API Nhà tài trợ. Nhấn vào đây để tìm hiểu thêm và xem các bản tải xuống cho các nền tảng khác</string>
     <string name="revanced_sb_api_url_changed" public="false">URL API đã thay đổi</string>
@@ -689,7 +689,7 @@ Bạn đã sẵn sàng gửi chưa?</string>
 Id người dùng của bạn giống như mật khẩu và nó không bao giờ được chia sẻ.
 </string>
     <string name="revanced_sb_settings_revanced_export_user_id_warning_dismiss" public="false">Không hiển thị trở lại</string>
-    <string name="revanced_sb_settings_title" public="false">Khối tài trợ</string>
+    <string name="revanced_sb_settings_title" public="false">Nhà tài trợ</string>
     <string name="revanced_sb_skip_automatically" public="false">Tự động bỏ qua</string>
     <string name="revanced_sb_skip_automatically_once" public="false">Tự động bỏ qua một lần</string>
     <string name="revanced_sb_skip_button_compact" public="false">Nhảy</string>
@@ -771,7 +771,7 @@ Rate Limited (quá nhiều từ cùng một người dùng hoặc IP)</string>
     <string name="revanced_seekbar_tapping_summary_off" public="false">Khai thác thanh tìm kiếm bị vô hiệu hóa</string>
     <string name="revanced_seekbar_tapping_summary_on" public="false">Tính năng khai thác thanh tìm kiếm đã được bật</string>
     <string name="revanced_seekbar_tapping_title" public="false">Bật tính năng nhấn vào thanh tìm kiếm</string>
-    <string name="revanced_settings" public="false">được cải tiến</string>
+    <string name="revanced_settings" public="false">Revanced</string>
     <string name="revanced_settings_about_links_body" public="false">Bạn đang sử dụng phiên bản Bản vá ReVanced &lt;i&gt;%s&lt;/i&gt;</string>
     <string name="revanced_settings_about_links_dev_body" public="false">Phiên bản này là bản phát hành trước và bạn có thể gặp sự cố không mong muốn</string>
     <string name="revanced_settings_about_links_dev_header" public="false">Ghi chú</string>
@@ -785,18 +785,18 @@ Rate Limited (quá nhiều từ cùng một người dùng hoặc IP)</string>
     <string name="revanced_settings_reset" public="false">Cài lại</string>
     <string name="revanced_settings_restart" public="false">Khởi động lại</string>
     <string name="revanced_settings_restart_title" public="false">Làm mới và khởi động lại</string>
-    <string name="revanced_settings_screen_00_about_title" public="false">Về</string>
+    <string name="revanced_settings_screen_00_about_title" public="false">Giới thiệu</string>
     <string name="revanced_settings_screen_01_ads_title" public="false">Quảng cáo</string>
-    <string name="revanced_settings_screen_02_alt_thumbnails_title" public="false">Hình thu nhỏ thay thế</string>
-    <string name="revanced_settings_screen_03_feed_title" public="false">Cho ăn</string>
-    <string name="revanced_settings_screen_04_player_title" public="false">Người chơi</string>
+    <string name="revanced_settings_screen_02_alt_thumbnails_title" public="false">Hình thu nhỏ</string>
+    <string name="revanced_settings_screen_03_feed_title" public="false">Nguồn cấp dữ liệu</string>
+    <string name="revanced_settings_screen_04_player_title" public="false">Trình phát video</string>
     <string name="revanced_settings_screen_05_general_title" public="false">Bố cục chung</string>
-    <string name="revanced_settings_screen_06_shorts_title" public="false">Quần short</string>
-    <string name="revanced_settings_screen_07_seekbar_title" public="false">Tìm kiếm quán bar</string>
+    <string name="revanced_settings_screen_06_shorts_title" public="false">Nút short</string>
+    <string name="revanced_settings_screen_07_seekbar_title" public="false">Tìm kiếm bar</string>
     <string name="revanced_settings_screen_08_swipe_controls_title" public="false">Điều khiển vuốt</string>
-    <string name="revanced_settings_screen_11_misc_title" public="false">linh tinh</string>
-    <string name="revanced_settings_screen_12_video_title" public="false">Băng hình</string>
-    <string name="revanced_settings_title" public="false">được cải tiến</string>
+    <string name="revanced_settings_screen_11_misc_title" public="false">Linh tinh</string>
+    <string name="revanced_settings_screen_12_video_title" public="false">Video</string>
+    <string name="revanced_settings_title" public="false">Revanced</string>
     <string name="revanced_share_copy_url_success" public="false">Đã sao chép URL vào bảng nhớ tạm</string>
     <string name="revanced_share_copy_url_timestamp_success" public="false">URL có dấu thời gian được sao chép</string>
     <string name="revanced_spoof_app_version_summary_off" public="false">Phiên bản không giả mạo</string>
