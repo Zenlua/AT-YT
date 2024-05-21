@@ -213,7 +213,7 @@ sleep 5
 zip -qr apk/YouTube.apk -d res/*
 
 checklog 'Decoding resources' Log2.txt
-sleep 4
+sleep 9
 
 for kvc in $(ls $HOME/.github/Language); do
 Tmk="$(echo $HOME/*/res/${kvc%.*})"
@@ -221,9 +221,9 @@ mkdir -p $Tmk
 [ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
 [ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e 's|<?xml version="1.0" encoding="utf-8"?>||g' -e "/<\/resources>/d" -e "/<resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
 echo '</resources>' >> $Tmk/strings.xml
-ls $Tmk/strings.xml
 done
 
+ls -1 $HOME/*/res
 cat $HOME/*/res/values-vi/strings.xml
 echo '- Quá trình ghép string xong' | tee 1.txt
 
