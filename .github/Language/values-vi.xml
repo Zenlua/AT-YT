@@ -16,8 +16,8 @@ Nhấn vào đây để tìm hiểu thêm về DeArrow</string>
     <string name="revanced_alt_thumbnail_home_title" public="false">Tab Trang chủ</string>
     <string name="revanced_alt_thumbnail_library_title" public="false">Tab của bạn</string>
     <string name="revanced_alt_thumbnail_options_entry_1" public="false">Hình thu nhỏ gốc</string>
-    <string name="revanced_alt_thumbnail_options_entry_2" public="false">DeArrow & hình thu nhỏ gốc</string>
-    <string name="revanced_alt_thumbnail_options_entry_3" public="false">DeArrow & Vẫn chụp</string>
+    <string name="revanced_alt_thumbnail_options_entry_2" public="false">DeArrow &amp; hình thu nhỏ gốc</string>
+    <string name="revanced_alt_thumbnail_options_entry_3" public="false">DeArrow &amp; Vẫn chụp</string>
     <string name="revanced_alt_thumbnail_options_entry_4" public="false">Vẫn chụp</string>
     <string name="revanced_alt_thumbnail_player_title" public="false">Danh sách phát, đề xuất của người chơi</string>
     <string name="revanced_alt_thumbnail_search_title" public="false">Kết quả tìm kiếm</string>
@@ -732,20 +732,20 @@ Id người dùng của bạn giống như mật khẩu và nó không bao giờ
     <string name="revanced_sb_stats" public="false">Thống kê</string>
     <string name="revanced_sb_stats_connection_failure" public="false">Số liệu thống kê tạm thời không có sẵn (API không hoạt động)</string>
     <string name="revanced_sb_stats_loading" public="false">Đang tải...</string>
-    <string name="revanced_sb_stats_reputation" public="false">Danh tiếng của bạn là <b>%.2f</b></string>
-    <string name="revanced_sb_stats_saved" public="false">Bạn đã cứu người từ <b>%s</b> phân đoạn</string>
+    <string name="revanced_sb_stats_reputation" public="false">Danh tiếng của bạn là &lt;b&gt;%.2f&lt;/b&gt;</string>
+    <string name="revanced_sb_stats_saved" public="false">Bạn đã cứu người từ &lt;b&gt;%s&lt;/b&gt; phân đoạn</string>
     <string name="revanced_sb_stats_saved_hour_format" public="false">%1$s giờ %2$s phút</string>
     <string name="revanced_sb_stats_saved_minute_format" public="false">%1$s phút %2$s giây</string>
     <string name="revanced_sb_stats_saved_second_format" public="false">%s giây</string>
-    <string name="revanced_sb_stats_saved_sum" public="false">Đó là <b>%s</b> cuộc sống của họ.<br>Nhấn vào đây để xem bảng xếp hạng</string>
+    <string name="revanced_sb_stats_saved_sum" public="false">Đó là &lt;b&gt;%s&lt;/b&gt; cuộc sống của họ.&lt;br&gt;Nhấn vào đây để xem bảng xếp hạng</string>
     <string name="revanced_sb_stats_saved_sum_zero" public="false">Nhấn vào đây để xem số liệu thống kê toàn cầu và những người đóng góp hàng đầu</string>
     <string name="revanced_sb_stats_saved_zero" public="false">Bảng xếp hạng nhà tài trợBlock</string>
     <string name="revanced_sb_stats_sb_disabled" public="false">Nhà tài trợBlock bị vô hiệu hóa</string>
-    <string name="revanced_sb_stats_self_saved" public="false">Bạn đã bỏ qua <b>%s</b> phân đoạn</string>
+    <string name="revanced_sb_stats_self_saved" public="false">Bạn đã bỏ qua &lt;b&gt;%s&lt;/b&gt; phân đoạn</string>
     <string name="revanced_sb_stats_self_saved_reset_title" public="false">Đặt lại bộ đếm phân đoạn bị bỏ qua?</string>
-    <string name="revanced_sb_stats_self_saved_sum" public="false">Đó là <b>%s</b></string>
-    <string name="revanced_sb_stats_submissions" public="false">Bạn đã tạo <b>%s</b> phân đoạn</string>
-    <string name="revanced_sb_stats_username" public="false">Tên người dùng của bạn: <b>%s</b></string>
+    <string name="revanced_sb_stats_self_saved_sum" public="false">Đó là &lt;b&gt;%s&lt;/b&gt;</string>
+    <string name="revanced_sb_stats_submissions" public="false">Bạn đã tạo &lt;b&gt;%s&lt;/b&gt; phân đoạn</string>
+    <string name="revanced_sb_stats_username" public="false">Tên người dùng của bạn: &lt;b&gt;%s&lt;/b&gt;</string>
     <string name="revanced_sb_stats_username_change" public="false">Nhấn vào đây để thay đổi tên người dùng của bạn</string>
     <string name="revanced_sb_stats_username_change_unknown_error" public="false">Không thể thay đổi tên người dùng: Trạng thái: %1$d %2$s</string>
     <string name="revanced_sb_stats_username_changed" public="false">Tên người dùng đã được thay đổi thành công</string>
@@ -772,7 +772,7 @@ Rate Limited (quá nhiều từ cùng một người dùng hoặc IP)</string>
     <string name="revanced_seekbar_tapping_summary_on" public="false">Tính năng khai thác thanh tìm kiếm đã được bật</string>
     <string name="revanced_seekbar_tapping_title" public="false">Bật tính năng nhấn vào thanh tìm kiếm</string>
     <string name="revanced_settings" public="false">được cải tiến</string>
-    <string name="revanced_settings_about_links_body" public="false">Bạn đang sử dụng phiên bản Bản vá ReVanced <i>%s</i></string>
+    <string name="revanced_settings_about_links_body" public="false">Bạn đang sử dụng phiên bản Bản vá ReVanced &lt;i&gt;%s&lt;/i&gt;</string>
     <string name="revanced_settings_about_links_dev_body" public="false">Phiên bản này là bản phát hành trước và bạn có thể gặp sự cố không mong muốn</string>
     <string name="revanced_settings_about_links_dev_header" public="false">Ghi chú</string>
     <string name="revanced_settings_about_links_header" public="false">Liên kết chính thức</string>
