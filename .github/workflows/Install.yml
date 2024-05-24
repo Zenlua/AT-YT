@@ -25,7 +25,7 @@ on:
           - Stable
           - Develop
       FEATURE:
-        description: 'Turn off feature'
+        description: 'Turn on/off feature on: `-i "feature"`, off: `-e "feature"`'
         required: false
         default: ''
 permissions: write-all
