@@ -5,7 +5,7 @@
 
 + Build, Edit: is the manual build version
 
-+ Support for root(magisk, v.v) management software, and flash recovery(twrp+rw)
++ Support for root(magisk, etc) management software, and flash Twrp(rw)
 
 **Downloads**
 ---
