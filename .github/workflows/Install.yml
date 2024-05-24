@@ -27,7 +27,7 @@ on:
       FEATURE:
         description: 'Turn on/off feature on: [-i "feature"], off: [-e "feature"]'
         required: false
-        default: ''
+        default: '-e "Hide captions button" -e "Hide autoplay button"'
 permissions: write-all
 jobs:
   build1:
