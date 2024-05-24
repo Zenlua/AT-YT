@@ -1,9 +1,9 @@
 
 # YT-RE - YT-EXT 
 [![YT-RE](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml) [![YT-EXT](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml)
-+ Build, Edit: is the manual build version
++ Are two different types of YouTube mods, pay attention to the names when downloading
 
-+ Auto: is the version that automatically builds every day.
++ Build, Edit: is the manual build version
 
 + Support for root management software, and flash recovery
 
