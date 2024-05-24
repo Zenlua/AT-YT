@@ -4,6 +4,4 @@
 #Ton=""
 
 # Features are turned off
-Tof='
--e "Custom branding"
-'
+#Tof='-e "Custom branding"'
