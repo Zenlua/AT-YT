@@ -7,6 +7,12 @@
 
 + Support for root management software, and flash recovery
 
+**Downloads**
+---
+
+> [!Note]
+> All versions: [Release](https://github.com/Zenlua/AT-YT/releases)
+
 **Revanced CLI**
 ---
 
