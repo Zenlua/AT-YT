@@ -10,7 +10,7 @@
 **Downloads**
 ---
 
-> [!Note]
+> [!Tip]
 > All versions: [Release](https://github.com/Zenlua/AT-YT/releases)
 
 **Revanced CLI**
