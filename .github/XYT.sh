@@ -16,7 +16,7 @@ pbdev(){
 Vsion2="$(Xem https://github.com/$1/releases | grep -om1 ''$1'/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 Taive "https://github.com/$1/releases/download/v${Vsion2##*/}/$2-${Vsion2##*/}$4.$3" "lib/$2.$3"; }
 # Tải json
-vjson="$(Xem https://github.com/anddea/revanced-patches | grep -om1 'anddea/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
+vjson="$(Xem https://github.com/inotia00/revanced-patches | grep -om1 'inotia00/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 
 # tải apk
 TaiYT(){
@@ -32,12 +32,12 @@ echo "Link: $uak2"
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Patches YouTube mới nhất..."
-Vidon="$(Xem "https://github.com/anddea/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+Vidon="$(Xem "https://github.com/inotia00/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
 [ "$AMOLED" == 'true' ] || theme='-e Theme'
-[ "$TYPE" == 'true' ] && Mro='-e "MicroG support"'
+[ "$TYPE" == 'true' ] && Mro='-e "GmsCore support"'
 
 # Xoá lib dựa vào abi
 if [ "$DEVICE" == "arm64-v8a" ];then
@@ -87,14 +87,14 @@ if [ "$DEV" == "Develop" ];then
 echo "  Dùng Dev"
 echo
 pbdev inotia00/revanced-cli revanced-cli jar -all
-pbdev anddea/revanced-patches revanced-patches jar
-pbdev anddea/revanced-integrations revanced-integrations apk
+pbdev inotia00/revanced-patches revanced-patches jar
+pbdev inotia00/revanced-integrations revanced-integrations apk
 else
 echo "  Dùng Sta"
 echo
 pbsta inotia00/revanced-cli revanced-cli jar -all
-pbsta anddea/revanced-patches revanced-patches jar
-pbsta anddea/revanced-integrations revanced-integrations apk
+pbsta inotia00/revanced-patches revanced-patches jar
+pbsta inotia00/revanced-integrations revanced-integrations apk
 fi
 
 
