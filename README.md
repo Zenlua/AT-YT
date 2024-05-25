@@ -22,7 +22,7 @@
 
 - See the version that Revanced they support for the latest build.
 
-   > [Revanced](https://github.com/revanced/revanced-patches) | [anddea](https://github.com/anddea/revanced-patches)
+   > [Revanced](https://github.com/revanced/revanced-patches) | [inotia00](https://github.com/inotia00/revanced-patches)
 
 - Additional app for the no-root version
 
