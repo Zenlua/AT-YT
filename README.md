@@ -5,7 +5,7 @@
 
 + Build, Edit: is the manual build version
 
-+ Hybrid for root(magisk, etc) management software, and flash Twrp(rw)
++ Hybrid for root(magisk, etc) management software, and flash Twrp(need rw)
 
 **Downloads**
 ---
