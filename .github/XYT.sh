@@ -179,7 +179,7 @@ fi
 
 # MOD YouTube 
 (
-
+java -Djava.io.tmpdir=$HOME -jar $lib1 patch
 echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" >> Log2.txt 2>> Log2.txt
 sed '/WARNING: warn: removing resource/d' Log2.txt
