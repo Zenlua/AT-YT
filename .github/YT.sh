@@ -163,7 +163,6 @@ mv apk/YouTube2 apk/YouTube.apk
 fi
 fi
 
-
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
