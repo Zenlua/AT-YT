@@ -7,6 +7,8 @@
 
 + Hybrid for root(magisk, etc) management software, and flash Twrp(need rw)
 
++ How to delete Youtube in recovery: delete /data/Youtube folder 
+
 **Downloads**
 ---
 
