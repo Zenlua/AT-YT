@@ -33,7 +33,7 @@ break
 else
 sleep 1
 gfdgv=$(($gfdgv + 1))
-if [ "$gfdgv" -ge 120 ];then
+if [ "$gfdgv" -ge 150 ];then
 echo "- Quá thời gian cho phép, vì $1 $2...";
 break
 fi
