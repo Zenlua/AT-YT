@@ -37,20 +37,26 @@ ui_print() {
 echo -e "ui_print $1\nui_print" >> /proc/self/fd/$OUTFD
 }
 grant(){
-chcon -Rh $3 "$1" || chcon $3 "$1"
-chmod -R $2 "$1" || chmod $2 "$1"
-chown -Rh 0:0 "$1" || chown 0:0 "$1"
+$busybox chcon -Rh $3 "$1" || chcon $3 "$1"
+$busybox chmod -R $2 "$1" || chmod $2 "$1"
+$busybox chown -Rh 0:0 "$1" || chown 0:0 "$1"
 }
 
 mount /system_root 2>/dev/null
 mount /product 2>/dev/null
 mount -o rw -t auto /dev/block/mapper/product_a /product 2>/dev/null
 
-sys="$(find /system_root/system/product /product /system_root/product -name init.miui.opconfig.rc -type f 2>/dev/null | head -1)"
-[ "$sys" ] || sys="$(find /system_root/system/product /product /system_root/product -name *.rc -type f 2>/dev/null | head -1)"
-prod="$(find /system_root/system/product/app /product/app /system_root/product/app -type d 2>/dev/null | head -1)"
+unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
+unzip -o "$ZIPFILE" common/busybox -d /tmp
+chmod 777 /tmp/common/busybox
+
+busybox="/tmp/common/busybox"
+
+sys="$($busybox find /system_root/system/product /product /system_root/product -name init.miui.opconfig.rc -type f 2>/dev/null | head -1)"
+[ "$sys" ] || sys="$($busybox find /system_root/system/product /product /system_root/product -name *.rc -type f 2>/dev/null | head -1)"
+prod="$($busybox find /system_root/system/product/app /product/app /system_root/product/app -type d 2>/dev/null | head -1)"
 if [ -z "$sys" ];then
-mkdir -p ${prod%/*}/etc/init
+$busybox mkdir -p ${prod%/*}/etc/init
 sys=${prod%/*}/etc/init/init.qti.yt.rc
 fi
 
@@ -69,19 +75,18 @@ ui_print "- Kakathic"
 ui_print " "
 ui_print "- Start install Youtube..."
 
-rm -fr /data/YouTube /data/system/package_cache/*/YouTube*
-mkdir -p /data/YouTube/tmp /data/YouTube/apk $prod/YouTube
-unzip -o "$ZIPFILE" common/lib.tar.xz -d /tmp
-tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
-mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
-mv -f /data/YouTube/lib /data/YouTube/apk
-mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
+$busybox rm -fr /data/YouTube /data/system/package_cache/*/YouTube*
+$busybox mkdir -p /data/YouTube/tmp /data/YouTube/apk $prod/YouTube
+$busybox tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
+$busybox mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
+$busybox mv -f /data/YouTube/lib /data/YouTube/apk
+$busybox mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
 grant /data/YouTube 755 u:object_r:system_file:s0
 
 if [ -e $sys ];then
-[ "$(grep -cm1 YouTube $sys)" == 1 ] || echo "$filevb" >> $sys
+[ "$($busybox grep -cm1 YouTube $sys)" == 1 ] || $busybox echo "$filevb" >> $sys
 else
-echo "$filevb" > $sys
+$busybox echo "$filevb" > $sys
 fi
 grant $sys 644 u:object_r:system_file:s0
 
