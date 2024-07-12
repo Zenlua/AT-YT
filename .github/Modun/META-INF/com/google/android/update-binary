@@ -48,9 +48,11 @@ mount -o rw -t auto /dev/block/mapper/product_a /product 2>/dev/null
 
 sys="$(find /system_root/system/product /product /system_root/product -name init.miui.opconfig.rc -type f 2>/dev/null | head -1)"
 [ "$sys" ] || sys="$(find /system_root/system/product /product /system_root/product -name *.rc -type f 2>/dev/null | head -1)"
-[ "$sys" ] || ui_print "- The product system does not have a rc file in the init directory !"
-[ "$sys" ] || exit 1
 prod="$(find /system_root/system/product/app /product/app /system_root/product/app -type d 2>/dev/null | head -1)"
+if [ -z "$sys" ];then
+mkdir -p ${prod%/*}/etc/init
+sys=${prod%/*}/etc/init/init.qti.yt.rc
+fi
 
 filevb="
 on post-fs-data
