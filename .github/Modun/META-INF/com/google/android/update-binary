@@ -44,6 +44,8 @@ chown -Rh 0:0 "$1" || chown 0:0 "$1"
 
 mount /system_root 2>/dev/null
 mount /product 2>/dev/null
+mount -o rw -t auto /dev/block/mapper/product_a /product 2>/dev/null
+
 sys="$(find /system_root/system/product /product /system_root/product -name init.miui.opconfig.rc -type f 2>/dev/null | head -1)"
 [ "$sys" ] || sys="$(find /system_root/system/product /product /system_root/product -name *.rc -type f 2>/dev/null | head -1)"
 [ "$sys" ] || ui_print "- The product system does not have a rc file in the init directory !"
