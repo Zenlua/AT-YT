@@ -16,7 +16,7 @@ User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive () { curl -s -L -N -k --dns-servers "1.1.1.1,8.8.8.8,8.8.4.4" -H "$User" --connect-timeout 20 "$1" -o "$2"; }
+Taive () { curl -L -N -k --dns-servers "1.1.1.1,8.8.8.8,8.8.4.4" -H "$User" --connect-timeout 20 "$1" -o "$2"; }
 Xem () { curl -s -G -L -N -k --dns-servers "1.1.1.1,8.8.8.8,8.8.4.4" -H "$User" --connect-timeout 20 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
@@ -33,7 +33,7 @@ break
 else
 sleep 1
 gfdgv=$(($gfdgv + 1))
-if [ "$gfdgv" -ge 150 ];then
+if [ "$gfdgv" -ge 200 ];then
 echo "- Quá thời gian cho phép, vì $1 $2...";
 break
 fi
