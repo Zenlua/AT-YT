@@ -776,8 +776,9 @@ Rate Limited (quá nhiều từ cùng một người dùng hoặc IP)</string>
     <string name="revanced_settings_about_links_dev_body" public="false">Phiên bản này là bản phát hành trước và bạn có thể gặp sự cố không mong muốn</string>
     <string name="revanced_settings_about_links_dev_header" public="false">Ghi chú</string>
     <string name="revanced_settings_about_links_header" public="false">Liên kết chính thức</string>
-    <string name="revanced_settings_confirm_user_dialog_title" public="false">Bạn có muốn tiếp tục?</string>
-    <string name="revanced_settings_import" public="false">Nhập khẩu</string>
+    
+
+        <string name="revanced_settings_import" public="false">Nhập khẩu</string>
     <string name="revanced_settings_import_copy" public="false">Sao chép</string>
     <string name="revanced_settings_import_failure_parse" public="false">Nhập không thành công: %s</string>
     <string name="revanced_settings_import_reset" public="false">Cài đặt ReVanced được đặt lại về mặc định</string>
