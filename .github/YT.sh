@@ -202,8 +202,7 @@ fi
 echo "▼ Bắt đầu quá trình xây dựng..."
 #java -Djava.io.tmpdir=$HOME -jar $lib1 patch 2>&1
 
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" >>Log2.txt 2>&1
-sed '/WARNING: warn: removing resource/d' Log2.txt
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -b $lib2 -m $lib3 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" 2>&1 | tee Log2.txt
 grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 
