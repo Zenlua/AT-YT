@@ -21,9 +21,8 @@ linkAPK(){ pm path com.google.android.youtube | grep base | cut -d : -f2; }
 
 cpLIB(){ cp -af $1 ${2%/*}; }
 
-mountYT(){
-chcon u:object_r:apk_data_file:s0 "$1"
-mount -o bind "$1" "$2" || su -M -c mount -o bind "$1" "$2"; }
+mountYT(){ chcon u:object_r:apk_data_file:s0 "$1"; mount -o bind "$1" "$2"; md1="$(md5sum -b "$1")"; md2="$(md5sum -b "$2")"
+[ "$md1" == "$md2" ] || su -M -c mount -o bind "$1" "$2"; }
 
 offCH(){
 Sqlite3=$MODPATH/sqlite3
