@@ -23,7 +23,7 @@ cpLIB(){ cp -af $1 ${2%/*}; }
 
 mountYT(){
 chcon u:object_r:apk_data_file:s0 "$1"
-mount -o bind "$1" "$2"; }
+mount -o bind "$1" "$2" || su -M -c mount -o bind "$1" "$2"; }
 
 offCH(){
 Sqlite3=$MODPATH/sqlite3
