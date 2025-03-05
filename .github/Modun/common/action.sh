@@ -30,7 +30,7 @@ ui_print2 "Complete"
 ui_print
 else
 installYT $MODPATH/base.apk
-ls -l "$MODPATH/base.apk" | awk '{print $5}' > $MODPATH/SIZE
+ls -l "$MODPATH/YouTube.apk" | awk '{print $5}' > $MODPATH/SIZE
 ui_print2 "Copy lib"
 ui_print
 cpLIB $MODPATH/lib "$(linkAPK)"
