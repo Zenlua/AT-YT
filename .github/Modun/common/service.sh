@@ -12,7 +12,7 @@ mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
 offCH
 else
 installYT $MODPATH/base.apk
-ls -l "$MODPATH/base.apk" | awk '{print $5}' > $MODPATH/SIZE
+ls -l "$MODPATH/YouTube.apk" | awk '{print $5}' > $MODPATH/SIZE
 cpLIB $MODPATH/lib "$(linkAPK)"
 mountYT $MODPATH/YouTube.apk "$(linkAPK)"
 offCH
