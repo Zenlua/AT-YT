@@ -5,7 +5,7 @@ on:
       VERSION:
         description: 'Example: 19.47.53'
         required: false
-        default: '19.47.53'
+        default: '20.07.39'
       DEVICE:
         description: 'Select device'
         required: false
