@@ -153,13 +153,13 @@ lib='lib/*/*'
 if [ -e apk/YouTube.apks/kkkkkk ];then
 echo "- Giải nén base.apk"
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-mv -f Tav/lib/$DEVICE Tav/lib/$ach
+#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
+#mv -f Tav/lib/$DEVICE Tav/lib/$ach
 else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-mv -f Tav/lib/$DEVICE Tav/lib/$ach
+#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
+#mv -f Tav/lib/$DEVICE Tav/lib/$ach
 fi
 fi
 
