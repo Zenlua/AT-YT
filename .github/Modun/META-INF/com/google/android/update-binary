@@ -76,8 +76,9 @@ ui_print " "
 ui_print "- Start install Youtube..."
 
 $busybox rm -fr /data/YouTube /data/system/package_cache/*/YouTube*
-$busybox mkdir -p /data/YouTube/tmp /data/YouTube/apk $prod/YouTube
+$busybox mkdir -p /data/YouTube/tmp /data/YouTube/lib /data/YouTube/apk $prod/YouTube
 $busybox tar -xJf /tmp/common/lib.tar.xz -C /data/YouTube
+$busybox unzip -qoj /data/YouTube/base.apk lib/arm64-v8a/* -d /data/YouTube/lib
 $busybox mv -f /data/YouTube/base.apk /data/YouTube/tmp/YouTube.apk
 $busybox mv -f /data/YouTube/lib /data/YouTube/apk
 $busybox mv -f /data/YouTube/YouTube.apk /data/YouTube/apk
