@@ -2,10 +2,11 @@
 
 checkYT(){
 for Tkvi in $( find /data/app | grep com.google.android.youtube | grep 'base.apk' ); do
-[ "$Tkvi" ] && umount -l "$Tkvi"
+[ "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null
+[ "$Tkvi" ] && su -M -c umount -l "$Tkvi" &>/dev/null
 done
 for Vhkdd in $(find /data/app -name *com.google.android.youtube*); do
-[ "$Vhkdd" ] && rm -fr "$Vhkdd"
+[ "$Vhkdd" ] && rm -fr "$Vhkdd" &>/dev/null
 done
 }
 
@@ -31,9 +32,9 @@ LDB=$DB/library.db
 LADB=$DB/localappstate.db
 PK=com.google.android.youtube
 cmd appops set --uid $PS GET_USAGE_STATS ignore
-pm disable $PS >&2
+pm disable $PS &>/dev/null
 $Sqlite3 $LDB "UPDATE ownership SET doc_type = '25' WHERE doc_id = '$PK'";
 $Sqlite3 $LADB "UPDATE appstate SET auto_update = '2' WHERE package_name = '$PK'";
 rm -rf /data/data/$PS/cache/*
-pm enable $PS >&2
+pm enable $PS &>/dev/null
 }
