@@ -33,7 +33,7 @@ installYT $MODPATH/base.apk
 ls -l "$MODPATH/YouTube.apk" | awk '{print $5}' > $MODPATH/SIZE
 ui_print2 "Copy lib"
 ui_print
-cpLIB $MODPATH/lib "$(linkAPK)"
+[ -e $MODPATH/lib ] && cpLIB $MODPATH/lib "$(linkAPK)"
 ui_print2 "Mount YouTube"
 ui_print
 mountYT $MODPATH/YouTube.apk "$(linkAPK)"
