@@ -1,7 +1,7 @@
 # kakathic
 
 linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
-checkYT(){ Tkvi="$(linkAPK)"; [ -e "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null; [ -e "$Tkvi" ] && umount -l "${Tkvi%/*}" &>/dev/null; }
+checkYT(){ Tkvi="$(linkAPK)"; [ -e "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null; [ -e "$Tkvi" ] && umount -l "${Tkvi%/*}" &>/dev/null; rm -fr $MODPATH/YouTube/*; }
 cpLIB(){ cp -af $1 ${2%/*}; }
 
 installYT(){ chcon u:object_r:apk_data_file:s0 $1;
