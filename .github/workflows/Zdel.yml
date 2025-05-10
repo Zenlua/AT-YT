@@ -1,19 +1,16 @@
-name: Delete Old
-
+name: Delete
 on:
   schedule:
     - cron: '0 3 * * 0'  # Chạy mỗi Chủ Nhật lúc 03:00 UTC
   workflow_dispatch:     # Cho phép chạy thủ công
-
 jobs:
   delete_old_releases:
     runs-on: ubuntu-latest
-
     steps:
     - name: Delete old releases
       uses: dev-drprasad/delete-older-releases@v0.3.3
       with:
-        keep_latest: 10              # Giữ lại 3 bản mới nhất
-        delete_tags: true           # Xoá cả tag Git tương ứng
+        keep_latest: 10  # Giữ lại 10 bản mới nhất
+        delete_tags: true  # Xoá cả tag Git tương ứng
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
