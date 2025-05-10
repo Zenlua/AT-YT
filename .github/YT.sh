@@ -97,20 +97,20 @@ echo "  Dùng Dev"
 echo
 pbdev revanced-cli revanced-cli jar -all
 pbdev revanced-patches patches rvp
-pbdev revanced-patches-template patches rvp
+#pbdev revanced-patches-template patches rvp
 
 else
 echo "  Dùng Sta"
 echo
 pbsta revanced-cli revanced-cli jar -all
 pbsta revanced-patches patches rvp
-pbsta revanced-patches-template patches rvp
+#pbsta revanced-patches-template patches rvp
 fi
 
 # kiểm tra tải tool
 checkzip "$lib1"
 checkzip "$lib2"
-checkzip "$lib3"
+#checkzip "$lib3"
 echo
 
 echo "- Tải YouTube $VER apk, apks..."
@@ -188,7 +188,7 @@ fi
 
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 -p $lib3 apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature"" 2>&1 | tee Log2.txt
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature"" 2>&1 | tee Log2.txt
 grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 
