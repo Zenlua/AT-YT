@@ -28,7 +28,8 @@ apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
-apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null
+zipalign -f -p 4 "$2" "tmp/ytm.apk"
+apkeditor b -t sig -i "tmp/ytm.apk" -sig "tmp/signatures_dir" -o "$3" &>/dev/null
 }
 
 Loading(){
