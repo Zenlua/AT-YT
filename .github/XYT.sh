@@ -156,7 +156,7 @@ fi
 
 
 if [ "$TYPE" == 'true' ];then
-lib='lib/*/*'
+#lib='lib/*/*'
 if [ -e apk/YouTube.apkskkkkkk ];then
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
 #unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
@@ -191,7 +191,6 @@ cd $HOME
 fi
 
 # MOD YouTube 
-(
 #java -Djava.io.tmpdir=$HOME -jar $lib1 patch 2>&1
 
 echo "▼ Bắt đầu quá trình xây dựng..."
@@ -200,19 +199,9 @@ sed '/WARNING: warn: removing resource/d' Log2.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 
-) & (
-
-sleep 5
-zip -qr apk/YouTube.apk -d res/* | tee bcdd.txt
-echo '- Quá trình xoá rác xong' | tee 1.txt
-
-)
-
-# Chờ xây dựng xong
-Loading "1.txt" "2.txt"
-
 if [ "$TYPE" == 'true' ];then
-mv YT.apk $HOME/Tav/YouTube.apk
+rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
+cp -rf $HOME/Tav/YouTube.apk $HOME/Up
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
 ls Up
