@@ -63,19 +63,17 @@ jobs:
       - name: Upload File
         uses: marvinpinto/action-automatic-releases@latest
         with:
-          name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
+          title: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           automatic_release_tag: X${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
-          overwrite: true
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
-          name: Update
-          tag_name: Up
+          title: Update
+          automatic_release_tag: Up
           files: Up*.json
           prerelease: true
-          overwrite: true
   build2:
     name: 'Buid arm64 no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
