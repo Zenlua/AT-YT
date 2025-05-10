@@ -16,6 +16,7 @@ ui_print2 "Author: $(Getp author)"
 ui_print
 ui_print2 "Install YouTube"
 ui_print
+checkYT
 if [ "$(ls -l $(linkAPK) | awk '{print $5}')" == "$(cat $MODPATH/SIZE)" ];then
 ui_print2 "Mount YouTube"
 ui_print
