@@ -116,6 +116,7 @@ Loading apk/YouTube1.txt apk/YouTube2.txt
 [ "$(file apk/YouTube1 | grep -cm1 HTML)" == 1 ] && rm -fr apk/YouTube1
 [ "$(file apk/YouTube2 | grep -cm1 HTML)" == 1 ] && rm -fr apk/YouTube2
 
+echo
 if [ -e apk/YouTube1 ];then
 if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
 echo "- apk1 thành apks."
