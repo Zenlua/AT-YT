@@ -1,5 +1,7 @@
 name: YT-EXT
 on:
+  schedule:
+    - cron: '0 23 1/2 * *'
   workflow_dispatch:
     inputs:
       VERSION:
@@ -29,6 +31,8 @@ on:
         required: false
         default: ''
 permissions: write-all
+env:
+    GH_TOKEN: ${{ github.token }}
 jobs:
   build1:
     name: 'Buid arm64 root'
@@ -50,6 +54,10 @@ jobs:
           FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
+          [ "$VERSION" ] || VERSION="Autu"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$DEV" ] || DEV="Stable"
+          [ "$TYPE" ] || TYPE="true"
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
@@ -86,6 +94,10 @@ jobs:
           FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
+          [ "$VERSION" ] || VERSION="Autu"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$DEV" ] || DEV="Stable"
+          [ "$TYPE" ] || TYPE="false"
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
@@ -116,6 +128,11 @@ jobs:
           FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
+          [ "$VERSION" ] || VERSION="Autu"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$DEV" ] || DEV="Stable"
+          [ "$TYPE" ] || TYPE="true"
+          [ "$AMOLED" ] || AMOLED="true"
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
@@ -153,6 +170,11 @@ jobs:
           FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
+          [ "$VERSION" ] || VERSION="Autu"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$DEV" ] || DEV="Stable"
+          [ "$TYPE" ] || TYPE="false"
+          [ "$AMOLED" ] || AMOLED="true"
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
