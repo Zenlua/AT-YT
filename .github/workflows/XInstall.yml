@@ -77,7 +77,6 @@ jobs:
   build2:
     name: 'Buid arm64 no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
-    needs: build1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -110,7 +109,7 @@ jobs:
   build3:
     name: 'Buid arm64 amoled root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
-    needs: build2
+    needs: build1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -152,7 +151,7 @@ jobs:
   build4:
     name: 'Buid arm64 amoled no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
-    needs: build3
+    needs: build2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
