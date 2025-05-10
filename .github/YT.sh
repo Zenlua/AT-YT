@@ -185,7 +185,6 @@ cd $HOME
 fi
 
 # MOD YouTube 
-(
 
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
@@ -193,30 +192,10 @@ eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 -p $lib3 apk/YouTube
 grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 echo '- Quá trình xây dựng apk xong.' | tee 2.txt
 
-) & (
-
-sleep 5
-zip -qr apk/YouTube.apk -d res/*
-
-#checklog 'Decoding resources' Log2.txt
-sleep 5
-
-for kvc in $(ls $HOME/.github/Language); do
-Tmk="$(echo $HOME/YT-temporary-files/patcher/apk/res/${kvc%.*})"
-mkdir -p $Tmk
-[ -e $Tmk/strings.xml ] && sed -i "/<\/resources>/d" $Tmk/strings.xml
-[ -e $Tmk ] && cat $HOME/.github/Language/$kvc | sed -e '/encoding=/d' -e "/resources>/d" >> $Tmk/strings.xml || cat $HOME/.github/Language/$kvc | sed "/<\/resources>/d" >> $Tmk/strings.xml
-echo '</resources>' >> $Tmk/strings.xml
-done
-
-#cat $HOME/tmp/patcher/apk/res/values-vi/strings.xml
-echo '- Quá trình ghép string xong' | tee 1.txt
-)
-
 # Chờ xây dựng xong
-Loading "1.txt" "2.txt"
 if [ "$TYPE" == 'true' ];then
-mv YT.apk $HOME/Tav/YouTube.apk
+rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
+cp -rf $HOME/Tav/YouTube.apk $HOME/Up
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
