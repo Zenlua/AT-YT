@@ -1,7 +1,6 @@
 # load dữ liệu 
 lib1="lib/revanced-cli.jar"
 lib2="lib/revanced-patches.jar"
-lib3="lib/revanced-integrations.apk"
 
 pbsta(){
 Vurl="$(curl -s https://api.github.com/repos/inotia00/$1/releases/latest | grep 'browser_download_url.*.'$2'"' | cut -d\" -f4)"
@@ -51,9 +50,10 @@ echo
 
 # lấy dữ liệu phiên bản mặc định
 echo "- Kiểm tra bản YouTube mới nhất..."
-Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')"
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')"; 
+echo "  $Vidon"
+echo
 
-echo "$Vidon"
 if [ "$VERSION" == 'Auto' ];then
 VER="$Vidon"
 Kad=Build
