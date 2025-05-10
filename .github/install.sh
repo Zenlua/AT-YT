@@ -26,6 +26,11 @@ checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không 
 checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
 apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
+rsign(){
+apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir"
+apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3"
+}
+
 Loading(){
 while true; do
 if [ -e "$1" ] && [ -e "$2" ];then
