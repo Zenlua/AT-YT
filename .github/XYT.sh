@@ -201,7 +201,7 @@ grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
 
 if [ "$TYPE" == 'true' ];then
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
-cp -rf $HOME/Tav/YouTube.apk $HOME/Up/XYT-$VER-$ach${amoled2}-rsign.apk
+cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZXYT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
 ls Up
