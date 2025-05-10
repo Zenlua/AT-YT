@@ -191,7 +191,7 @@ cp -rf yt-patched-temporary-files/*.apk YT.apk
 # Chờ xây dựng xong
 if [ "$TYPE" == 'true' ];then
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
-cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZYT-$VER-$ach${amoled2}-rsign.apk
+cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
