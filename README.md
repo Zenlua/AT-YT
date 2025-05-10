@@ -42,23 +42,5 @@
 
    > [Apkmirror](https://www.apkmirror.com/apk/google-inc/youtube/)
 
-**Add-on Download**
----
-
-- The following applications support video downloading
-
-   > [NewPipe](https://newpipe.net)
-
-   > [PowerTube](https://github.com/razar-dev/PowerTube)
-
-**Language Contribution**
----
-
-- I don't know many languages, you can contribute languages ​​at the link below.
-
-   > [Language](https://github.com/Zenlua/AT-YT/tree/Vip/.github/Language)
-
-- Or submit the language file to the issue.
-
 **Good luck!**
 ---
