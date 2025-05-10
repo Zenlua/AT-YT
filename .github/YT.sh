@@ -181,12 +181,10 @@ cd $HOME
 fi
 
 # MOD YouTube 
-
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature"" 2>&1 | tee Log2.txt
-grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
-echo '- Quá trình xây dựng apk xong.' | tee 2.txt
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+echo '- Quá trình xây dựng apk xong.'
 
 # Chờ xây dựng xong
 if [ "$TYPE" == 'true' ];then
@@ -220,6 +218,8 @@ echo '{
 }' > Up-K$V$ach$amoled2.json
 
 echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
+
+Upenv BODY "Update $(date), YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
