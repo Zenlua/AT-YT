@@ -32,9 +32,7 @@ uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | 
 Taive "$uak2" "apk/$1"
 echo "Link: $uak2"
 # file check
-file "apk/$1" | tee "apk/$1.txt";
-#[ "$(file apk/$1 | grep -cm1 'Zip')" == 1 ] && echo > "apk/$1.txt" || echo "! Lỗi $1" | tee "apk/$1.txt"; 
-}
+file "apk/$1" | tee "apk/$1.txt"; }
 
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/YouTube.md
