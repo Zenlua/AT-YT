@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Fetch tags
         run: |
-          git clone --quiet https://github.com/${{ github.repository }} repo
+          git clone --quiet https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} repo
           cd repo
           git fetch --tags
-          git tag | sort -V | head -n -10 > old-tags.txt  # Giữ lại 3 tag mới nhất
+          git tag | sort -V | head -n -10 > old-tags.txt
 
       - name: Delete old tags
         run: |
