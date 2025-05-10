@@ -67,6 +67,7 @@ jobs:
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
+          overwrite: true
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
@@ -74,6 +75,7 @@ jobs:
           tag_name: Up
           files: Up*.json
           prerelease: true
+          overwrite: true
   build2:
     name: 'Buid arm64 no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -107,6 +109,7 @@ jobs:
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
+          overwrite: true
   build3:
     name: 'Buid arm64 amoled root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -142,6 +145,7 @@ jobs:
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
+          overwrite: true
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
@@ -149,6 +153,7 @@ jobs:
           tag_name: Up
           files: Up*.json
           prerelease: true
+          overwrite: true
   build4:
     name: 'Buid arm64 amoled no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -184,3 +189,4 @@ jobs:
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
+          overwrite: true
