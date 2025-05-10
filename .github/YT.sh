@@ -187,7 +187,7 @@ echo
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
 echo '- Quá trình xây dựng apk xong.'
 
-ls
+ls YT-temporary-files/*.apk
 cp -rf YT-temporary-files/*.apk YT.apk
 
 # Chờ xây dựng xong
