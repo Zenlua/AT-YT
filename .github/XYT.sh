@@ -180,6 +180,7 @@ fi
 echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature""
 echo '- Quá trình xây dựng apk xong.'
+cp -rf yt-patched-temporary-files/*.apk YT.apk
 
 if [ "$TYPE" == 'true' ];then
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
