@@ -4,25 +4,17 @@ lib2="lib/revanced-patches.jar"
 lib3="lib/revanced-integrations.apk"
 
 pbsta(){
-Vsion1="$(Xem https://github.com/inotia00/$1 | grep -om1 'inotia00/'$1'/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
-Taive "https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
-
-echo "- Url: https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
-"
-}
+Vurl="$(curl -s https://api.github.com/repos/inotia00/$1/releases/latest | grep 'browser_download_url.*.'$2'"' | cut -d\" -f4)"
+Taive "$Vurl" "lib/$1.jar"; 
+echo "- Url: $Vurl
+"; }
  
 # tải tool dev
 pbdev(){
 Vsion1="$(Xem https://github.com/inotia00/$1/releases | grep -om1 'inotia00/'$1'/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 Taive "https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
-
 echo "- Url: https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
-"
-}
-
-
-# Tải json
-#vjson="$(Xem https://github.com/inotia00/revanced-patches | grep -om1 'inotia00/revanced-patches/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
+"; }
 
 # tải apk
 TaiYT(){
@@ -33,15 +25,33 @@ Taive "$uak2" "apk/$1"
 echo "Link: $uak2"
 # file check
 file "apk/$1" | tee "apk/$1.txt";
-#[ "$(file apk/$1 | grep -cm1 'Zip')" == 1 ] && echo > "apk/$1.txt" || ( echo "! Lỗi $1" | tee "apk/$1.txt"; ); 
 }
 
 # Load dữ liệu cài đặt 
 . $HOME/.github/options/Ytx.md
 
+# Tải tool cli
+echo "- Tải tool cli, patches, integrations..."
+if [ "$DEV" == "Develop" ];then
+echo "  Dùng Dev"
+echo
+pbdev revanced-cli revanced-cli jar -all
+pbdev revanced-patches patches rvp
+else
+echo "  Dùng Sta"
+echo
+pbsta revanced-cli jar
+pbsta revanced-patches rvp
+fi
+
+# kiểm tra tải tool
+checkzip "$lib1"
+checkzip "$lib2"
+echo
+
 # lấy dữ liệu phiên bản mặc định
 echo "- Patches YouTube mới nhất..."
-#Vidon="$(Xem "https://github.com/inotia00/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+Vidon="$(Xem "https://github.com/inotia00/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
 
 # là amoled
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
@@ -85,35 +95,10 @@ Upenv VER "$VER"
 
 if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-X${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
-#gh run cancel $GITHUB_RUN_ID
-#sleep 10
-#exit 0
+gh run cancel $GITHUB_RUN_ID
+sleep 10
+exit 0
 fi
-
-echo
-# Tải tool cli
-# Tải tool cli
-echo "- Tải tool cli, patches, integrations..."
-if [ "$DEV" == "Develop" ];then
-echo "  Dùng Dev"
-echo
-pbdev revanced-cli revanced-cli jar -all
-pbdev revanced-patches patches rvp
-#pbdev revanced-patches-template patches rvp
-
-else
-echo "  Dùng Sta"
-echo
-pbsta revanced-cli revanced-cli jar -all
-pbsta revanced-patches patches rvp
-#pbsta revanced-patches-template patches rvp
-fi
-
-# kiểm tra tải tool
-checkzip "$lib1"
-checkzip "$lib2"
-#checkzip "$lib3"
-echo
 
 echo "- Tải YouTube $VER apk, apks..."
 # Tải YouTube apk
