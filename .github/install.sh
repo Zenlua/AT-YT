@@ -8,7 +8,7 @@ HOME="$GITHUB_WORKSPACE"
 #sudo apt install zipalign bash &>/dev/null
 cd $HOME
 
-zipalign(){ chmod 755 $HOME/.github/Tools/zipalign; $HOME/.github/Tools/zipalign "$@"; }
+zipalign(){ export LD_LIBRARY_PATH="$HOME/.github/Tools"; chmod 755 $HOME/.github/Tools/zipalign; $HOME/.github/Tools/zipalign "$@"; }
 
 echo "$(zipalign --help)"
 
