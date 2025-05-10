@@ -5,7 +5,7 @@ SKIPMOUNT=false
 # Để true nó sẽ kết hợp system.prop vào build.prop
 PROPFILE=false
 # Để true post-fs-data.sh được sử dụng
-POSTFSDATA=true
+POSTFSDATA=false
 # Để true để service.sh được sử dụng
 LATESTARTSERVICE=true
 
@@ -39,8 +39,8 @@ ui_print
 cp -f $TMPDIR/sqlite3 $MODPATH/sqlite3 >&2
 cp -f $TMPDIR/YT.sh $MODPATH >&2
 cp -f $TMPDIR/action.sh $MODPATH >&2
-[ -e /vendor/overlay/Pip.apk ] || unzip -qo "$ZIPFILE" "system/*" -d $MODPATH >&2
 chmod -R 755 $MODPATH/sqlite3
+mkdir -p $MODPATH/YouTube
 
 checkYT
 
