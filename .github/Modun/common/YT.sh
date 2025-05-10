@@ -1,28 +1,17 @@
 # kakathic
 
-checkYT(){
-for Tkvi in $( find /data/app | grep com.google.android.youtube | grep 'base.apk' ); do
-[ "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null
-[ "$Tkvi" ] && su -M -c umount -l "$Tkvi" &>/dev/null
-done
-for Vhkdd in $(find /data/app -name *com.google.android.youtube*); do
-[ "$Vhkdd" ] && rm -fr "$Vhkdd" &>/dev/null
-done
-}
+linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
+checkYT(){ Tkvi="$(linkAPK)"; [ -e "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null; [ -e "$Tkvi" ] && umount -l "${Tkvi%/*}" &>/dev/null; }
+cpLIB(){ cp -af $1 ${2%/*}; }
 
-installYT(){
-chcon u:object_r:apk_data_file:s0 $1
+installYT(){ chcon u:object_r:apk_data_file:s0 $1;
 [ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "failure" ] && pm uninstall com.google.android.youtube >&2
 [ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"; }
 
-linkAPK(){ find /data/app | grep com.google.android.youtube | grep 'base.apk'; }
-cpLIB(){ cp -af $1 ${2%/*}; }
-
-mountYT(){ chcon u:object_r:apk_data_file:s0 "$1"; mount -o bind "$1" "$2"; md1="$(md5sum -b "$1")"; md2="$(md5sum -b "$2")"
-[ "$md1" == "$md2" ] || su -M -c mount -o bind "$1" "$2"; }
+mountYT(){ cp -acf "${2%/*}"/* "$MODPATH/YouTube"; mount -t tmpfs -o size=512M tmpfs "${2%/*}"; cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk"; cp -acf "$MODPATH/YouTube"/* "${2%/*}"; chcon u:object_r:apk_data_file:s0 "$2"; }
 
 offCH(){
 Sqlite3=$MODPATH/sqlite3
