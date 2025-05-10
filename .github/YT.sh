@@ -2,21 +2,18 @@
 # load dữ liệu 
 lib1="lib/revanced-cli.jar"
 lib2="lib/revanced-patches.jar"
-lib3="lib/revanced-patches-template.jar"
+
 # Tải tool sta
 pbsta(){
-Vsion1="$(Xem https://github.com/ReVanced/$1 | grep -om1 'ReVanced/'$1'/releases/tag/.*\"' | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
-Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
-
-echo "- Url: https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
-"
-}
+Vurl="$(curl -s https://api.github.com/repos/ReVanced/$1/releases/latest | grep 'browser_download_url.*.'$2'"' | cut -d\" -f4)"
+Taive "$Vurl" "lib/$1.jar"; 
+echo "- Url: $Vurl
+"; }
  
 # tải tool dev
 pbdev(){
 Vsion1="$(Xem https://github.com/ReVanced/$1/releases | grep -om1 'ReVanced/'$1'/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
 Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
-
 echo "- Url: https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
 "
 }
@@ -74,8 +71,8 @@ pbdev revanced-patches patches rvp
 else
 echo "  Dùng Sta"
 echo
-pbsta revanced-cli revanced-cli jar -all
-pbsta revanced-patches patches rvp
+pbsta revanced-cli jar
+pbsta revanced-patches rvp
 #pbsta revanced-patches-template patches rvp
 fi
 
