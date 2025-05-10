@@ -1,4 +1,4 @@
-name: Delete Old Releases
+name: Delete Old
 
 on:
   schedule:
@@ -15,4 +15,5 @@ jobs:
       with:
         keep_latest: 10              # Giữ lại 3 bản mới nhất
         delete_tags: true           # Xoá cả tag Git tương ứng
-  
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
