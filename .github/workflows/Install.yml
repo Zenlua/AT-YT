@@ -43,6 +43,7 @@ jobs:
           distribution: 'zulu'
       - name: See build
         env:
+          GH_TOKEN: ${{ github.token }}
           VERSION: ${{ inputs.VERSION }}
           DEVICE: ${{ inputs.DEVICE }}
           DEV: ${{ inputs.DEV }}
