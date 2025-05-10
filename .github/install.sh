@@ -5,10 +5,8 @@ sudo rm -rf /opt/ghc &
 sudo rm -rf /usr/local/share/boost &
 
 HOME="$GITHUB_WORKSPACE"
-#sudo apt install zipalign bash &>/dev/null
+sudo apt install zipalign bash &>/dev/null
 cd $HOME
-
-zipalign(){ export LD_LIBRARY_PATH="$HOME/.github/Tools"; chmod 755 $HOME/.github/Tools/zipalign; $HOME/.github/Tools/zipalign "$@"; }
 
 echo "$(zipalign --help)"
 
