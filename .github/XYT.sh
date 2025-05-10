@@ -160,6 +160,7 @@ echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 
 echo "- Xoá lib thừa."
+echo
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
