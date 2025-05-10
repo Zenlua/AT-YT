@@ -149,7 +149,7 @@ fi
 fi
 
 if [ "$TYPE" == 'true' ];then
-lib='lib/*/*'
+#lib='lib/*/*'
 if [ -e apk/YouTube.apks/kkkkkk ];then
 echo "- Giải nén base.apk"
 unzip -qo apk/YouTube.apks 'base.apk' -d Tav
