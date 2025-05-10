@@ -64,8 +64,8 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          title: YT-EXT ${{ env.VER }} ${{ env.Kad }}
-          automatic_release_tag: X${{ env.V }}${{ env.VER }}
+          title: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
+          automatic_release_tag: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
           body: "${{ env.BODY }}"
       - name: Upload Json
@@ -73,7 +73,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           title: Update
-          automatic_release_tag: Up
+          automatic_release_tag: "Up"
           files: Up*.json
           prerelease: true
   build2:
