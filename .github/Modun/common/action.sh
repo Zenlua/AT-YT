@@ -1,5 +1,4 @@
 # kakathic
-RD="$RANDOM"
 MODPATH="${0%/*}"
 . $MODPATH/YT.sh
 
