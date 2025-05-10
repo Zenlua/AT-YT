@@ -24,6 +24,7 @@ apksign () { java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.git
 Upenv(){ echo "$1=$2" >> $GITHUB_ENV; }
 checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không không thấy file ${1##*/}"; exit 1; ); }
 checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
+apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
 Loading(){
 while true; do
