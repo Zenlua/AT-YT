@@ -183,7 +183,7 @@ echo '- Quá trình xây dựng apk xong.'
 
 if [ "$TYPE" == 'true' ];then
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
-cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZXYT-$VER-$ach${amoled2}-rsign.apk
+cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
 ls Up
