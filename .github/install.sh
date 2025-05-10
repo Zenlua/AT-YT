@@ -1,8 +1,8 @@
 # kakathic
 
-sudo rm -rf /usr/share/dotnet
-sudo rm -rf /opt/ghc
-sudo rm -rf /usr/local/share/boost
+sudo rm -rf /usr/share/dotnet &
+sudo rm -rf /opt/ghc &
+sudo rm -rf /usr/local/share/boost &
 
 HOME="$GITHUB_WORKSPACE"
 #sudo apt install zipalign bash &>/dev/null
