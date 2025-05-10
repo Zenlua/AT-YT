@@ -180,8 +180,11 @@ fi
 echo "▼ Bắt đầu quá trình xây dựng..."
 eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature" --unsigned"
 echo '- Quá trình xây dựng apk xong.'
+echo
 
 if [ "$TYPE" == 'true' ];then
+echo "Tạo rsign..."
+echo
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
 cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
 else
