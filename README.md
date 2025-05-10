@@ -26,7 +26,7 @@
 
 - All support issues in this group
 
-   > [Telegram](https://t.me/toolmod)
+   > [Telegram](https://t.me/tooltree)
 
 - See the version that Revanced they support for the latest build.
 
