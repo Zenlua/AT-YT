@@ -44,6 +44,7 @@ pbsta revanced-patches rvp
 fi
 
 # kiểm tra tải tool
+echo
 checkzip "$lib1"
 checkzip "$lib2"
 echo
