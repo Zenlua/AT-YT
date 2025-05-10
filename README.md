@@ -1,6 +1,10 @@
 
 # YT-RE - YT-EXT 
 [![YT-RE](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml) [![YT-EXT](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml)
+
+> [!note]
+> Note: YT-rsign.apk version is only installed when the device has corepatch installed.
+
 + Are two different types of YouTube mods, pay attention to the names when downloading
 
 + Build, Edit: is the manual build version
