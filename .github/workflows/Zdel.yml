@@ -14,6 +14,6 @@ jobs:
       uses: dev-drprasad/delete-older-releases@v0.3.3
       with:
         keep_latest: 10              # Giữ lại 3 bản mới nhất
-        delete_tags: false           # Xoá cả tag Git tương ứng
+        delete_tags: true           # Xoá cả tag Git tương ứng
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
