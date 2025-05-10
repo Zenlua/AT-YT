@@ -53,14 +53,14 @@ jobs:
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: YT-RE ${{ env.VER }} ${{ env.Kad }}
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
       - name: Upload Json
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: Update
           tag_name: Up
@@ -89,7 +89,7 @@ jobs:
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: YT-RE ${{ env.VER }} ${{ env.Kad }}
           tag_name: K${{ env.V }}${{ env.VER }}
@@ -119,14 +119,14 @@ jobs:
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: YT-RE ${{ env.VER }} ${{ env.Kad }}
           tag_name: K${{ env.V }}${{ env.VER }}
           files: Up/*
           body_path: Log.txt
       - name: Upload Json
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: Update
           tag_name: Up
@@ -156,7 +156,7 @@ jobs:
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: YT-RE ${{ env.VER }} ${{ env.Kad }}
           tag_name: K${{ env.V }}${{ env.VER }}
