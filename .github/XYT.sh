@@ -176,13 +176,9 @@ cd $HOME
 fi
 
 # MOD YouTube 
-#java -Djava.io.tmpdir=$HOME -jar $lib1 patch 2>&1
-
 echo "▼ Bắt đầu quá trình xây dựng..."
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature"" >> Log2.txt 2>&1
-sed '/WARNING: warn: removing resource/d' Log2.txt
-echo '- Quá trình xây dựng apk xong.' | tee 2.txt
-grep 'SEVERE:' Log2.txt | sed 's|failed:|failed|g' > Log.txt
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature""
+echo '- Quá trình xây dựng apk xong.'
 
 if [ "$TYPE" == 'true' ];then
 rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
@@ -215,6 +211,8 @@ echo '{
 }' > "Up-X$V$ach$amoled2.json"
 
 echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}'\nAuto by kakathic' > Up-X${V}notes.json
+
+Upenv BODY "Update $(date), YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
