@@ -2,11 +2,11 @@
 # YT-RE - YT-EXT 
 [![YT-RE](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml) [![YT-EXT](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/XInstall.yml)
 
-+ Are two different types of YouTube mods, pay attention to the names when downloading
++ Use for both non-root and root
 
-+ Build, Edit: is the manual build version
-
-+ Hybrid for root(magisk, etc) management software, and flash Twrp(need rw)
+> YT.zip: install in magisk and twrp(rw)
+> YT.apk: This version installs without root will use separate gms application
+> YT-rsign.apk: will be used for devices that have patched core patch and patched signature.
 
 + How to delete Youtube in recovery: delete /data/Youtube folder 
 
