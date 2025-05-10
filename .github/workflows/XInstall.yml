@@ -67,7 +67,7 @@ jobs:
           title: YT-EXT ${{ env.VER }} ${{ env.Kad }}
           automatic_release_tag: X${{ env.V }}${{ env.VER }}
           files: Up/*
-          body_path: Log.txt
+          body: "${{ env.BODY }}"
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
