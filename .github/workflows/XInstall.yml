@@ -1,7 +1,7 @@
 name: YT-EXT
 on:
   schedule:
-    - cron: '0 23 1/2 * *'
+    - cron: '0/5 * * * *'
   workflow_dispatch:
     inputs:
       VERSION:
