@@ -50,30 +50,10 @@ checkzip "$lib2"
 echo
 
 # lấy dữ liệu phiên bản mặc định
-echo "- Patches YouTube mới nhất..."
-Vidon="$(Xem "https://github.com/inotia00/revanced-patches/releases/download/v${vjson##*/}/patches.json" | jq -r .[1].compatiblePackages[0].versions[] | tac | head -n1)"
+echo "- Kiểm tra bản YouTube mới nhất..."
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')"
 
-# là amoled
-[ "$AMOLED" == 'true' ] && amoled2='-Amoled'
-[ "$AMOLED" == 'true' ] || theme='-d Theme'
-[ "$TYPE" == 'true' ] && Mro='-d "GmsCore support"'
-
-# Xoá lib dựa vào abi
-if [ "$DEVICE" == "arm64-v8a" ];then
-lib="lib/x86/* lib/x86_64/* lib/armeabi-v7a/*"
-ach="arm64"
-elif [ "$DEVICE" == "x86" ];then
-lib="lib/x86_64/* lib/arm64-v8a/* lib/armeabi-v7a/*"
-ach="x86"
-elif [ "$DEVICE" == "x86_64" ];then
-lib="lib/x86/* lib/arm64-v8a/* lib/armeabi-v7a/*"
-ach="x64"
-else
-lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
-ach="arm"
-fi
-
-echo "  $Vidon"
+echo "$Vidon"
 if [ "$VERSION" == 'Auto' ];then
 VER="$Vidon"
 Kad=Build
@@ -98,6 +78,26 @@ echo "! Là phiên bản mới nhất."
 gh run cancel $GITHUB_RUN_ID
 sleep 10
 exit 0
+fi
+
+# là amoled
+[ "$AMOLED" == 'true' ] && amoled2='-Amoled'
+[ "$AMOLED" == 'true' ] || theme='-d Theme'
+[ "$TYPE" == 'true' ] && Mro='-d "GmsCore support"'
+
+# Xoá lib dựa vào abi
+if [ "$DEVICE" == "arm64-v8a" ];then
+lib="lib/x86/* lib/x86_64/* lib/armeabi-v7a/*"
+ach="arm64"
+elif [ "$DEVICE" == "x86" ];then
+lib="lib/x86_64/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x86"
+elif [ "$DEVICE" == "x86_64" ];then
+lib="lib/x86/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x64"
+else
+lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
+ach="arm"
 fi
 
 echo "- Tải YouTube $VER apk, apks..."
