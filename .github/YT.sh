@@ -62,34 +62,6 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-echo "  $Vidon"
-if [ "$VERSION" == 'Auto' ];then
-VER="$Vidon"
-Kad=Build$Vop
-V=V$Vop2
-elif [ "$VERSION" == 'Autu' ];then
-VER="$Vidon"
-Kad=Auto$Vop
-V=U$Vop2
-else
-Vidon="$VERSION"
-VER="$VERSION"
-Kad=Edit$Vop
-V=N$Vop2
-fi
-
-Upenv V "$V"
-Upenv Kad "$Kad"
-Upenv VER "$VER"
-
-if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
-echo "! Là phiên bản mới nhất."
-#gh run cancel $GITHUB_RUN_ID
-#sleep 10
-#exit 0
-fi
-
-echo
 # Tải tool cli
 echo "- Tải tool cli, patches, integrations..."
 if [ "$DEV" == "Develop" ];then
@@ -112,6 +84,37 @@ checkzip "$lib1"
 checkzip "$lib2"
 #checkzip "$lib3"
 echo
+
+# kiểm tra phiên bản 
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')"
+
+echo "  $Vidon"
+if [ "$VERSION" == 'Auto' ];then
+VER="$Vidon"
+Kad=Build$Vop
+V=V$Vop2
+elif [ "$VERSION" == 'Autu' ];then
+VER="$Vidon"
+Kad=Auto$Vop
+V=U$Vop2
+else
+Vidon="$VERSION"
+VER="$VERSION"
+Kad=Edit$Vop
+V=N$Vop2
+fi
+
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
+
+if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
+echo "! Là phiên bản mới nhất."
+gh run cancel $GITHUB_RUN_ID
+sleep 10
+exit 0
+fi
+
 
 echo "- Tải YouTube $VER apk, apks..."
 # Tải YouTube apk
