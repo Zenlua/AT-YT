@@ -61,20 +61,19 @@ jobs:
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: softprops/action-gh-release@v2
         with:
-          title: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
-          automatic_release_tag: "X${{ env.V }}${{ env.VER }}"
+          name: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
+          tag_name: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
           body: "${{ env.BODY }}"
-          prerelease: false
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          title: "Update"
-          automatic_release_tag: "Up"
+          name: "Update"
+          tag_name: "Up"
           files: Up*.json
+          prerelease: true
   build2:
     name: 'Buid arm64 no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -104,11 +103,9 @@ jobs:
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
-          name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
-          tag_name: X${{ env.V }}${{ env.VER }}
+          name: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
+          tag_name: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
-          body_path: Log.txt
-          overwrite: true
   build3:
     name: 'Buid arm64 amoled root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -140,11 +137,9 @@ jobs:
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
-          name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
-          tag_name: X${{ env.V }}${{ env.VER }}
+          name: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
+          tag_name: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
-          body_path: Log.txt
-          overwrite: true
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
@@ -152,7 +147,6 @@ jobs:
           tag_name: Up
           files: Up*.json
           prerelease: true
-          overwrite: true
   build4:
     name: 'Buid arm64 amoled no-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
@@ -184,8 +178,7 @@ jobs:
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
-          name: YT-EXT ${{ env.VER }} ${{ env.Kad }}
-          tag_name: X${{ env.V }}${{ env.VER }}
+          name: "YT-EXT ${{ env.VER }} ${{ env.Kad }}"
+          tag_name: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
-          body_path: Log.txt
-          overwrite: true
+          
