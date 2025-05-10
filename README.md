@@ -19,7 +19,7 @@
 > **[![Downloads](https://img.shields.io/github/downloads/Zenlua/AT-YT/total?label=Downloads&logo=github&abbreviated=true&color=blue)](https://github.com/Zenlua/AT-YT/releases)**
 
 > [!note]
-> Note: ZYT-rsign.apk version is only installed when the device has corepatch installed.
+> ZYT-rsign.apk version is only installed when the device has corepatch installed.
 
 **Revanced CLI**
 ---
