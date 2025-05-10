@@ -64,7 +64,7 @@ VER="$Vidon"
 Kad=Auto
 V=U
 else
-Vidon="$VERSION"
+#Vidon="$VERSION"
 VER="$VERSION"
 Kad=Edit
 V=N
