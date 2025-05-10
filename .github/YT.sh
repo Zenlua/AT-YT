@@ -1,4 +1,3 @@
-
 # load dữ liệu 
 lib1="lib/revanced-cli.jar"
 lib2="lib/revanced-patches.jar"
@@ -64,26 +63,25 @@ echo "  Dùng Dev"
 echo
 pbdev revanced-cli revanced-cli jar -all
 pbdev revanced-patches patches rvp
-#pbdev revanced-patches-template patches rvp
 
 else
 echo "  Dùng Sta"
 echo
 pbsta revanced-cli jar
 pbsta revanced-patches rvp
-#pbsta revanced-patches-template patches rvp
 fi
 
 # kiểm tra tải tool
 checkzip "$lib1"
 checkzip "$lib2"
-#checkzip "$lib3"
 echo
 
 # kiểm tra phiên bản 
-Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')"
-
+echo "- Kiểm tra bản YouTube mới nhất..."
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar $lib1 list-versions $lib2 -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";   
 echo "  $Vidon"
+echo
+
 if [ "$VERSION" == 'Auto' ];then
 VER="$Vidon"
 Kad=Build$Vop
