@@ -8,7 +8,7 @@ HOME="$GITHUB_WORKSPACE"
 sudo apt install zipalign bash &>/dev/null
 cd $HOME
 
-zipalign --help 2>&1
+echo "$(zipalign --help)"
 
 # Tạo thư mục
 mkdir -p apk lib tmp jar Tav Up rmp
@@ -30,7 +30,7 @@ apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
-zipalign -f -p 4 "$2" "tmp/ytm.apk" 2>&1
+echo "$(zipalign -f -p 4 "$2" "tmp/ytm.apk")"
 apkeditor b -t sig -i "tmp/ytm.apk" -sig "tmp/signatures_dir" -o "$3" &>/dev/null
 }
 
