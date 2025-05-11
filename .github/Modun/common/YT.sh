@@ -6,7 +6,8 @@ cpLIB(){ cp -af $1 ${2%/*}; }
 
 installYT(){ chcon u:object_r:apk_data_file:s0 $1;
 [ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
-[ "$inYT" == "failure" ] && pm uninstall com.google.android.youtube >&2
+pm clear com.google.android.youtube &>/dev/null
+[ "$inYT" == "failure" ] && pm uninstall com.google.android.youtube &>/dev/null
 [ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"; }
