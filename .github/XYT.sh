@@ -191,7 +191,7 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
-rsign Tav/base.apk YT2.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
+rsign apk/YouTube.apk YT2.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
 ls Up
