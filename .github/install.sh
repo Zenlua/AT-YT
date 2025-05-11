@@ -8,7 +8,7 @@ HOME="$GITHUB_WORKSPACE"
 #sudo apt install zipalign bash &>/dev/null
 cd $HOME
 TZ=Asia/Ho_Chi_Minh 
-
+date="$(date +"%Y-%m-%d %H:%M:%S.%3N %:z")"
 # Tạo thư mục
 mkdir -p apk lib tmp jar Tav Up rmp
 User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
