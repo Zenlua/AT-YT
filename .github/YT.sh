@@ -147,10 +147,10 @@ fi
 fi
 
 if [ "$TYPE" == 'true' ];then
-#lib='lib/*/*'
-if [ -e apk/YouTube.apks/kkkkkk ];then
+lib='lib/*/*'
+if [ -e apk/YouTube.apks ];then
 echo "- Giải nén base.apk"
-unzip -qo apk/YouTube.apks 'base.apk' -d Tav
+unzip -qo apk/YouTube.apks 'base.apk' "split_config.$DEVICE.apk" -d Tav
 #unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
 #mv -f Tav/lib/$DEVICE Tav/lib/$ach
 else
@@ -198,7 +198,7 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
-rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
+rsign apk/YouTube.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
