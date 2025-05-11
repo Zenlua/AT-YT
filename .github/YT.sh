@@ -1,18 +1,18 @@
 # load dữ liệu 
-lib1="lib/revanced-cli.jar"
-lib2="lib/revanced-patches.jar"
+lib1="revanced-cli.jar"
+lib2="revanced-patches.jar"
 
 # Tải tool sta
 pbsta(){
 Vurl="$(curl -s https://api.github.com/repos/ReVanced/$1/releases/latest | grep 'browser_download_url.*.'$2'"' | cut -d\" -f4)"
-Taive "$Vurl" "lib/$1.jar"; 
+Taive "$Vurl" "$1.jar"; 
 echo "- Url: $Vurl
 "; }
  
 # tải tool dev
 pbdev(){
 Vsion1="$(Xem https://github.com/ReVanced/$1/releases | grep -om1 'ReVanced/'$1'/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
-Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
+Taive "https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "$1.jar"; 
 echo "- Url: https://github.com/ReVanced/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
 "
 }
