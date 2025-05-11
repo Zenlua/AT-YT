@@ -1,5 +1,9 @@
 name: YT-RE
 on:
+  push:
+    paths:
+      - '.github/workflows/Install.yml'
+      - '.github/YT.sh'
   schedule:
     - cron: '0 23 1/2 * *'
   workflow_dispatch:
