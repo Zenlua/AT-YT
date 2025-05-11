@@ -71,7 +71,6 @@ pbsta revanced-cli jar
 pbsta revanced-patches rvp
 fi
 
-echo
 # kiểm tra tải tool
 checkzip "$lib1"
 checkzip "$lib2"
