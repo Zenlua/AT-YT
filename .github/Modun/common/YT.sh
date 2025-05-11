@@ -6,7 +6,7 @@ checkYT(){
 Tkvi="$(linkAPK)";
 [ -f "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null;
 [ -d "${Tkvi%/*}" ] && umount -l "${Tkvi%/*}" &>/dev/null;
-[ -d "/data/YouTube/tmp" ] &&
+[ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null;
 rm -fr $MODPATH/YouTube/*; }
 
 installYT(){
