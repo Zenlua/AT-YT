@@ -1,8 +1,13 @@
 # kakathic
 
 linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
-checkYT(){ Tkvi="$(linkAPK)"; [ -e "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null; [ -e "$Tkvi" ] && umount -l "${Tkvi%/*}" &>/dev/null; rm -fr $MODPATH/YouTube/*; }
-cpLIB(){ cp -af $1 ${2%/*}; }
+
+checkYT(){ 
+Tkvi="$(linkAPK)";
+[ -f "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null;
+[ -d "${Tkvi%/*}" ] && umount -l "${Tkvi%/*}" &>/dev/null;
+[ -d "/data/YouTube/tmp" ] &&
+rm -fr $MODPATH/YouTube/*; }
 
 installYT(){
 chcon u:object_r:apk_data_file:s0 $MODPATH/*.apk
@@ -20,8 +25,7 @@ mount -t tmpfs -o size=512M tmpfs "${2%/*}";
 cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
 cp -acf "$MODPATH/YouTube"/* "${2%/*}";
 chcon u:object_r:apk_data_file:s0 "$2";
-fi
-}
+fi; }
 
 offCH(){
 Sqlite3=$MODPATH/sqlite3
@@ -35,5 +39,4 @@ pm disable $PS &>/dev/null
 $Sqlite3 $LDB "UPDATE ownership SET doc_type = '25' WHERE doc_id = '$PK'";
 $Sqlite3 $LADB "UPDATE appstate SET auto_update = '2' WHERE package_name = '$PK'";
 rm -rf /data/data/$PS/cache/*
-pm enable $PS &>/dev/null
-}
+pm enable $PS &>/dev/null; }
