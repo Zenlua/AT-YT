@@ -155,9 +155,8 @@ else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
 fi
-fi
-
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
+fi
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
