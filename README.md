@@ -21,7 +21,7 @@ Use for both non-root and root:
 > **[![Downloads](https://img.shields.io/github/downloads/Zenlua/AT-YT/total?label=Downloads&logo=github&abbreviated=true&color=blue)](https://github.com/Zenlua/AT-YT/releases)**
 
 > [!note]
-> ZT-rsign.apk, ZXT-rsign.apk version is only installed when the device has corepatch installed.
+> ZT-rsign.apk version is only installed when the device has corepatch installed.
 
 **Revanced CLI**
 ---
