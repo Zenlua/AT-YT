@@ -1,17 +1,17 @@
 # load dữ liệu 
-lib1="lib/revanced-cli.jar"
-lib2="lib/revanced-patches.jar"
+lib1="revanced-cli.jar"
+lib2="revanced-patches.jar"
 
 pbsta(){
 Vurl="$(curl -s https://api.github.com/repos/inotia00/$1/releases/latest | grep 'browser_download_url.*.'$2'"' | cut -d\" -f4)"
-Taive "$Vurl" "lib/$1.jar"; 
+Taive "$Vurl" "$1.jar"; 
 echo "- Url: $Vurl
 "; }
  
 # tải tool dev
 pbdev(){
 Vsion1="$(Xem https://github.com/inotia00/$1/releases | grep -om1 'inotia00/'$1'/releases/tag/.*dev' | cut -d '"' -f1 | sed -e 's|dev|zzz|g' -e 's|v||g' -e 's|zzz|dev|g' -e 's|\"||g')"
-Taive "https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "lib/$1.jar"; 
+Taive "https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3" "$1.jar"; 
 echo "- Url: https://github.com/inotia00/$1/releases/download/v${Vsion1##*/}/$2-${Vsion1##*/}$4.$3
 "; }
 
@@ -143,17 +143,15 @@ fi
 
 
 if [ "$TYPE" == 'true' ];then
-#lib='lib/*/*'
-if [ -e apk/YouTube.apkskkkkkk ];then
-unzip -qo apk/YouTube.apks 'base.apk' -d Tav
-#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-#mv -f Tav/lib/$DEVICE Tav/lib/$ach
+lib='lib/*/*'
+if [ -e apk/YouTube.apks ];then
+echo "- Giải nén base.apk"
+unzip -qo apk/YouTube.apks 'base.apk' "split_config.${DEVICE//-/_}.apk" split_config.xxhdpi.apk -d Tav   
 else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
-#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-#mv -f Tav/lib/$DEVICE Tav/lib/$ach
 fi
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
 fi
 
 # Copy 
@@ -191,6 +189,9 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
+cd tmp
+zip -qr $HOME/YT2.apk *
+cd $HOME
 rsign Tav/base.apk YT2.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
