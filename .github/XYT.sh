@@ -205,7 +205,7 @@ cd $HOME
 echo 'id=YouTube
 name=YouTube Ext '$Kad'
 author=kakathic
-description=Build '$(date)', YouTube edited tool by Revanced mod added disable play store updates.
+description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
 versionCode='${VER//./}'
 updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-X'$V$ach$amoled2'.json
@@ -219,9 +219,9 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-X'$V'notes.json"
 }' > "Up-X$V$ach$amoled2.json"
 
-echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}'\nAuto by kakathic' > Up-X${V}notes.json
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}'\nAuto by kakathic' > Up-X${V}notes.json
 
-Upenv BODY "Update $(date), YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
+Upenv BODY "Update $date, YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
