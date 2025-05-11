@@ -150,14 +150,15 @@ if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
 echo "- Giải nén base.apk"
-unzip -qo apk/YouTube.apks 'base.apk' "split_config.$DEVICE.apk" -d Tav
-#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-#mv -f Tav/lib/$DEVICE Tav/lib/$ach
+unzip -qo apk/YouTube.apks 'base.apk' "split_config.$DEVICE.apk" split_config.xxhdpi.apk -d Tav   
 else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
 fi
 fi
+
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
+mv -f lib/$DEVICE lib/$ach
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
@@ -196,6 +197,7 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
+zip -qr YT2.apk lib/*
 rsign apk/YouTube.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
