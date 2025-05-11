@@ -136,7 +136,7 @@ jobs:
           [ "$DEV" ] || DEV="Stable"
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 30
+          sleep 10
           . .github/install.sh
           . .github/XYT.sh
       - name: Upload File
