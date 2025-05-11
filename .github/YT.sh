@@ -156,8 +156,6 @@ unzip -qo apk/YouTube.apks 'base.apk' "split_config.$DEVICE.apk" -d Tav
 else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
-#unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
-#mv -f Tav/lib/$DEVICE Tav/lib/$ach
 fi
 fi
 
