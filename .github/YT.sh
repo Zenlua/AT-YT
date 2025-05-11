@@ -158,6 +158,7 @@ fi
 fi
 
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
+mv -f tmp/lib/$DEVICE tmp/lib/$ach
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
@@ -165,7 +166,7 @@ cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 
 echo "- Xoá lib thừa."
 echo
-zip -r apk/YouTube.apk -d $lib
+zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
 if [ "$Vidon" != "$VER" ];then
@@ -196,8 +197,8 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
-mv -f tmp/lib/$DEVICE lib/$ach
-zip -qr YT2.apk lib/*
+mv -f $HOME/tmp/lib $HOME/lib
+zip -r YT2.apk lib/*
 rsign apk/YouTube.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
