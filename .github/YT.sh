@@ -225,9 +225,9 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
 }' > Up-K$V$ach$amoled2.json
 
-echo -e 'Update '$(date)' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
+echo -e 'Update '$(date +"%Y-%m-%d %H:%M:%S.%3N %:z")' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
 
-Upenv BODY "Update $(date), YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
+Upenv BODY "Update $(date +"%Y-%m-%d %H:%M:%S.%3N %:z"), YouTube: $VER, Version: ${VER//./}, Auto by kakathic"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
