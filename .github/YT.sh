@@ -190,12 +190,12 @@ eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o Y
 echo '- Quá trình xây dựng apk xong.'
 
 ls YT-temporary-files/*.apk
-cp -rf YT-temporary-files/*.apk YT.apk
+cp -rf YT-temporary-files/*.apk YT2.apk
 
 # Chờ xây dựng xong
 if [ "$TYPE" == 'true' ];then
-rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
-cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
+mv YT.apk $HOME/Tav/YouTube.apk
+rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
