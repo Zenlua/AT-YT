@@ -157,8 +157,8 @@ cp apk/YouTube.apk Tav/base.apk
 fi
 fi
 
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d $HOME
-mv -f lib/$DEVICE lib/$ach
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
+mv -f tmp/lib/$DEVICE tmp/lib/$ach
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
