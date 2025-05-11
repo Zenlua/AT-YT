@@ -21,7 +21,7 @@ patpk="$(ls -1 $MODPATH/*.apk | sed '/YouTube.apk/d')"
 mountYT(){
 if [ -d "${2%/*}" ];then
 cp -acf "${2%/*}"/* "$MODPATH/YouTube";
-mount -t tmpfs -o size=512M tmpfs "${2%/*}";
+mount -t tmpfs YouTube "${2%/*}";
 cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
 cp -acf "$MODPATH/YouTube"/* "${2%/*}";
 chcon u:object_r:apk_data_file:s0 "$2";
