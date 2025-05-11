@@ -157,7 +157,7 @@ cp apk/YouTube.apk Tav/base.apk
 fi
 fi
 
-unzip -qo apk/YouTube.apk lib/$DEVICE/* -d Tav
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d $HOME
 mv -f lib/$DEVICE lib/$ach
 
 # Copy 
