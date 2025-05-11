@@ -5,10 +5,10 @@ checkYT(){ Tkvi="$(linkAPK)"; [ -e "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null; [
 cpLIB(){ cp -af $1 ${2%/*}; }
 
 installYT(){ chcon u:object_r:apk_data_file:s0 $1;
-[ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
+[ $(pm install -r $1 $2 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "done" ] && pm clear com.google.android.youtube &>/dev/null
 [ "$inYT" == "failure" ] && pm uninstall com.google.android.youtube &>/dev/null
-[ $(pm install -r $1 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
+[ $(pm install -r $1 $2 | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"; }
 
 mountYT(){ cp -acf "${2%/*}"/* "$MODPATH/YouTube"; mount -t tmpfs -o size=512M tmpfs "${2%/*}"; cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk"; cp -acf "$MODPATH/YouTube"/* "${2%/*}"; chcon u:object_r:apk_data_file:s0 "$2"; }
