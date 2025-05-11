@@ -180,15 +180,18 @@ fi
 
 # MOD YouTube 
 echo "▼ Bắt đầu quá trình xây dựng..."
-eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature" --unsigned"
+eval "java -Djava.io.tmpdir=$HOME -jar $lib1 patch -p $lib2 apk/YouTube.apk -o YT.apk "$Tof $Ton $Mro $theme $feature""
 echo '- Quá trình xây dựng apk xong.'
 echo
+
+ls YT-temporary-files/*.apk
+cp -rf YT-temporary-files/*.apk YT2.apk
 
 if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
-rsign Tav/base.apk YT.apk $HOME/Tav/YouTube.apk
-cp -rf $HOME/Tav/YouTube.apk $HOME/Up/ZXT-$VER-$ach${amoled2}-rsign.apk
+mv YT.apk $HOME/Tav/YouTube.apk
+rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/XYT-$VER-$ach${amoled2}.apk
 ls Up
