@@ -1,7 +1,7 @@
 # KAKATHIC
 
 # Để true để bỏ qua Mount system
-SKIPMOUNT=false
+SKIPMOUNT=true
 # Để true nó sẽ kết hợp system.prop vào build.prop
 PROPFILE=false
 # Để true post-fs-data.sh được sử dụng
@@ -41,21 +41,12 @@ cp -f $TMPDIR/YT.sh $MODPATH >&2
 cp -f $TMPDIR/action.sh $MODPATH >&2
 chmod -R 755 $MODPATH/sqlite3
 mkdir -p $MODPATH/YouTube
-
 checkYT
-
 ui_print2 "Install YouTube"
 ui_print
 tar -xJf $TMPDIR/lib.tar.xz -C $MODPATH
-
-installYT $MODPATH/base.apk $MODPATH/split_config*.apk
-
+installYT
 ls -l "$MODPATH/base.apk" | awk '{print $5}' > $MODPATH/SIZE
-
-ui_print2 "Copy lib"
-ui_print
-[ -e $MODPATH/lib ] && cpLIB $MODPATH/lib "$(linkAPK)"
-
 ui_print2 "Mount YouTube"
 ui_print
 mountYT $MODPATH/YouTube.apk "$(linkAPK)" &
