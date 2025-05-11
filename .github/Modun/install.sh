@@ -48,14 +48,13 @@ ui_print2 "Install YouTube"
 ui_print
 tar -xJf $TMPDIR/lib.tar.xz -C $MODPATH
 
-installYT $MODPATH/base.apk
+installYT $MODPATH/base.apk $MODPATH/split_config*.apk
 
 ls -l "$MODPATH/base.apk" | awk '{print $5}' > $MODPATH/SIZE
 
 ui_print2 "Copy lib"
 ui_print
 [ -e $MODPATH/lib ] && cpLIB $MODPATH/lib "$(linkAPK)"
-
 
 ui_print2 "Mount YouTube"
 ui_print
