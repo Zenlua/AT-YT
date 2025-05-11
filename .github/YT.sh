@@ -158,7 +158,6 @@ fi
 fi
 
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
-mv -f tmp/lib/$DEVICE tmp/lib/$ach
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
@@ -197,6 +196,7 @@ if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
+mv -f tmp/lib/$DEVICE lib/$ach
 zip -qr YT2.apk lib/*
 rsign apk/YouTube.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
