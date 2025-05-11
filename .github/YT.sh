@@ -198,8 +198,8 @@ echo "Tạo rsign..."
 echo
 mv YT.apk $HOME/Tav/YouTube.apk
 mv -f $HOME/tmp/lib $HOME/lib
-zip -r YT2.apk lib/*
-rsign apk/YouTube.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
+zip -r YT2.apk lib
+rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
