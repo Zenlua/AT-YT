@@ -109,6 +109,7 @@ jobs:
   build3:
     name: 'Buid arm64 amoled root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
+    needs: build2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -132,7 +133,7 @@ jobs:
           [ "$DEV" ] || DEV="Stable"
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 30
+          
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
