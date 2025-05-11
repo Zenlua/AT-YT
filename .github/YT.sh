@@ -211,7 +211,7 @@ cd $HOME
 echo 'id=YouTube
 name=YouTube '$Kad'
 author=kakathic
-description=Build '$(date)', YouTube edited tool by Revanced mod added disable play store updates.
+description=Build '$(date +"%Y-%m-%d %H:%M:%S.%3N %:z")', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
 versionCode='${VER//./}'
 updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$ach$amoled2'.json
