@@ -150,7 +150,7 @@ if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
 if [ -e apk/YouTube.apks ];then
 echo "- Giải nén base.apk"
-unzip -qo apk/YouTube.apks 'base.apk' "split_config.$DEVICE.apk" split_config.xxhdpi.apk -d Tav   
+unzip -qo apk/YouTube.apks 'base.apk' "split_config*$DEVICE.apk" split_config.xxhdpi.apk -d Tav   
 else
 echo "- Giải nén Lib"
 cp apk/YouTube.apk Tav/base.apk
