@@ -35,7 +35,7 @@ env:
     GH_TOKEN: ${{ github.token }}
 jobs:
   build1:
-    name: 'Buid arm64 root'
+    name: 'Buid Root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +75,7 @@ jobs:
           files: Up*.json
           prerelease: true
   build2:
-    name: 'Buid arm64 no-root'
+    name: 'Buid No-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
@@ -107,7 +107,7 @@ jobs:
           tag_name: "X${{ env.V }}${{ env.VER }}"
           files: Up/*
   build3:
-    name: 'Buid arm64 amoled root'
+    name: 'Buid Amoled Root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
@@ -149,7 +149,7 @@ jobs:
           files: Up*.json
           prerelease: true
   build4:
-    name: 'Buid arm64 amoled no-root'
+    name: 'Buid Amoled No-root'
     if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
