@@ -132,7 +132,7 @@ jobs:
           [ "$DEV" ] || DEV="Stable"
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 10
+          sleep 15
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
@@ -174,7 +174,7 @@ jobs:
           [ "$DEV" ] || DEV="Stable"
           [ "$TYPE" ] || TYPE="false"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 10
+          sleep 15
           . .github/install.sh
           . .github/YT.sh
       - name: Upload File
