@@ -39,4 +39,5 @@ pm disable $PS &>/dev/null
 $Sqlite3 $LDB "UPDATE ownership SET doc_type = '25' WHERE doc_id = '$PK'";
 $Sqlite3 $LADB "UPDATE appstate SET auto_update = '2' WHERE package_name = '$PK'";
 rm -rf /data/data/$PS/cache/*
+am force-stop $PK &>/dev/null
 pm enable $PS &>/dev/null; }
