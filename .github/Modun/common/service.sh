@@ -3,10 +3,10 @@ MODPATH="${0%/*}"
 rm -fr $MODPATH/YouTube/*
 
 while true; do
-[ -e /sdcard/Android ] && break || sleep 2
+[ "$(getprop sys.boot_completed)" == 1 ] && break || sleep 2
 done
 . $MODPATH/YT.sh
-sleep 2
+sleep 10
 
 if [ "$(ls -l $(linkAPK) | awk '{print $5}')" == "$(cat $MODPATH/SIZE)" ];then
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
