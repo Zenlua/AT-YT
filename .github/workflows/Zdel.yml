@@ -10,7 +10,7 @@ jobs:
     - name: Delete old releases
       uses: dev-drprasad/delete-older-releases@v0.3.3
       with:
-        keep_latest: 10  # Giữ lại 10 bản mới nhất
+        keep_latest: 14  # Giữ lại 10 bản mới nhất
         delete_tags: true  # Xoá cả tag Git tương ứng
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
