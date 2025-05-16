@@ -5,7 +5,7 @@
 
 Use for both non-root and root:
 
-+ YT.zip: install in magisk (added hidden root) and twrp(rw)
++ YT.zip: install in magisk (hide root) and twrp (rw)
 
 + YT.apk: This version installs without root will use separate gms application
 
