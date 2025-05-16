@@ -2,12 +2,10 @@
 
 linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
 
-checkYT(){ 
-Tkvi="$(linkAPK)";
+checkYT(){ Tkvi="$(linkAPK)";
 [ -f "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null;
 [ -d "${Tkvi%/*}" ] && umount -l "${Tkvi%/*}" &>/dev/null;
-[ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null;
-rm -fr $MODPATH/YouTube/*; }
+[ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null; }
 
 installYT(){
 chcon u:object_r:apk_data_file:s0 $MODPATH/*.apk
@@ -24,7 +22,7 @@ cp -acf "${2%/*}"/* "$MODPATH/YouTube";
 mount -t tmpfs YouTube "${2%/*}";
 cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
 mv "$MODPATH/YouTube"/* "${2%/*}";
-chcon u:object_r:apk_data_file:s0 "$2";
+chcon u:object_r:apk_data_file:s0 "${2%/*}"/*.apk;
 fi; }
 
 offCH(){
