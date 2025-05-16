@@ -30,7 +30,7 @@ ui_print
 }
 
 # Bắt đầu cài đặt
-on_install() {
+on_install(){
 [ -e "$TMPDIR/$ARCH" ] || abort "    This module only supports $ARCH devices
 "
 ui_print2 "Processing"
@@ -41,23 +41,21 @@ cp -f $TMPDIR/YT.sh $MODPATH >&2
 cp -f $TMPDIR/action.sh $MODPATH >&2
 chmod -R 755 $MODPATH/sqlite3
 mkdir -p $MODPATH/YouTube
+
 checkYT
 ui_print2 "Install YouTube"
 ui_print
 tar -xJf $TMPDIR/lib.tar.xz -C $MODPATH
 installYT
-ls -l "$MODPATH/base.apk" | awk '{print $5}' > $MODPATH/SIZE
 ui_print2 "Mount YouTube"
 ui_print
-mountYT $MODPATH/YouTube.apk "$(linkAPK)" &
+mountYT $MODPATH/YouTube.apk "$(linkAPK)"
 
 ui_print2 "Turn off update"
 ui_print
-
 offCH
 
 [ "$(Getp author)" == 'kakathic' ] || abort "Copyright infringement"
-
 if [ -z "$(pm path com.google.android.youtube)" ];then
 ui_print2 "Failure"
 ui_print
@@ -70,7 +68,7 @@ ui_print
 }
 
 # Cấp quyền
-set_permissions() { 
+set_permissions(){
 set_perm_recursive $MODPATH 0 0 0755 0644
 chmod -R 755 $MODPATH/sqlite3
 }
