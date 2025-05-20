@@ -220,7 +220,13 @@ echo '{
 }' > "Up-X$V$ach$amoled2.json"
 
 echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}'\nAuto by kakathic' > Up-X${V}notes.json
-Upenv BODY "Update $date, YouTube: $VER, Version: ${VER//./}, Auto by kakathic, ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/X$V$VER/total?label=Download&color=%230072F4)"
+Upenv BODY "**Note: Auto by kakathic**
+
++ Update $date
++ YouTube: $VER
++ Version: ${VER//./}
+
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/X$V$VER/total?label=Download&color=%230072F4)"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
