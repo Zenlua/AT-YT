@@ -1,7 +1,7 @@
 name: YT-RE
 on:
   schedule:
-    - cron: '20 23 1/2 * *'
+    - cron: '20 23 1/9 * *'
   workflow_dispatch:
     inputs:
       VERSION:
@@ -66,7 +66,7 @@ jobs:
           name: "YT-RE ${{ env.VER }} ${{ env.Kad }}"
           tag_name: "K${{ env.V }}${{ env.VER }}"
           files: Up/*
-          body: "${{ env.BODY }}"
+          body_path: "change.txt"
       - name: Upload Json
         uses: softprops/action-gh-release@v2
         with:
