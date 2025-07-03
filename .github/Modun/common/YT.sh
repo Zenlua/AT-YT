@@ -2,25 +2,29 @@
 
 linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
 
-checkYT(){ Tkvi="$(linkAPK)";
-[ -f "$Tkvi" ] && umount -l "$Tkvi" &>/dev/null;
-[ -d "${Tkvi%/*}" ] && umount -l "${Tkvi%/*}" &>/dev/null;
-[ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null; }
+checkYT(){
+IFS=$'\n'
+Tkvi="$(find /data/app | grep com.google.android.youtube | grep 'base.apk')";
+for vv in $Tkvi; do
+[ -f "$vv" ] && umount -l "$vv" &>/dev/null;
+[ -d "${vv%/*}" ] && umount -l "${vv%/*}" &>/dev/null;
+done
+[ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null;
+}
 
 installYT(){
 chcon u:object_r:apk_data_file:s0 $MODPATH/*.apk
 patpk="$(ls -1 $MODPATH/*.apk | sed '/YouTube.apk/d')"
 [ $(pm install -r $patpk | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
-[ "$inYT" == "done" ] && pm clear com.google.android.youtube &>/dev/null
 [ "$inYT" == "failure" ] && pm uninstall com.google.android.youtube &>/dev/null
 [ $(pm install -r $patpk | grep -cm1 'Success') == 1 ] && inYT="done" || inYT="failure"
 [ "$inYT" == "done" ] || echo "- Error cannot install apk"; }
 
 mountYT(){
 if [ -d "${2%/*}" ];then
-cp -acf "${2%/*}"/* "$MODPATH/YouTube";
+busybox cp -acf "${2%/*}"/* "$MODPATH/YouTube";
 mount -t tmpfs -o size=200m YouTube "${2%/*}";
-cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
+busybox cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
 mv "$MODPATH/YouTube"/* "${2%/*}";
 chcon u:object_r:apk_data_file:s0 "${2%/*}"/*.apk;
 fi; }
