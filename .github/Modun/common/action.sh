@@ -13,11 +13,9 @@ ui_print2 "Version: $(Getp version)"
 ui_print
 ui_print2 "Author: $(Getp author)"
 ui_print
-ui_print2 "Install YouTube"
-ui_print
 
 checkYT
-if [ "$(sha256sum "$(linkAPK)" | awk '{print $1}')" == "$(sha256sum "$MODPATH/YouTube.apk" | awk '{print $1}')" ] || [ "$(sha256sum "$(linkAPK)" | awk '{print $1}')" == "$(sha256sum "$MODPATH/base.apk" | awk '{print $1}')" ];then
+if [ "$(sha256sum "$(linkAPK)" | awk '{print $1}')" == "$(sha256sum "$MODPATH/base.apk" | awk '{print $1}')" ];then
 ui_print2 "Mount YouTube"
 ui_print
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
@@ -25,8 +23,8 @@ ui_print2 "Turn off update"
 ui_print
 offCH
 else
+ui_print2 "Install YouTube"
 installYT
-ui_print2 "Mount YouTube"
 ui_print
 mountYT $MODPATH/YouTube.apk "$(linkAPK)"
 ui_print2 "Turn off update"
