@@ -230,7 +230,6 @@ echo "**Note: Auto by kakathic**
 
 + Update $date
 + YouTube: $VER
-+ Version: ${VER//./}
 
 + ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" > change.txt
 
