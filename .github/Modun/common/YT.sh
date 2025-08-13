@@ -3,11 +3,8 @@
 linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk'; }
 
 checkYT(){
-IFS=$'\n'
-Tkvi="$(find /data/app | grep com.google.android.youtube | grep 'base.apk')";
-for vv in $Tkvi; do
-[ -f "$vv" ] && umount -l "$vv" &>/dev/null;
-[ -d "${vv%/*}" ] && umount -l "${vv%/*}" &>/dev/null;
+for vv in $(find /data/app -maxdepth 2 -type d | grep com.google.android.youtube); do
+umount -l -f "$vv" &>/dev/null;
 done
 [ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null;
 }
@@ -22,10 +19,10 @@ patpk="$(ls -1 $MODPATH/*.apk | sed '/YouTube.apk/d')"
 
 mountYT(){
 if [ -d "${2%/*}" ];then
-busybox cp -acf "${2%/*}"/* "$MODPATH/YouTube";
+cp -af "${2%/*}"/* "$MODPATH/YouTube";
 mount -t tmpfs -o size=200m YouTube "${2%/*}";
-busybox cp -acf "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
-mv "$MODPATH/YouTube"/* "${2%/*}";
+cp -af "$MODPATH/YouTube.apk" "$MODPATH/YouTube/base.apk";
+mv $MODPATH/YouTube/* "${2%/*}";
 chcon u:object_r:apk_data_file:s0 "${2%/*}"/*.apk;
 fi; }
 
