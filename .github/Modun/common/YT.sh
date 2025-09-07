@@ -4,7 +4,8 @@ linkAPK(){ find /data/app | grep com.google.android.youtube | grep -m1 'base.apk
 
 checkYT(){
 for vv in $(find /data/app -maxdepth 2 -type d | grep com.google.android.youtube); do
-umount -l -f "$vv" &>/dev/null;
+umount -l "$vv" &>/dev/null;
+rm -fr "$vv"
 done
 [ -d "/data/YouTube/tmp" ] && umount -l /data/YouTube/tmp &>/dev/null;
 }
