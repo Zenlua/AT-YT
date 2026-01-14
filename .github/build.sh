@@ -27,7 +27,7 @@ r=$(cat $1)
 r="${r//'%'/'%25'}"
 r="${r//$'\n'/'%0A'}"
 r="${r//$'\r'/'%0D'}"
-echo "RELEASE_BODY=$r" >> $GITHUB_OUTPUT
+echo "BODY=$r" >> $GITHUB_ENV
 }
 
 rsign(){
@@ -219,8 +219,6 @@ cd $HOME
 
 find Up/* -type f
 Upenv FILEJ "Up-K$V$ach$amoled2.json"
-
-r="$(find Up/* -type f)"
-r="${r//$'\n'/', '}"
-echo "FILE=$r" >> $GITHUB_OUTPUT
+Upenv APK "$(find Up/*.apk -type f)"
+Upenv ZIP "$(find Up/*.zip -type f)"
 
