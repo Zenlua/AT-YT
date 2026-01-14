@@ -62,14 +62,14 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: Up
+          file: ./Up/*.*
           body: "${{ env.BODYSS }}"
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
           asset_name: "Update"
-          tag: "Up"
-          file: Up*.json
+          tag: Up
+          file: ./Up*.json
           overwrite: true
           prerelease: true
   build2:
@@ -121,13 +121,13 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: Up
+          file: ./Up/*.*
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
           asset_name: "Update"
-          tag: "Up"
-          file: Up*.json
+          tag: Up
+          file: ./Up*.json
           overwrite: true
           prerelease: true
   build4:
