@@ -25,3 +25,34 @@ apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
 apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null; }
+
+TaiYT(){
+urrl="https://www.apkmirror.com"
+uak1="$urrl$(Xem "$urrl/apk/$2" | grep -m1 'downloadButton' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2)"
+uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
+Taive "$uak2" "apk/$1"
+echo "Link: $uak2"
+file "apk/$1" | tee "apk/$1.txt"; }
+
+Taicli(){
+uggrl="$(curl -sLG https://api.github.com/repos/$1/releases/latest | jq -r .assets[0].browser_download_url)"
+Taive "$uggrl" "$2"
+echo "Url: $uggrl"; }
+
+# Tải cli
+Taicli "$GITPCLI" "cli.jar"
+Taicli "$GITPATCH" "patch.jar"
+
+# Tải Youtube
+apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
+apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
+TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
+
+
+
+
+
+
+
+
+
