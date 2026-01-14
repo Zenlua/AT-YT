@@ -1,158 +1,211 @@
-name: YT-AT build
-on:
-  schedule:
-    - cron: '30 23 */2 * *'
-  workflow_dispatch:
-    inputs:
-      VERSION:
-        description: 'Example: 19.47.53'
-        required: false
-        default: 'Auto'
-      DEVICE:
-        description: 'Select device'
-        required: false
-        default: 'arm64-v8a'
-        type: choice
-        options:
-          - armeabi-v7a
-          - arm64-v8a
-          - x86
-          - x86_64
-      CLI:
-        description: 'Tool cli'
-        required: false
-        default: 'revanced/revanced-cli'
-      PATCH:
-        description: 'Tool patch'
-        required: false
-        default: 'revanced/revanced-patches'
-      FEATURE:
-        description: 'Turn on/off feature on: [-e "feature"], off: [-d "feature"]'
-        required: false
-        default: ''
-permissions: write-all
-env:
-    GH_TOKEN: ${{ github.token }}
-    VERSION: ${{ inputs.VERSION }}
-    DEVICE: ${{ inputs.DEVICE }}
-    GITPCLI: ${{ inputs.CLI }}
-    GITPATCH: ${{ inputs.PATCH }}
-    FEATURE: ${{ inputs.FEATURE }}
-jobs:
-  build1:
-    name: 'Buid Root'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: See build
-        env:
-          TYPE: 'true'
-        run: |
-          # kakathic
-          [ "$VERSION" ] || VERSION="Auto"
-          [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
-          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
-          [ "$TYPE" ] || TYPE="true"
-          . .github/build.sh
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K${{ env.V }}${{ env.VER }}"
-          overwrite: true
-          file: Up
-          body: "${{ env.BODYSS }}"
-      - name: Upload Json
-        uses: svenstaro/upload-release-action@v2
-        with:
-          asset_name: "Update"
-          tag: "Up"
-          file: Up*.json
-          overwrite: true
-          prerelease: true
-  build2:
-    name: 'Buid No-root'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: See build
-        env:
-          TYPE: 'false'
-        run: |
-          # kakathic
-          [ "$VERSION" ] || VERSION="Auto"
-          [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
-          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
-          [ "$TYPE" ] || TYPE="false"
-          . .github/build.sh
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K${{ env.V }}${{ env.VER }}"
-          overwrite: true
-          file: Up
-  build3:
-    name: 'Buid Amoled Root'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: See build
-        env:
-          TYPE: 'true'
-          AMOLED: 'true'
-        run: |
-          # kakathic
-          [ "$VERSION" ] || VERSION="Auto"
-          [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
-          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
-          [ "$TYPE" ] || TYPE="true"
-          [ "$AMOLED" ] || AMOLED="true"
-          . .github/build.sh
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K${{ env.V }}${{ env.VER }}"
-          overwrite: true
-          file: Up
-      - name: Upload Json
-        uses: svenstaro/upload-release-action@v2
-        with:
-          asset_name: "Update"
-          tag: "Up"
-          file: Up*.json
-          overwrite: true
-          prerelease: true
-  build4:
-    name: 'Buid Amoled No-root'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: See build
-        env:
-          TYPE: 'false'
-          AMOLED: 'true'
-        run: |
-          # kakathic
-          [ "$VERSION" ] || VERSION="Auto"
-          [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
-          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
-          [ "$TYPE" ] || TYPE="false"
-          [ "$AMOLED" ] || AMOLED="true"
-          . .github/build.sh
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K${{ env.V }}${{ env.VER }}"
-          overwrite: true
-          file: Up
+# kakathic
+
+# Home
+HOME="$GITHUB_WORKSPACE"
+date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
+
+# Tạo thư mục
+mkdir -p apk lib tmp jar Tav Up rmp
+User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
+
+# Tính năng 
+feature="$FEATURE"
+
+# khu vực fusion 
+Taive(){ curl -s -L -N -k -H "$User" --connect-timeout 20 "$1" -o "$2"; }
+Xem(){ curl -s -G -L -N -k -H "$User" --connect-timeout 20 "$1"; }
+XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
+ZHex(){ xxd -r -p "$@"; }
+apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
+Upenv(){ echo "$1=$2" >> $GITHUB_ENV; }
+checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không không thấy file ${1##*/}"; exit 1; ); }
+checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
+apkeditor(){ java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
+
+rsign(){
+apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
+apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null; }
+
+TaiYT(){
+urrl="https://www.apkmirror.com"
+uak1="$urrl$(Xem "$urrl/apk/$2" | grep -m1 'downloadButton' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2)"
+uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
+Taive "$uak2" "apk/$1"
+echo "Link: $uak2"
+file "apk/$1" | tee "apk/$1.txt"; }
+
+Taicli(){
+uggrl="$(curl -sLG https://api.github.com/repos/$1/releases/latest | jq -r .assets[0].browser_download_url)"
+Taive "$uggrl" "$2"
+echo "Url: $uggrl"
+file "$2"; }
+
+# Tải cli
+Taicli "$GITPCLI" "cli.jar"
+Taicli "$GITPATCH" "patch.jar"
+
+# Tùy chọn 
+[ "$AMOLED" == 'true' ] && amoled2='-Amoled'
+[ "$AMOLED" == 'true' ] || theme='-d "Theme"'
+[ "$TYPE" == 'true' ] && Mro='-d "GmsCore support"'
+
+# Xoá lib dựa vào abi
+if [ "$DEVICE" == "arm64-v8a" ];then
+lib="lib/x86/* lib/x86_64/* lib/armeabi-v7a/*"
+ach="arm64"
+elif [ "$DEVICE" == "x86" ];then
+lib="lib/x86_64/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x86"
+elif [ "$DEVICE" == "x86_64" ];then
+lib="lib/x86/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x64"
+else
+lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
+ach="arm"
+fi
+
+echo
+echo "- Kiểm tra bản YouTube mới nhất..."
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";   
+echo "  $Vidon"
+echo
+
+[ "$VERSION" == 'Auto' ] && VER="$Vidon" || VER="$VERSION"
+V="V${GITPCLI%/*}"
+Kad=$(date "+%Y-%m-%d")
+
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
+
+if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
+echo "! Là phiên bản mới nhất."
+gh run cancel $GITHUB_RUN_ID
+sleep 10
+exit 1
+fi
+
+# Tải Youtube
+apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
+apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
+TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
+wait
+
+echo
+if [ -e apk/YouTube1 ];then
+    if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
+    echo "- Apk thành apks"
+    mv apk/YouTube1 apk/YouTube.apks
+    else
+    echo "- Apk thành apk"
+    mv apk/YouTube1 apk/YouTube.apk
+    fi
+fi
+
+if [ -e apk/YouTube2 ];then
+    if [ "$(unzip -l apk/YouTube2 | grep -cm1 'base.apk')" == 1 ];then
+    echo "- Apk2 thành apks"
+    mv apk/YouTube2 apk/YouTube.apks
+    else
+    echo "- Apk2 thành apk"
+    mv apk/YouTube2 apk/YouTube.apk
+    fi
+fi
+
+if [ "$TYPE" == 'true' ];then
+lib='lib/*/*'
+    if [ -e apk/YouTube.apks ];then
+    echo "- Giải nén base.apk"
+    unzip -qo apk/YouTube.apks 'base.apk' "split_config.${DEVICE//-/_}.apk" split_config.xxhdpi.apk -d Tav
+    else
+    echo "- Giải nén Lib"
+    cp apk/YouTube.apk Tav/base.apk
+    fi
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
+fi
+
+# Copy 
+echo > $HOME/.github/Modun/common/$ach
+cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
+zip -qr apk/YouTube.apk -d $lib
+
+# Xử lý revanced patches
+if [ "$Vidon" != "$VER" ];then
+echo "- Chuyển đổi phiên bản $VER"
+unzip -qo "$lib2" -d $HOME/jar
+for vak in $(grep -Rl "$Vidon" $HOME/jar); do
+cp -rf $vak test
+XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VERSION" | XHex)/" | ZHex > $vak
+done
+cd $HOME/jar
+rm -fr $lib2
+zip -qr "$HOME/$lib2" *
+cd $HOME
+fi
+
+# MOD YouTube 
+echo "▼ Bắt đầu quá trình xây dựng..."
+echo
+
+eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+echo
+
+echo '- Quá trình xây dựng apk xong.'
+echo
+
+ls YT-temporary-files/*.apk
+cp -rf YT-temporary-files/*.apk YT2.apk
+
+# Chờ xây dựng xong
+if [ "$TYPE" == 'true' ];then
+echo "Tạo rsign..."
+echo
+mv YT.apk $HOME/Tav/YouTube.apk
+cd tmp
+zip -qr $HOME/YT2.apk *
+cd $HOME
+rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
+else
+apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
+ls Up
+exit 0
+fi
+
+cd Tav
+tar -cf - * | xz -9kz > $HOME/.github/Modun/common/lib.tar.xz
+cd $HOME
+
+# Tạo module.prop
+echo 'id=YouTube
+name=YouTube '$Kad'
+author=kakathic
+description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
+version='$VER'
+versionCode='${VER//./}'
+updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$ach$amoled2'.json
+' > $HOME/.github/Modun/module.prop
+
+# Tạo json
+echo '{
+"version": "'$VER'",
+"versionCode": "'${VER//./}'",
+"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'$V$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
+"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
+}' > Up-K$V$ach$amoled2.json
+
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
+bodys="**Note: Auto by kakathic**
+
++ Update $date
++ YouTube: $VER
+
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" 
+
+echo "$bodys"> change.txt
+Upenv BODYSS "$bodys"
+
+# Tạo module magisk
+cd $HOME/.github/Modun
+zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
+cd $HOME
+ls Up
