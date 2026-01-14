@@ -115,7 +115,7 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
-          sleep 15
+          #sleep 15
       - name: Upload File
         uses: svenstaro/upload-release-action@v2
         with:
@@ -150,7 +150,7 @@ jobs:
           [ "$TYPE" ] || TYPE="false"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
-          sleep 15
+          #sleep 15
       - name: Upload File
         uses: svenstaro/upload-release-action@v2
         with:
