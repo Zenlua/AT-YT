@@ -77,14 +77,13 @@ echo
 
 if [ "$VERSION" == 'Auto' ];then
 VER="$Vidon"
-Kad=$Vop
-V=V$Vop2
+V=V
 else
 VER="$VERSION"
-Kad=$Vop
-V=V$Vop2
+V=V
 fi
 
+Kad=$(date "+%Y-%m-%d")
 Upenv V "$V"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
