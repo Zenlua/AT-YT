@@ -95,7 +95,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: Up
+          file: ./Up/*.apk
   build3:
     name: 'Buid Amoled Root'
     runs-on: ubuntu-latest
@@ -155,5 +155,5 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: Up
+          file: ./Up/*.apk
           
