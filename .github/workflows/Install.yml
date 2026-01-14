@@ -18,14 +18,14 @@ on:
           - arm64-v8a
           - x86
           - x86_64
-      DEV:
+      CLI:
         description: 'Tool cli'
         required: false
-        default: 'Stable'
-        type: choice
-        options:
-          - Stable
-          - Develop
+        default: 'revanced/revanced-cli'
+      PATCH:
+        description: 'Tool patch'
+        required: false
+        default: 'revanced/revanced-patches'
       FEATURE:
         description: 'Turn on/off feature on: [-e "feature"], off: [-d "feature"]'
         required: false
@@ -49,7 +49,8 @@ jobs:
         env:
           VERSION: ${{ inputs.VERSION }}
           DEVICE: ${{ inputs.DEVICE }}
-          DEV: ${{ inputs.DEV }}
+          CLI: ${{ inputs.CLI }}
+          PATCH: ${{ inputs.PATCH }}
           TYPE: 'true'
           FEATURE: ${{ inputs.FEATURE }}
         run: |
