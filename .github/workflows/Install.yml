@@ -62,7 +62,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ./Up/*.*
+          file: ./Up/YT*
           body: "${{ env.BODYSS }}"
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
@@ -95,7 +95,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ./Up/*.apk
+          file: Up/YT*
   build3:
     name: 'Buid Amoled Root'
     runs-on: ubuntu-latest
@@ -121,7 +121,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ./Up/*.*
+          file: Up/YT*
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
@@ -155,5 +155,4 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ./Up/*.apk
-          
+          file: Up/YT*          
