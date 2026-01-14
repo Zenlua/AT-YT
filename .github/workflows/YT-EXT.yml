@@ -1,0 +1,177 @@
+name: YT-AT inotia00 build
+on:
+  schedule:
+    - cron: '30 23 */2 * *'
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: 'Example: 19.47.53'
+        required: false
+        default: 'Auto'
+      DEVICE:
+        description: 'Select device'
+        required: false
+        default: 'arm64-v8a'
+        type: choice
+        options:
+          - armeabi-v7a
+          - arm64-v8a
+          - x86
+          - x86_64
+      CLI:
+        description: 'Tool cli'
+        required: false
+        default: 'inotia00/revanced-cli'
+      PATCH:
+        description: 'Tool patch'
+        required: false
+        default: 'inotia00/revanced-patches'
+      FEATURE:
+        description: 'Turn on/off feature on: -e "feature", off: -d "feature"'
+        required: false
+        default: '-d "Custom branding"'
+permissions: write-all
+env:
+    GH_TOKEN: ${{ github.token }}
+    VERSION: ${{ inputs.VERSION }}
+    DEVICE: ${{ inputs.DEVICE }}
+    GITPCLI: ${{ inputs.CLI }}
+    GITPATCH: ${{ inputs.PATCH }}
+    FEATURE: ${{ inputs.FEATURE }}
+jobs:
+  build1:
+    name: 'Buid Root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
+        env:
+          TYPE: 'true'
+        run: |
+          # kakathic
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="inotia00/revanced-patches"
+          [ "$TYPE" ] || TYPE="true"
+          . .github/build.sh
+      - name: Upload File Apk
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.APK }}
+      - name: Upload File Zip
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          make_latest: true
+          body: ${{ env.BODY }}
+          file: ${{ env.ZIP }}
+      - name: Upload Json
+        uses: svenstaro/upload-release-action@v2
+        with:
+          release_name: "Update"
+          tag: Up
+          file: "${{ env.FILEJ }}"
+          overwrite: true
+          prerelease: true
+  build2:
+    name: 'Buid No-root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
+        env:
+          TYPE: 'false'
+        run: |
+          # kakathic
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="inotia00/revanced-patches"
+          [ "$TYPE" ] || TYPE="false"
+          . .github/build.sh
+      - name: Upload File
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.FILE }}
+  build3:
+    name: 'Buid Amoled Root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
+        env:
+          TYPE: 'true'
+          AMOLED: 'true'
+        run: |
+          # kakathic
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="inotia00/revanced-patches"
+          [ "$TYPE" ] || TYPE="true"
+          [ "$AMOLED" ] || AMOLED="true"
+          . .github/build.sh
+          #sleep 15
+      - name: Upload File Apk
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.APK }}
+      - name: Upload File Zip
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.ZIP }}
+      - name: Upload Json
+        uses: svenstaro/upload-release-action@v2
+        with:
+          release_name: "Update"
+          tag: Up
+          file: "${{ env.FILEJ }}"
+          overwrite: true
+          prerelease: true
+  build4:
+    name: 'Buid Amoled No-root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
+        env:
+          TYPE: 'false'
+          AMOLED: 'true'
+        run: |
+          # kakathic
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="inotia00/revanced-patches"
+          [ "$TYPE" ] || TYPE="false"
+          [ "$AMOLED" ] || AMOLED="true"
+          . .github/build.sh
+          #sleep 15
+      - name: Upload File
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.FILE }}
