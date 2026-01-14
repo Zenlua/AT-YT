@@ -43,7 +43,7 @@ jobs:
     name: 'Buid Root'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: See build
         env:
           TYPE: 'true'
@@ -73,7 +73,7 @@ jobs:
     name: 'Buid No-root'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: See build
         env:
           TYPE: 'false'
@@ -95,7 +95,7 @@ jobs:
     name: 'Buid Amoled Root'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: See build
         env:
           TYPE: 'true'
@@ -126,7 +126,7 @@ jobs:
     name: 'Buid Amoled No-root'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: See build
         env:
           TYPE: 'false'
