@@ -1,4 +1,4 @@
-name: YT-RE
+name: YT build
 on:
   schedule:
     - cron: '20 23 1/9 * *'
