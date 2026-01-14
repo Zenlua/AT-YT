@@ -27,9 +27,9 @@ on:
         required: false
         default: 'revanced/revanced-patches'
       FEATURE:
-        description: 'Turn on/off feature on: [-e "feature"], off: [-d "feature"]'
+        description: 'Turn on/off feature on: -e "feature", off: -d "feature"'
         required: false
-        default: ''
+        default: '-d "Custom branding"'
 permissions: write-all
 env:
     GH_TOKEN: ${{ github.token }}
