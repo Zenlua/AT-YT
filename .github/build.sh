@@ -1,4 +1,5 @@
 # kakathic
+set -e
 
 # Home
 HOME="$GITHUB_WORKSPACE"
@@ -12,15 +13,15 @@ User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive () { curl -s -L -N -k -H "$User" --connect-timeout 20 "$1" -o "$2"; }
-Xem () { curl -s -G -L -N -k -H "$User" --connect-timeout 20 "$1"; }
+Taive(){ curl -s -L -N -k -H "$User" --connect-timeout 20 "$1" -o "$2"; }
+Xem(){ curl -s -G -L -N -k -H "$User" --connect-timeout 20 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
-apksign () { java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
+apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
 Upenv(){ echo "$1=$2" >> $GITHUB_ENV; }
 checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không không thấy file ${1##*/}"; exit 1; ); }
 checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
-apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
+apkeditor(){ java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
@@ -47,11 +48,116 @@ Taicli "$GITPATCH" "patch.jar"
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
 TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
+wait
 
+# Tùy chọn 
+[ "$AMOLED" == 'true' ] && amoled2='-Amoled'
+[ "$AMOLED" == 'true' ] || theme='-d "Theme"'
+[ "$TYPE" == 'true' ] && Mro='-d "GmsCore support"'
 
+# Xoá lib dựa vào abi
+if [ "$DEVICE" == "arm64-v8a" ];then
+lib="lib/x86/* lib/x86_64/* lib/armeabi-v7a/*"
+ach="arm64"
+elif [ "$DEVICE" == "x86" ];then
+lib="lib/x86_64/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x86"
+elif [ "$DEVICE" == "x86_64" ];then
+lib="lib/x86/* lib/arm64-v8a/* lib/armeabi-v7a/*"
+ach="x64"
+else
+lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
+ach="arm"
+fi
 
+echo "- Kiểm tra bản YouTube mới nhất..."
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";   
+echo "  $Vidon"
+echo
 
+if [ "$VERSION" == 'Auto' ];then
+VER="$Vidon"
+Kad=$Vop
+V=V$Vop2
+else
+VER="$VERSION"
+Kad=$Vop
+V=V$Vop2
+fi
 
+Upenv V "$V"
+Upenv Kad "$Kad"
+Upenv VER "$VER"
+
+if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
+echo "! Là phiên bản mới nhất."
+gh run cancel $GITHUB_RUN_ID
+sleep 10
+exit 0
+fi
+
+echo
+if [ -e apk/YouTube1 ];then
+    if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
+    echo "- Apk thành apks"
+    mv apk/YouTube1 apk/YouTube.apks
+    else
+    echo "- Apk thành apk"
+    mv apk/YouTube1 apk/YouTube.apk
+    fi
+fi
+
+if [ -e apk/YouTube2 ];then
+    if [ "$(unzip -l apk/YouTube2 | grep -cm1 'base.apk')" == 1 ];then
+    echo "- Apk2 thành apks"
+    mv apk/YouTube2 apk/YouTube.apks
+    else
+    echo "- Apk2 thành apk"
+    mv apk/YouTube2 apk/YouTube.apk
+    fi
+fi
+
+if [ "$TYPE" == 'true' ];then
+lib='lib/*/*'
+    if [ -e apk/YouTube.apks ];then
+    echo "- Giải nén base.apk"
+    unzip -qo apk/YouTube.apks 'base.apk' "split_config.${DEVICE//-/_}.apk" split_config.xxhdpi.apk -d Tav
+    else
+    echo "- Giải nén Lib"
+    cp apk/YouTube.apk Tav/base.apk
+    fi
+unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
+fi
+
+# Copy 
+echo > $HOME/.github/Modun/common/$ach
+cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
+
+zip -qr apk/YouTube.apk -d $lib
+
+# Xử lý revanced patches
+if [ "$Vidon" != "$VER" ];then
+echo "- Chuyển đổi phiên bản $VER"
+unzip -qo "$lib2" -d $HOME/jar
+for vak in $(grep -Rl "$Vidon" $HOME/jar); do
+cp -rf $vak test
+XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VERSION" | XHex)/" | ZHex > $vak
+done
+cd $HOME/jar
+rm -fr $lib2
+zip -qr "$HOME/$lib2" *
+cd $HOME
+fi
+
+# MOD YouTube 
+echo "▼ Bắt đầu quá trình xây dựng..."
+echo
+eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+echo '- Quá trình xây dựng apk xong.'
+echo
+
+ls YT-temporary-files/*.apk
+cp -rf YT-temporary-files/*.apk YT2.apk
 
 
 
