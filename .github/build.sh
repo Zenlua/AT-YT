@@ -221,3 +221,9 @@ find Up/* -type f
 Upenv FILE "$(find Up/* -type f)"
 Upenv FILEJ "Up-K$V$ach$amoled2.json"
 
+r="$(find Up/* -type f)"
+r="${r//'%'/'%25'}"
+r="${r//$'\n'/'%0A'}"
+r="${r//$'\r'/'%0D'}"
+echo "FILE=$r" >> $GITHUB_OUTPUT
+
