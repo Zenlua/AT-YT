@@ -178,6 +178,37 @@ cd Tav
 tar -cf - * | xz -9kz > $HOME/.github/Modun/common/lib.tar.xz
 cd $HOME
 
+# Tạo module.prop
+echo 'id=YouTube
+name=YouTube '$Kad'
+author=kakathic
+description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
+version='$VER'
+versionCode='${VER//./}'
+updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$ach$amoled2'.json
+' > $HOME/.github/Modun/module.prop
+
+# Tạo json
+echo '{
+"version": "'$VER'",
+"versionCode": "'${VER//./}'",
+"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'$V$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
+"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
+}' > Up-K$V$ach$amoled2.json
+
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
+echo "**Note: Auto by kakathic**
+
++ Update $date
++ YouTube: $VER
+
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" > change.txt
+
+# Tạo module magisk
+cd $HOME/.github/Modun
+zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
+cd $HOME
+ls Up
 
 
 
