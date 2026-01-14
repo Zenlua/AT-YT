@@ -85,6 +85,7 @@ jobs:
           [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="false"
           . .github/build.sh
+          sleep 5
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
@@ -109,6 +110,7 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
+          sleep 5
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
