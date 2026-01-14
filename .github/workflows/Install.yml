@@ -56,18 +56,21 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           . .github/build.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag_name: "K${{ env.V }}${{ env.VER }}"
-          files: Up/*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: Up/*
           body_path: "change.txt"
       - name: Upload Json
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "Update"
-          tag_name: "Up"
-          files: Up*.json
+          asset_name: "Update"
+          tag: "Up"
+          file: Up*.json
+          overwrite: true
           prerelease: true
   build2:
     name: 'Buid No-root'
@@ -86,11 +89,13 @@ jobs:
           [ "$TYPE" ] || TYPE="false"
           . .github/build.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag_name: "K${{ env.V }}${{ env.VER }}"
-          files: Up/*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: Up/*
   build3:
     name: 'Buid Amoled Root'
     runs-on: ubuntu-latest
@@ -110,17 +115,20 @@ jobs:
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag_name: "K${{ env.V }}${{ env.VER }}"
-          files: Up/*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: Up/*
       - name: Upload Json
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "Update"
-          tag_name: "Up"
-          files: Up*.json
+          asset_name: "Update"
+          tag: "Up"
+          file: Up*.json
+          overwrite: true
           prerelease: true
   build4:
     name: 'Buid Amoled No-root'
@@ -141,8 +149,10 @@ jobs:
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
       - name: Upload File
-        uses: softprops/action-gh-release@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag_name: "K${{ env.V }}${{ env.VER }}"
-          files: Up/*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: Up/*
