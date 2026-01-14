@@ -86,7 +86,7 @@ Upenv V "$V"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
 
-if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
+if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
 gh run cancel $GITHUB_RUN_ID
 sleep 10
@@ -140,13 +140,13 @@ zip -qr apk/YouTube.apk -d $lib
 # Xử lý revanced patches
 if [ "$Vidon" != "$VER" ];then
 echo "- Chuyển đổi phiên bản $VER"
-unzip -qo "$lib2" -d $HOME/jar
+unzip -qo "patch.jar" -d $HOME/jar
 for vak in $(grep -Rl "$Vidon" $HOME/jar); do
 cp -rf $vak test
 XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VERSION" | XHex)/" | ZHex > $vak
 done
 cd $HOME/jar
-rm -fr $lib2
+rm -fr patch.jar
 zip -qr "$HOME/$lib2" *
 cd $HOME
 fi
