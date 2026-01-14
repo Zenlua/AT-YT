@@ -109,7 +109,6 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
-          sleep 16
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
@@ -141,7 +140,6 @@ jobs:
           [ "$TYPE" ] || TYPE="false"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
-          sleep 16
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
