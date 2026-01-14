@@ -12,8 +12,8 @@ User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive(){ curl -s -L -N -k -H "$User" --connect-timeout 20 "$1" -o "$2"; }
-Xem(){ curl -s -G -L -N -k -H "$User" --connect-timeout 20 "$1"; }
+Taive(){ curl -s -L -H "$User" --connect-timeout 50 "$1" -o "$2"; }
+Xem(){ curl -s -G -L -H "$User" --connect-timeout 50 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
 apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
