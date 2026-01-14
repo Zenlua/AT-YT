@@ -62,8 +62,9 @@ jobs:
           release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
+          make_latest: true
           file: "${{ env.FILE }}"
-          body: "${{ env.BODYSS }}"
+          body: ${{ steps.read_release.outputs.RELEASE_BODY }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
