@@ -1,4 +1,4 @@
-name: YT-AT build
+name: YT-AT revanced build
 on:
   schedule:
     - cron: '30 23 */2 * *'
