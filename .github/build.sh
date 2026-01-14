@@ -75,15 +75,10 @@ Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com
 echo "  $Vidon"
 echo
 
-if [ "$VERSION" == 'Auto' ];then
-VER="$Vidon"
+[ "$VERSION" == 'Auto' ] && VER="$Vidon" || VER="$VERSION"
 V=V
-else
-VER="$VERSION"
-V=V
-fi
-
 Kad=$(date "+%Y-%m-%d")
+
 Upenv V "$V"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
