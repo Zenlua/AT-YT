@@ -202,7 +202,7 @@ bodys="**Note: Auto by kakathic**
 + ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" 
 
 echo "$bodys"> change.txt
-Upenv BODYSS "$bodys"
+echo "BODYSS=$(echo "$bodys" | sed -z 's|\n|\\n|g')"  >> $GITHUB_ENV
 
 # Tạo module magisk
 cd $HOME/.github/Modun
