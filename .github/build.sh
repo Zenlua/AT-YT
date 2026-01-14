@@ -168,7 +168,7 @@ rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* type -f
-Upenv FILE "$(find Up/* type -f)"
+Upenv FILE "$(find Up/* -type f)"
 exit 0
 fi
 
@@ -210,6 +210,6 @@ cd $HOME/.github/Modun
 zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
 cd $HOME
 find Up/* type -f
-Upenv FILE "$(find Up/* type -f)"
+Upenv FILE "$(find Up/* -type f)"
 Upenv FILEJ "Up-K$V$ach$amoled2.json"
 
