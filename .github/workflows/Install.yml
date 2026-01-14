@@ -55,7 +55,15 @@ jobs:
           [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="true"
           . .github/build.sh
-      - name: Upload File
+      - name: Upload File Apk
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.APK }}
+      - name: Upload File Zip
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,9 +72,7 @@ jobs:
           overwrite: true
           make_latest: true
           body: ${{ env.BODY }}
-          file: |
-               ${{ env.ZIP }}
-               ${{ env.APK }}
+          file: ${{ env.ZIP }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
@@ -118,16 +124,22 @@ jobs:
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
           #sleep 15
-      - name: Upload File
+      - name: Upload File Apk
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: |
-               ${{ env.ZIP }}
-               ${{ env.APK }}
+          file: ${{ env.APK }}
+      - name: Upload File Zip
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
+          tag: "K${{ env.V }}${{ env.VER }}"
+          overwrite: true
+          file: ${{ env.ZIP }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
@@ -162,4 +174,4 @@ jobs:
           release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ${{ env.FILE }}          
+          file: ${{ env.FILE }}
