@@ -63,7 +63,7 @@ jobs:
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
           make_latest: true
-          file: ${{ steps.read_release.outputs.FILE }}
+          files: Up/*
           body: ${{ steps.read_release.outputs.RELEASE_BODY }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
