@@ -1,13 +1,7 @@
 # kakathic
 
-sudo rm -rf /usr/share/dotnet &
-sudo rm -rf /opt/ghc &
-sudo rm -rf /usr/local/share/boost &
-
+# Home
 HOME="$GITHUB_WORKSPACE"
-#sudo apt install zipalign bash &>/dev/null
-cd $HOME
-
 date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
 
 # Tạo thư mục
@@ -30,35 +24,4 @@ apkeditor () { java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
-apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null
-}
-
-Loading(){
-while true; do
-if [ -e "$1" ] && [ -e "$2" ];then
-echo "FILE:  OK"
-break
-else
-sleep 1
-gfdgv=$(($gfdgv + 1))
-if [ "$gfdgv" -ge 200 ];then
-echo "- Quá thời gian cho phép, vì $1 $2...";
-break
-fi
-fi
-done; }
-
-checklog(){
-while true; do
-if [ "$(grep -cm1 "$1" "$2")" == 1 ];then
-echo "Đã tìm thấy:  $1"
-break
-else
-sleep 1
-gfdgv=$(($gfdgv + 1))
-if [ "$gfdgv" -ge 100 ];then
-echo "- Quá thời gian cho phép, sẽ tự bỏ qua...";
-break
-fi
-fi
-done; }
+apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null; }
