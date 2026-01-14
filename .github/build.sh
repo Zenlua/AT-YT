@@ -168,6 +168,7 @@ rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 ls Up
+Upenv FILE "UP/$(ls UP)"
 exit 0
 fi
 
