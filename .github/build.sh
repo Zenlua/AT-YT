@@ -79,7 +79,7 @@ echo "  $Vidon"
 echo
 
 [ "$VERSION" == 'Auto' ] && VER="$Vidon" || VER="$VERSION"
-V="V${GITPCLI%/*}"
+V="${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
 
 Upenv V "$V"
@@ -198,7 +198,7 @@ updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$
 echo '{
 "version": "'$VER'",
 "versionCode": "'${VER//./}'",
-"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'$V$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
+"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'-$V-$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
 }' > Up-K$V$ach$amoled2.json
 
