@@ -62,7 +62,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: ./Up/YT*
+          file: "${{ env.FILE }}"
           body: "${{ env.BODYSS }}"
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
@@ -114,6 +114,7 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
+          sleep 10
       - name: Upload File
         uses: svenstaro/upload-release-action@v2
         with:
@@ -121,7 +122,7 @@ jobs:
           asset_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: Up/YT*
+          file: "${{ env.FILE }}"
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
@@ -148,6 +149,7 @@ jobs:
           [ "$TYPE" ] || TYPE="false"
           [ "$AMOLED" ] || AMOLED="true"
           . .github/build.sh
+          sleep 10
       - name: Upload File
         uses: svenstaro/upload-release-action@v2
         with:
