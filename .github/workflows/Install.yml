@@ -69,7 +69,7 @@ jobs:
         with:
           asset_name: "Update"
           tag: Up
-          file: ./Up*.json
+          file: "${{ env.FILEJ }}"
           overwrite: true
           prerelease: true
   build2:
@@ -128,7 +128,7 @@ jobs:
         with:
           asset_name: "Update"
           tag: Up
-          file: ./Up*.json
+          file: "${{ env.FILEJ }}"
           overwrite: true
           prerelease: true
   build4:
