@@ -33,34 +33,28 @@ on:
 permissions: write-all
 env:
     GH_TOKEN: ${{ github.token }}
+    VERSION: ${{ inputs.VERSION }}
+    DEVICE: ${{ inputs.DEVICE }}
+    GITPCLI: ${{ inputs.CLI }}
+    GITPATCH: ${{ inputs.PATCH }}
+    FEATURE: ${{ inputs.FEATURE }}
 jobs:
   build1:
     name: 'Buid Root'
-    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'zulu'
       - name: See build
         env:
-          VERSION: ${{ inputs.VERSION }}
-          DEVICE: ${{ inputs.DEVICE }}
-          CLI: ${{ inputs.CLI }}
-          PATCH: ${{ inputs.PATCH }}
           TYPE: 'true'
-          FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
-          [ "$VERSION" ] || VERSION="Autu"
+          [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$DEV" ] || DEV="Stable"
+          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="true"
-          . .github/install.sh
-          . .github/YT.sh
+          . .github/build.sh
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
@@ -77,30 +71,20 @@ jobs:
           prerelease: true
   build2:
     name: 'Buid No-root'
-    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'zulu'
       - name: See build
         env:
-          VERSION: ${{ inputs.VERSION }}
-          DEVICE: ${{ inputs.DEVICE }}
-          DEV: ${{ inputs.DEV }}
           TYPE: 'false'
-          FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
-          [ "$VERSION" ] || VERSION="Autu"
+          [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$DEV" ] || DEV="Stable"
+          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="false"
-          . .github/install.sh
-          . .github/YT.sh
+          . .github/build.sh
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
@@ -109,33 +93,22 @@ jobs:
           files: Up/*
   build3:
     name: 'Buid Amoled Root'
-    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'zulu'
       - name: See build
         env:
-          VERSION: ${{ inputs.VERSION }}
-          DEVICE: ${{ inputs.DEVICE }}
-          DEV: ${{ inputs.DEV }}
           TYPE: 'true'
           AMOLED: 'true'
-          FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
-          [ "$VERSION" ] || VERSION="Autu"
+          [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$DEV" ] || DEV="Stable"
+          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="true"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 15
-          . .github/install.sh
-          . .github/YT.sh
+          . .github/build.sh
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
@@ -151,37 +124,25 @@ jobs:
           prerelease: true
   build4:
     name: 'Buid Amoled No-root'
-    if: github.repository == 'Zenlua/AT-YT' && github.ref == 'refs/heads/Vip'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'zulu'
       - name: See build
         env:
-          VERSION: ${{ inputs.VERSION }}
-          DEVICE: ${{ inputs.DEVICE }}
-          DEV: ${{ inputs.DEV }}
           TYPE: 'false'
           AMOLED: 'true'
-          FEATURE: ${{ inputs.FEATURE }}
         run: |
           # kakathic
-          [ "$VERSION" ] || VERSION="Autu"
+          [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
-          [ "$DEV" ] || DEV="Stable"
+          [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
+          [ "$GITPATCH" ] || GITPATCH="revanced/revanced-patches"
           [ "$TYPE" ] || TYPE="false"
           [ "$AMOLED" ] || AMOLED="true"
-          sleep 15
-          . .github/install.sh
-          . .github/YT.sh
+          . .github/build.sh
       - name: Upload File
         uses: softprops/action-gh-release@v2
         with:
           name: "YT-RE ${{ env.VER }} ${{ env.Kad }}"
           tag_name: "K${{ env.V }}${{ env.VER }}"
           files: Up/*
-          
