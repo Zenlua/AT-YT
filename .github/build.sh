@@ -22,6 +22,14 @@ checkfile(){ [ -e "$1" ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi không 
 checkzip(){ [ "$(file $1 | grep -cm1 'Zip')" == 1 ] && echo "FILE:  OK ${1##*/}" || ( echo "- Lỗi file ${1##*/}"; exit 1; ); }
 apkeditor(){ java -jar $HOME/.github/Tools/APKEditor-1.4.3.jar "$@"; }
 
+Upout(){
+r=$(cat $1)
+r="${r//'%'/'%25'}"
+r="${r//$'\n'/'%0A'}"
+r="${r//$'\r'/'%0D'}"
+echo "RELEASE_BODY=$r" >> $GITHUB_OUTPUT
+}
+
 rsign(){
 apkeditor d -t sig -i "$1" -sig "tmp/signatures_dir" &>/dev/null
 apkeditor b -t sig -i "$2" -sig "tmp/signatures_dir" -o "$3" &>/dev/null; }
@@ -195,15 +203,14 @@ echo '{
 }' > Up-K$V$ach$amoled2.json
 
 echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
-bodys="**Note: Auto by kakathic**
+echo "**Note: Auto by kakathic**
 
 + Update $date
 + YouTube: $VER
 
-+ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" 
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K$V$VER/total?label=Download&color=%230072F4)" > change.txt
 
-echo "$bodys"> change.txt
-echo "BODYSS=$(echo "$bodys" | sed -z 's|\n|\\n|g')"  >> $GITHUB_ENV
+Upout change.txt
 
 # Tạo module magisk
 cd $HOME/.github/Modun
