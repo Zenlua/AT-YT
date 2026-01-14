@@ -63,7 +63,7 @@ jobs:
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
           make_latest: true
-          file: "${{ env.FILE }}"
+          file: ${{ steps.read_release.outputs.FILE }}
           body: ${{ steps.read_release.outputs.RELEASE_BODY }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
@@ -123,7 +123,7 @@ jobs:
           release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
-          file: "${{ env.FILE }}"
+          file: ${{ steps.read_release.outputs.FILE }}
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
