@@ -211,3 +211,5 @@ zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
 cd $HOME
 find Up/* type -f
 Upenv FILE "$(find Up/* type -f)"
+Upenv FILEJ "Up-K$V$ach$amoled2.json"
+
