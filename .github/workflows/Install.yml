@@ -63,7 +63,7 @@ jobs:
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
           file: Up
-          body_path: "change.txt"
+          body: "${{ env.BODYSS }}"
       - name: Upload Json
         uses: svenstaro/upload-release-action@v2
         with:
@@ -156,3 +156,4 @@ jobs:
           tag: "K${{ env.V }}${{ env.VER }}"
           overwrite: true
           file: Up
+          
