@@ -65,13 +65,14 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
+echo
 echo "- Kiểm tra bản YouTube mới nhất..."
 Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";   
 echo "  $Vidon"
 echo
 
 [ "$VERSION" == 'Auto' ] && VER="$Vidon" || VER="$VERSION"
-V=V
+V="V${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
 
 Upenv V "$V"
@@ -82,7 +83,7 @@ if [[ "$VERSION" == 'Autu' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY
 echo "! Là phiên bản mới nhất."
 gh run cancel $GITHUB_RUN_ID
 sleep 10
-exit 0
+exit 1
 fi
 
 # Tải Youtube
@@ -146,7 +147,10 @@ fi
 # MOD YouTube 
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
+
 eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+echo
+
 echo '- Quá trình xây dựng apk xong.'
 echo
 
