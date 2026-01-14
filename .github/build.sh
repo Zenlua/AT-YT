@@ -38,17 +38,12 @@ file "apk/$1" | tee "apk/$1.txt"; }
 Taicli(){
 uggrl="$(curl -sLG https://api.github.com/repos/$1/releases/latest | jq -r .assets[0].browser_download_url)"
 Taive "$uggrl" "$2"
-echo "Url: $uggrl"; }
+echo "Url: $uggrl"
+file "$2"; }
 
 # Tải cli
 Taicli "$GITPCLI" "cli.jar"
 Taicli "$GITPATCH" "patch.jar"
-
-# Tải Youtube
-apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
-apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
-TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
-wait
 
 # Tùy chọn 
 [ "$AMOLED" == 'true' ] && amoled2='-Amoled'
@@ -90,6 +85,12 @@ sleep 10
 exit 0
 fi
 
+# Tải Youtube
+apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
+apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
+TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
+wait
+
 echo
 if [ -e apk/YouTube1 ];then
     if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
@@ -126,7 +127,6 @@ fi
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
-
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
