@@ -197,7 +197,7 @@ jobs:
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
              -d chat_id="$TG_ID_TOOLTREE" \
              -d parse_mode="Markdown" \
-             -d text="Auto build tool Youtube 
+             -d text="Auto build Youtube tool
              
              • Mod: ${GITPATCH%/*}
              • version: $VER
