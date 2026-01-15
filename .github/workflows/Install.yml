@@ -185,5 +185,5 @@ jobs:
         uses: cbrgm/telegram-github-action@v1
         with:
           token: ${{ secrets.TG_TOKEN }}
-          to: tool_tree
+          to: "@tool_tree"
           message: "New commit pushed to repository"
