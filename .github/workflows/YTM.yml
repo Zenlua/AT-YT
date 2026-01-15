@@ -85,6 +85,14 @@ jobs:
           file: "${{ env.FILEJ }}"
           overwrite: true
           prerelease: true
+      - name: Upload Notes
+        uses: svenstaro/upload-release-action@v2
+        with:
+          release_name: "Update"
+          tag: Up
+          file: "${{ env.FILEN }}"
+          overwrite: true
+          prerelease: true
   build2:
     name: 'Buid No-root'
     runs-on: ubuntu-latest
@@ -150,6 +158,14 @@ jobs:
           release_name: "Update"
           tag: Up
           file: "${{ env.FILEJ }}"
+          overwrite: true
+          prerelease: true
+      - name: Upload Notes
+        uses: svenstaro/upload-release-action@v2
+        with:
+          release_name: "Update"
+          tag: Up
+          file: "${{ env.FILEN }}"
           overwrite: true
           prerelease: true
   build4:
