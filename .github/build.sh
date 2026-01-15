@@ -224,5 +224,5 @@ Upenv ZIP "$(find Up/*.zip -type f)"
 
 echo "Vs=$V" >> $GITHUB_OUTPUT
 echo "VERs=$VER" >> $GITHUB_OUTPUT
-echo "Kads=$date" >> $GITHUB_OUTPUT
+echo "Kads=$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d GMT%Z")" >> $GITHUB_OUTPUT
 
