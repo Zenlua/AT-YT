@@ -77,7 +77,7 @@ fi
 
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
-Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";   
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
 echo "  $Vidon"
 echo
 
@@ -89,19 +89,13 @@ Upenv V "${V^}"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
 
-if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
+if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K$V$ach$amoled2.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
 sleep 5
 gh run cancel $GITHUB_RUN_ID
 sleep 5
 exit 1
 fi
-
-echo "Check:$VERSION "
-echo
-Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json
-echo "https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json"
-exit 1
 
 # Tải Youtube
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
@@ -201,7 +195,7 @@ author=kakathic
 description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
 versionCode='${VER//./}'
-updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V$ach$amoled2'.json
+updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/K'$V$ach$amoled2'.json
 ' > $HOME/.github/Modun/module.prop
 
 # Tạo json
@@ -209,10 +203,10 @@ echo '{
 "version": "'$VER'",
 "versionCode": "'${VER//./}'",
 "zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'-$V-$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
-"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/Up-K'$V'notes.json"
-}' > Up-K$V$ach$amoled2.json
+"changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/K'${V}'notes.json"
+}' > K$V$ach$amoled2.json
 
-echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > Up-K${V}notes.json
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > K${V}notes.json
 echo "**Note: Auto by kakathic**
 
 + Update $date
@@ -228,7 +222,8 @@ zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
 cd $HOME
 
 find Up/* -type f
-Upenv FILEJ "Up-K$V$ach$amoled2.json"
+Upenv FILEJ "K$V$ach$amoled2.json"
+Upenv FILEN "K${V}notes.json"
 Upenv APK "$(find Up/*.apk -type f)"
 Upenv ZIP "$(find Up/*.zip -type f)"
 
