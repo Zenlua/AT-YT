@@ -42,6 +42,10 @@ jobs:
   build1:
     name: 'Buid Root'
     runs-on: ubuntu-latest
+    outputs:
+         VER: ${{ steps.set_version.outputs.VER }}
+         Kad: ${{ steps.set_version.outputs.Kad }}
+         V: ${{ steps.set_version.outputs.V }}
     steps:
       - uses: actions/checkout@v6
       - name: See build
@@ -186,9 +190,9 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             VER: ${{ steps.set_version.outputs.VER }}
-             K: ${{ steps.set_version.outputs.Kad }}"
-             V: ${{ steps.set_version.outputs.V }}
+             VER: ${{ needs.build1.outputs.VER }}
+             K: ${{ needs.build1.outputs.Kad }}"
+             V: ${{ needs.build1.outputs.V }}
         run: |
              # Kakathic
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
