@@ -47,6 +47,7 @@ jobs:
       - name: See build
         env:
           TYPE: 'true'
+        id: set_version
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
@@ -185,9 +186,9 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             VER: ${{ needs.build1.outputs.VER2 }}
-             K: ${{ needs.build1.outputs.Kad2 }}"
-             V: ${{ needs.build1.outputs.V2 }}
+             VER: ${{ steps.set_version.outputs.VER }}
+             K: ${{ steps.set_version.outputs.Kad }}"
+             V: ${{ steps.set_version.outputs.V }}
         run: |
              # Kakathic
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
