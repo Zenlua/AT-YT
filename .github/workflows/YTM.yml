@@ -42,9 +42,13 @@ jobs:
   build1:
     name: 'Buid Root'
     runs-on: ubuntu-latest
+    outputs:
+         VER: ${{ steps.set_version.outputs.VERs }}
+         V: ${{ steps.set_version.outputs.Vs }}
     steps:
       - uses: actions/checkout@v6
       - name: See build
+        id: set_version
         env:
           TYPE: 'true'
         run: |
@@ -185,12 +189,11 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             VER: ${{ needs.build1.outputs.VERSION }}
+             VER: ${{ needs.build1.outputs.VER }}
+             K: ${{ needs.build1.outputs.Kad }}"
              V: ${{ needs.build1.outputs.V }}
         run: |
              # Kakathic
-             date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
-             
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
              -d chat_id="$TG_ID_TOOLTREE" \
              -d parse_mode="Markdown" \
@@ -198,6 +201,6 @@ jobs:
              
              • Mod: ${GITPATCH%/*}
              • version: $VER
-             • Update: $date
              
              Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER"
+             
