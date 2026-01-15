@@ -185,7 +185,8 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             VER: ${{ env.VER }}
+             VER: ${{ needs.build1.outputs.VERSION }}
+             V: ${{ needs.build1.outputs.V }}
         run: |
              # Kakathic
              date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
@@ -198,7 +199,8 @@ jobs:
              • Mod: ${GITPATCH%/*}
              • version: $VER
              • Update: $date
-             \nLink: https://github.com/Zenlua/AT-YT/releases"
+             
+             Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER"
 
 
         
