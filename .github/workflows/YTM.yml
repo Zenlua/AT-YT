@@ -175,3 +175,29 @@ jobs:
           tag: "K-${{ env.V }}-${{ env.VER }}"
           overwrite: true
           file: ${{ env.FILE }}
+  notify:
+    name: 'Telegram'
+    needs: [build1, build2, build3, build4]
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Send Telegram Message
+        env:
+             TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
+             TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
+             VER: ${{ needs.build1.outputs.VERSION }}
+             V: ${{ needs.build1.outputs.V }}
+        run: |
+             # Kakathic
+             date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
+             
+             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
+             -d chat_id="$TG_ID_TOOLTREE" \
+             -d parse_mode="Markdown" \
+             -d text="Auto build tool Youtube 
+             
+             • Mod: ${GITPATCH%/*}
+             • version: $VER
+             • Update: $date
+             
+             Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER"
