@@ -210,7 +210,6 @@ jobs:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
              VER: ${{ needs.build1.outputs.VER }}
-             K: ${{ needs.build1.outputs.Kad }}"
              V: ${{ needs.build1.outputs.V }}
         run: |
              # Kakathic
