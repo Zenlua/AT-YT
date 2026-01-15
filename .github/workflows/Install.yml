@@ -198,8 +198,7 @@ jobs:
              • Mod: ${GITPATCH%/*}
              • version: $VER
              • Update: $date
-             
-             Link: https://github.com/Zenlua/AT-YT/releases"
+             \nLink: https://github.com/Zenlua/AT-YT/releases"
 
 
         
