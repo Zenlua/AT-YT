@@ -186,10 +186,15 @@ jobs:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
         run: |
+             # Kakathic
+             date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
+             
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
              -d chat_id="$TG_ID_TOOLTREE" \
              -d parse_mode="Markdown" \
-             -d text="test"
+             -d text="Auto build Youtube mod ${GITPATCH%/*}
+             + Update: $date
+             + Link: https://github.com/Zenlua/AT-YT/releases"
 
 
         
