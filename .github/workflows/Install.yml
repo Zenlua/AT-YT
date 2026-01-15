@@ -176,14 +176,22 @@ jobs:
           overwrite: true
           file: ${{ env.FILE }}
   notify:
-    name: 'Report to Telegram'
+    name: 'Telegram'
     needs: [build1, build2, build3, build4]
     runs-on: ubuntu-latest
     if: success()
     steps:
       - name: Send Telegram Message
-        uses: cbrgm/telegram-github-action@v1
-        with:
-          token: ${{ secrets.TG_TOKEN }}
-          to: "@tool_tree"
-          message: "New commit pushed to repository"
+        env:
+             TG_TOKEN: ${{ secrets.TG_TOKEN }}
+        run: |
+             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN/sendMessage" \
+             -d chat_id="@tool_tree" \
+             -d parse_mode="Markdown" \
+             -d text="test"
+
+
+
+
+
+            
