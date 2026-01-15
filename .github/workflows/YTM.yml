@@ -1,4 +1,4 @@
-name: YT-AT Revanced
+name: YT-AT MorpheApp
 on:
   schedule:
     - cron: '30 23 */2 * *'
