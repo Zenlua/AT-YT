@@ -55,7 +55,7 @@ ui_print2 "Turn off update"
 ui_print
 offCH
 
-[ "$(Getp author)" == 'kakathic' ] || abort "Copyright infringement"
+[ "$(Getp author)" == "$(echo -n 'a2FrYXRoaWM=' | base64 -d)" ] || abort "Copyright infringement"
 if [ -z "$(pm path com.google.android.youtube)" ];then
 ui_print2 "Failure"
 ui_print
