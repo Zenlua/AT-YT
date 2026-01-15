@@ -185,12 +185,11 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             BODYS: ${{ env.BODY }}
         run: |
              curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
              -d chat_id="$TG_ID_TOOLTREE" \
              -d parse_mode="Markdown" \
-             -d text="$BODYS"
+             -d text="test"
 
 
         
