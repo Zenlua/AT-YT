@@ -80,8 +80,9 @@ echo
 
 if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
+sleep 5
 gh run cancel $GITHUB_RUN_ID
-sleep 10
+sleep 5
 exit 1
 fi
 
