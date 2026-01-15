@@ -89,7 +89,7 @@ fi
 V="${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
 
-Upenv V "$V"
+Upenv V "${V^}"
 Upenv Kad "$Kad"
 Upenv VER "$VER"
 
