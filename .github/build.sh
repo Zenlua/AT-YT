@@ -97,6 +97,12 @@ sleep 5
 exit 1
 fi
 
+echo "Check:$VERSION "
+echo
+Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json
+echo "https://github.com/$GITHUB_REPOSITORY/releases/download/Up/Up-K${V}notes.json"
+exit 1
+
 # Tải Youtube
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
