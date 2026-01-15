@@ -222,5 +222,7 @@ Upenv FILEJ "Up-K$V$ach$amoled2.json"
 Upenv APK "$(find Up/*.apk -type f)"
 Upenv ZIP "$(find Up/*.zip -type f)"
 
-
+echo "Vs=$V" >> $GITHUB_OUTPUT
+echo "VERs=$VER" >> $GITHUB_OUTPUT
+echo "Kads=$date" >> $GITHUB_OUTPUT
 
