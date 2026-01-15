@@ -44,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
          VER: ${{ steps.set_version.outputs.VERs }}
-         Kad: ${{ steps.set_version.outputs.Kads }}
          V: ${{ steps.set_version.outputs.Vs }}
     steps:
       - uses: actions/checkout@v6
@@ -202,7 +201,6 @@ jobs:
              
              • Mod: ${GITPATCH%/*}
              • version: $VER
-             • Date: $K
              
              Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER"
 
