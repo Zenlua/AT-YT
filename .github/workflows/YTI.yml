@@ -1,4 +1,4 @@
-name: YT-AT inotia00 build
+name: YT-AT Inotia00 build
 on:
   schedule:
     - cron: '30 23 */2 * *'
