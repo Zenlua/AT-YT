@@ -182,13 +182,11 @@ jobs:
     if: success()
     steps:
       - name: Send Telegram Message
+        uses: cbrgm/telegram-github-action@v1
         env:
-             TG_TOKEN: ${{ secrets.TG_TOKEN }}
-        run: |
-             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN/sendMessage" \
-             -d chat_id="-1002051130163" \
-             -d parse_mode="Markdown" \
-             -d text="test"
-
-
-             
+              TELEGRAM_TOKEN: 8221070675:AAHl1w1mA-LcHhM_7FqRpSVf0HqSkPuM5B8
+              TELEGRAM_CHAT_ID: -1002051130163
+        with:
+          token: ${{ env.TELEGRAM_TOKEN }}
+          to: ${{ env.TELEGRAM_CHAT_ID }}
+          message: "New commit pushed to repository"
