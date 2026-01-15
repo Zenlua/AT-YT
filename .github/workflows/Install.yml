@@ -43,9 +43,9 @@ jobs:
     name: 'Buid Root'
     runs-on: ubuntu-latest
     outputs:
-         VER: ${{ steps.set_version.outputs.VER }}
-         Kad: ${{ steps.set_version.outputs.Kad }}
-         V: ${{ steps.set_version.outputs.V }}
+         VER: ${{ steps.set_version.outputs.VERs }}
+         Kad: ${{ steps.set_version.outputs.Kads }}
+         V: ${{ steps.set_version.outputs.Vs }}
     steps:
       - uses: actions/checkout@v6
       - name: See build
