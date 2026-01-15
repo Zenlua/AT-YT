@@ -186,4 +186,4 @@ jobs:
         with:
           token: ${{ secrets.TG_TOKEN_TOOLTREE }}
           to: ${{ secrets.TG_ID_TOOLTREE }}
-          message: "New commit pushed to repository"
+          message: ${{ env.BODY }}
