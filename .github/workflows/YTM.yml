@@ -209,19 +209,25 @@ jobs:
         env:
              TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
              TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
+             TG_ID_K20PVN: ${{ secrets.TG_ID_K20PVN }}
              VER: ${{ needs.build1.outputs.VER }}
-             K: ${{ needs.build1.outputs.Kad }}"
              V: ${{ needs.build1.outputs.V }}
         run: |
              # Kakathic
-             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
-             -d chat_id="$TG_ID_TOOLTREE" \
-             -d parse_mode="Markdown" \
-             -d text="Auto build Youtube tool
+             chat_tg="Auto build Youtube tool
              
              • Mod: ${GITPATCH%/*}
              • version: $VER
              
              Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER)"
+             
+             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
+             -d chat_id="$TG_ID_TOOLTREE" \
+             -d parse_mode="Markdown" \
+             -d text="$chat_tg"
 
+             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
+             -d chat_id="$TG_ID_K20PVN" \
+             -d parse_mode="Markdown" \
+             -d text="$chat_tg"
 
