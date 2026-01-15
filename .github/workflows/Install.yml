@@ -183,10 +183,7 @@ jobs:
     steps:
       - name: Send Telegram Message
         uses: cbrgm/telegram-github-action@v1
-        env:
-              TELEGRAM_TOKEN: 8221070675:AAHl1w1mA-LcHhM_7FqRpSVf0HqSkPuM5B8
-              TELEGRAM_CHAT_ID: -1002051130163
         with:
-          token: ${{ env.TELEGRAM_TOKEN }}
-          to: ${{ env.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TG_TOKEN_TOOLTREE }}
+          to: ${{ secrets.TG_ID_TOOLTREE }}
           message: "New commit pushed to repository"
