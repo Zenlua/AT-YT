@@ -187,7 +187,7 @@ cd $HOME
 
 # Tạo module.prop
 echo 'id=YouTube
-name=YouTube '$Kad'
+name=YouTube '$V'
 author=kakathic
 description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
