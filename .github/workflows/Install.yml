@@ -50,6 +50,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
+          UPTG=true
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="revanced/revanced-cli"
