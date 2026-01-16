@@ -262,7 +262,7 @@ echo "Telegram"
 chat_tg="Auto build Youtube tool
 
 • Mod by: ${GITPATCH%/*}
-• version: $VER
+• Version: $VER
 
 Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)"
 
