@@ -38,19 +38,18 @@ env:
     GITPCLI: ${{ inputs.CLI }}
     GITPATCH: ${{ inputs.PATCH }}
     FEATURE: ${{ inputs.FEATURE }}
+    TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
+    TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
+    TG_ID_K20PVN: ${{ secrets.TG_ID_K20PVN }}
 jobs:
   build1:
     name: 'Buid Root'
     runs-on: ubuntu-latest
-    outputs:
-         VER: ${{ steps.set_version.outputs.VERs }}
-         V: ${{ steps.set_version.outputs.Vs }}
     steps:
       - uses: actions/checkout@v6
       - name: See build
         env:
           TYPE: 'true'
-        id: set_version
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
@@ -60,40 +59,6 @@ jobs:
           [ "$TYPE" ] || TYPE="true"
           [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
           . .github/build.sh
-      - name: Upload File Apk
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          file: ${{ env.APK }}
-      - name: Upload File Zip
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          make_latest: true
-          body: ${{ env.BODY }}
-          file: ${{ env.ZIP }}
-      - name: Upload Json
-        uses: svenstaro/upload-release-action@v2
-        with:
-          release_name: "Update"
-          tag: Up
-          file: "${{ env.FILEJ }}"
-          overwrite: true
-          prerelease: true
-      - name: Upload Notes
-        uses: svenstaro/upload-release-action@v2
-        with:
-          release_name: "Update"
-          tag: Up
-          file: "${{ env.FILEN }}"
-          overwrite: true
-          prerelease: true
   build2:
     name: 'Buid No-root'
     runs-on: ubuntu-latest
@@ -111,14 +76,6 @@ jobs:
           [ "$TYPE" ] || TYPE="false"
           [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
           . .github/build.sh
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          file: ${{ env.FILE }}
   build3:
     name: 'Buid Amoled Root'
     runs-on: ubuntu-latest
@@ -138,39 +95,6 @@ jobs:
           [ "$AMOLED" ] || AMOLED="true"
           [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
           . .github/build.sh
-          #sleep 15
-      - name: Upload File Apk
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          file: ${{ env.APK }}
-      - name: Upload File Zip
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          file: ${{ env.ZIP }}
-      - name: Upload Json
-        uses: svenstaro/upload-release-action@v2
-        with:
-          release_name: "Update"
-          tag: Up
-          file: "${{ env.FILEJ }}"
-          overwrite: true
-          prerelease: true
-      - name: Upload Notes
-        uses: svenstaro/upload-release-action@v2
-        with:
-          release_name: "Update"
-          tag: Up
-          file: "${{ env.FILEN }}"
-          overwrite: true
-          prerelease: true
   build4:
     name: 'Buid Amoled No-root'
     runs-on: ubuntu-latest
@@ -190,44 +114,6 @@ jobs:
           [ "$AMOLED" ] || AMOLED="true"
           [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
           . .github/build.sh
-          #sleep 15
-      - name: Upload File
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: "YT-RE ${{ env.VER }} ${{ env.V }}"
-          tag: "K-${{ env.V }}-${{ env.VER }}"
-          overwrite: true
-          file: ${{ env.FILE }}
-  notify:
-    name: 'Telegram'
-    needs: [build1, build2, build3, build4]
-    runs-on: ubuntu-latest
-    if: success()
-    steps:
-      - name: Send Telegram Message
-        env:
-             TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
-             TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
-             TG_ID_K20PVN: ${{ secrets.TG_ID_K20PVN }}
-             VER: ${{ needs.build1.outputs.VER }}
-             V: ${{ needs.build1.outputs.V }}
-        run: |
-             # Kakathic
-             chat_tg="Auto build Youtube tool
-             
-             • Mod: ${GITPATCH%/*}
-             • version: $VER
-             
-             Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER)"
-             
-             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
-             -d chat_id="$TG_ID_TOOLTREE" \
-             -d parse_mode="Markdown" \
-             -d text="$chat_tg"
 
-             curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
-             -d chat_id="$TG_ID_K20PVN" \
-             -d parse_mode="Markdown" \
-             -d text="$chat_tg"
+
 
