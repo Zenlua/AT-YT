@@ -17,7 +17,7 @@ Use for both non-root and root:
 > [!Tip]
 > Version: [Release](https://github.com/Zenlua/AT-YT/releases)
 > 
-> **![Downloads](https://img.shields.io/github/downloads/Zenlua/AT-YT/total?label=Downloads&logo=github&abbreviated=true&color=blue)**
+> **![Views](https://img.shields.io/github/downloads/Zenlua/AT-YT/total?label=Downloads&logo=github&abbreviated=true&color=blue)**
 > ![GitHub repo size](https://img.shields.io/github/repo-size/Zenlua/AT-YT)
 
 > [!note]
