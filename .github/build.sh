@@ -52,7 +52,7 @@ echo "Url: $uggrl"
 file "$2"; }
 
 upload_gh(){
-if [ "$(gh release verify "$1" 2>&1 | grep -cm1 "$1")" == 1 ];then
+if [ "$(gh release verify "$1" 2>&1 | grep -icm1 "$1")" == 1 ];then
 echo "Đã có tag: $1"
 gh release edit "$1" --latest -t "$3" -n "$4"
 gh release upload "$1" "$2" --clobber
