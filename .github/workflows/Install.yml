@@ -48,8 +48,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: See build
-        env:
-          TYPE: 'true'
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
@@ -65,8 +63,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: See build
-        env:
-          TYPE: 'false'
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
@@ -82,9 +78,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: See build
-        env:
-          TYPE: 'true'
-          AMOLED: 'true'
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
@@ -101,9 +94,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: See build
-        env:
-          TYPE: 'false'
-          AMOLED: 'true'
         run: |
           # kakathic
           [ "$VERSION" ] || VERSION="Auto"
