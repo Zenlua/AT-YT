@@ -3,6 +3,7 @@ set -x
 # Home
 HOME="$GITHUB_WORKSPACE"
 date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
+cd $HOME
 
 echo "$date"
 echo
@@ -48,6 +49,7 @@ file "apk/$1" | tee "apk/$1.txt"; }
 Taicli(){
 uggrl="$(curl -sLG https://api.github.com/repos/$1/releases/latest | jq -r .assets[0].browser_download_url)"
 Taive "$uggrl" "$2"
+curl -sLG https://api.github.com/repos/$1/releases/latest | jq -r .assets[0].digest | cut -d: -f2 > ${2}.sum
 echo "Url: $uggrl"
 file "$2"; }
 
@@ -95,7 +97,7 @@ echo
 V="${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
 
-if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K$V$ach$amoled2.json | grep -cm1 "${VER//./}")" == 1 ]];then
+if [ "$VERSION" == 'Auto' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K${V}notes.json | grep -cm1 "$(cat patch.jar.sum)")" == 1 ];then
 echo "! Là phiên bản mới nhất."
 sleep 5
 gh run cancel $GITHUB_RUN_ID
@@ -216,7 +218,7 @@ echo '{
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/K'${V}'notes.json"
 }' > K$V$ach$amoled2.json
 
-echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > K${V}notes.json
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic \n sum:'$(cat patch.jar.sum)'' > K${V}notes.json
 body="**Note: Auto by kakathic**
 
 + Update $date
