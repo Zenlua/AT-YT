@@ -62,7 +62,17 @@ else
 echo "Đã tạo tag: $1"
 gh release create "$1" "$2" -t "$3" -n "$4"
 fi; }
-         
+
+upload_gh2(){
+if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
+echo "Đã có tag: $1"
+gh release edit "$1" --prerelease -t "$3" -n "$4"
+gh release upload "$1" "$2" --clobber
+else
+echo "Đã tạo tag: $1"
+gh release create "$1" "$2" -t "$3" -n "$4"
+fi; }
+
 # Tải cli
 Taicli "$GITPCLI" "cli.jar"
 Taicli "$GITPATCH" "patch.jar"
@@ -243,7 +253,7 @@ done
 echo "Upload json, notes"
 for vn in $(find *.json -type f); do
 echo "Upload: $vn"
-upload_gh "Up" "$vn" "Update" "YT-RE"
+upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
 
 exit
