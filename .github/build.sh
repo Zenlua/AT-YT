@@ -256,7 +256,6 @@ echo "Upload: $vn"
 upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
 
-exit
 echo "Telegram"
 chat_tg="Auto build Youtube tool
 
