@@ -243,8 +243,7 @@ done
 echo "Upload json, notes"
 for vv in $(find *.json -type f); do
 upload_gh "Up" "$vv" \
-"YT-RE $VER $V" \
-"$body"
+"Update" "YT-RE"
 done
 
 exit
