@@ -51,6 +51,14 @@ Taive "$uggrl" "$2"
 echo "Url: $uggrl"
 file "$2"; }
 
+upload_gh(){
+if [ "$(gh release verify "$1" 2>&1 | grep -cm1 "$1")" == 1 ];then
+gh release edit "$1" --latest -t "$3" -n "$4"
+gh release upload "$1" "$2" --clobber
+else
+gh release create "$1" "$2" -t "$3" -n "$4"
+fi; }
+         
 # Tải cli
 Taicli "$GITPCLI" "cli.jar"
 Taicli "$GITPATCH" "patch.jar"
@@ -181,6 +189,10 @@ else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* -type f
 Upenv FILE "$(find Up/* -type f)"
+for vv in $(find Up/* -type f); do
+upload_gh "K-$V-$VER" "$vv" "YT-RE $VER $V" \
+"YT-RE"
+done
 exit 0
 fi
 
@@ -207,14 +219,12 @@ echo '{
 }' > K$V$ach$amoled2.json
 
 echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic' > K${V}notes.json
-echo "**Note: Auto by kakathic**
+body="**Note: Auto by kakathic**
 
 + Update $date
 + YouTube: $VER
 
-+ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K-$V-$VER/total?label=Download&color=%230072F4)" > change.txt
-
-Upout change.txt
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K-$V-$VER/total?label=Download&color=%230072F4)"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
@@ -222,11 +232,40 @@ zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
 cd $HOME
 
 find Up/* -type f
-Upenv FILEJ "K$V$ach$amoled2.json"
-Upenv FILEN "K${V}notes.json"
-Upenv APK "$(find Up/*.apk -type f)"
-Upenv ZIP "$(find Up/*.zip -type f)"
 
-echo "Vs=$V" >> $GITHUB_OUTPUT
-echo "VERs=$VER" >> $GITHUB_OUTPUT
+echo "Upload apk, zip"
+for vv in $(find Up/* -type f); do
+upload_gh "K-$V-$VER" "$vv" \
+"YT-RE $VER $V" \
+"$body"
+done
+
+echo "Upload json, notes"
+for vv in $(find *.json -type f); do
+upload_gh "K-$V-$VER" "$vv" \
+"YT-RE $VER $V" \
+"$body"
+done
+
+exit
+echo "Telegram"
+chat_tg="Auto build Youtube tool
+
+• Mod by: ${GITPATCH%/*}
+• version: $VER
+
+Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER)"
+
+# tool_tree
+curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
+-d chat_id="$TG_ID_TOOLTREE" \
+-d parse_mode="Markdown" \
+-d text="$chat_tg"
+
+# k20vn
+curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
+-d chat_id="$TG_ID_K20PVN" \
+-d parse_mode="Markdown" \
+-d text="$chat_tg"
+
 
