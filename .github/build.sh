@@ -251,7 +251,7 @@ upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "$body"
 done
 
 echo "Upload json, notes"
-for vn in $(find *.json -type f); do
+for vn in $(find K*.json -type f); do
 echo "Upload: $vn"
 upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
