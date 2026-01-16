@@ -38,6 +38,7 @@ on:
 permissions: write-all
 env:
     GH_TOKEN: ${{ github.token }}
+    UPTG: ${{ inputs.UPTG }}
     VERSION: ${{ inputs.VERSION }}
     DEVICE: ${{ inputs.DEVICE }}
     GITPCLI: ${{ inputs.CLI }}
