@@ -53,9 +53,11 @@ file "$2"; }
 
 upload_gh(){
 if [ "$(gh release verify "$1" 2>&1 | grep -cm1 "$1")" == 1 ];then
+echo "Đã có tag: $1"
 gh release edit "$1" --latest -t "$3" -n "$4"
 gh release upload "$1" "$2" --clobber
 else
+echo "Đã tạo tag: $1"
 gh release create "$1" "$2" -t "$3" -n "$4"
 fi; }
          
