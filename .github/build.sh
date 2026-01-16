@@ -52,7 +52,7 @@ echo "Url: $uggrl"
 file "$2"; }
 
 upload_gh(){
-if [ "$(gh release verify "$1" 2>&1 | grep -icm1 "$1")" == 1 ];then
+if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
 echo "Đã có tag: $1"
 gh release edit "$1" --latest -t "$3" -n "$4"
 gh release upload "$1" "$2" --clobber
@@ -188,7 +188,7 @@ apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* -type f
 Upenv FILE "$(find Up/* -type f)"
 for vv in $(find Up/* -type f); do
-upload_gh "K-$V-$VER" "$vv" "YT-RE $VER $V" \
+upload_gh "K-$V-$VER" "$vv" "YT-RE $VER ${V^}" \
 "YT-RE"
 done
 exit 0
