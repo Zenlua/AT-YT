@@ -247,7 +247,7 @@ cd $HOME
 echo "Upload apk, zip"
 for vv in $(find Up/* -type f); do
 echo "Upload: $vv"
-upload_gh "K-$V-$VER-Kad" "$vv" "YT-RE $VER ${V^}" "test"
+upload_gh "K-$V-$VER-Kad" "$vv" "YT-RE $VER ${V^}" "$body"
 done
 
 echo "Upload json, notes"
