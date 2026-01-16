@@ -256,6 +256,8 @@ echo "Upload: $vn"
 upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
 
+if [ "UPTG" == true ];then
+
 echo "Telegram"
 chat_tg="Auto build Youtube tool
 
@@ -275,5 +277,6 @@ curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
 -d chat_id="$TG_ID_K20PVN" \
 -d parse_mode="Markdown" \
 -d text="$chat_tg"
+fi
 
 
