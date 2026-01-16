@@ -30,6 +30,11 @@ on:
         description: 'Turn on/off feature on: -e "feature", off: -d "feature"'
         required: false
         default: '-d "Custom branding"'
+      UPTG:
+        description: 'Send telegram'
+        required: false
+        type: boolean
+        default: true
 permissions: write-all
 env:
     GH_TOKEN: ${{ github.token }}
@@ -50,7 +55,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
-          UPTG=true
+          [ "$UPTG" ] || UPTG=true
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="MorpheApp/morphe-cli"
