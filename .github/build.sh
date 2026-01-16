@@ -1,5 +1,5 @@
 # kakathic
-
+set -x
 # Home
 HOME="$GITHUB_WORKSPACE"
 date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
@@ -94,10 +94,6 @@ echo
 [ "$VERSION" == 'Auto' ] && VER="$Vidon" || VER="$VERSION"
 V="${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
-
-Upenv V "${V^}"
-Upenv Kad "$Kad"
-Upenv VER "$VER"
 
 if [[ "$VERSION" == 'Auto' ]] && [[ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K$V$ach$amoled2.json | grep -cm1 "${VER//./}")" == 1 ]];then
 echo "! Là phiên bản mới nhất."
@@ -204,7 +200,7 @@ cd $HOME
 
 # Tạo module.prop
 echo 'id=YouTube
-name=YouTube '$V'
+name=YouTube '${V^}'
 author=kakathic
 description=Build '$date', YouTube edited tool by Revanced mod added disable play store updates.
 version='$VER'
@@ -233,19 +229,16 @@ cd $HOME/.github/Modun
 zip -qr $HOME/Up/YT-Hybrid-$VER-$ach$amoled2.zip *
 cd $HOME
 
-find Up/* -type f
-
 echo "Upload apk, zip"
 for vv in $(find Up/* -type f); do
-upload_gh "K-$V-$VER" "$vv" \
-"YT-RE $VER $V" \
-"$body"
+echo "Upload: $vv"
+upload_gh "K-$V-$VER" "$vv" "YT-RE $VER ${V^}" "test"
 done
 
 echo "Upload json, notes"
-for vv in $(find *.json -type f); do
-upload_gh "Up" "$vv" \
-"Update" "YT-RE"
+for vn in $(find *.json -type f); do
+echo "Upload: $vn"
+upload_gh "Up" "$vn" "Update" "YT-RE"
 done
 
 exit
