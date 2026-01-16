@@ -97,7 +97,10 @@ echo
 V="${GITPCLI%/*}"
 Kad=$(date "+%Y-%m-%d")
 
-if [ "$VERSION" == 'Auto' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K${V}notes.json | grep -cm1 "$(cat patch.jar.sum)")" == 1 ];then
+sum="$(cat patch.jar.sum 2>/dev/null)"
+echo "$sum"
+
+if [ "$VERSION" == 'Auto' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K${V}notes.json | grep -cm1 "$sum")" == 1 ];then
 echo "! Là phiên bản mới nhất."
 sleep 5
 gh run cancel $GITHUB_RUN_ID
@@ -190,7 +193,7 @@ apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* -type f
 Upenv FILE "$(find Up/* -type f)"
 for vv in $(find Up/* -type f); do
-upload_gh "K-$V-$VER" "$vv" "YT-RE $VER ${V^}" \
+upload_gh "K-$V-$VER-Kad" "$vv" "YT-RE $VER ${V^}" \
 "YT-RE"
 done
 exit 0
@@ -214,17 +217,17 @@ updateJson=https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/K'$V$ach
 echo '{
 "version": "'$VER'",
 "versionCode": "'${VER//./}'",
-"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/K'-$V-$VER'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
+"zipUrl": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/'"K-$V-$VER-Kad"'/YT-Hybrid-'$VER'-'$ach$amoled2'.Zip",
 "changelog": "https://github.com/'$GITHUB_REPOSITORY'/releases/download/Up/K'${V}'notes.json"
 }' > K$V$ach$amoled2.json
 
-echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic \n sum:'$(cat patch.jar.sum)'' > K${V}notes.json
+echo -e 'Update '$date' \nYouTube: '$VER' \nVersion: '${VER//./}' \nAuto by kakathic \nSum: '$sum'' > K${V}notes.json
 body="**Note: Auto by kakathic**
 
 + Update $date
 + YouTube: $VER
 
-+ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K-$V-$VER/total?label=Download&color=%230072F4)"
++ ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K-$V-$VER-Kad/total?label=Download&color=%230072F4)"
 
 # Tạo module magisk
 cd $HOME/.github/Modun
@@ -234,7 +237,7 @@ cd $HOME
 echo "Upload apk, zip"
 for vv in $(find Up/* -type f); do
 echo "Upload: $vv"
-upload_gh "K-$V-$VER" "$vv" "YT-RE $VER ${V^}" "test"
+upload_gh "K-$V-$VER-Kad" "$vv" "YT-RE $VER ${V^}" "test"
 done
 
 echo "Upload json, notes"
@@ -250,7 +253,7 @@ chat_tg="Auto build Youtube tool
 • Mod by: ${GITPATCH%/*}
 • version: $VER
 
-Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER)"
+Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-Kad)"
 
 # tool_tree
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
