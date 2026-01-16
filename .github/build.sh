@@ -108,7 +108,7 @@ V="${GITPCLI%/*}"
 Kad=$(date "+%Y%m%d")
 
 sum="$(cat patch.jar.sum 2>/dev/null)"
-echo "$sum"
+echo "Sum: $sum"
 
 if [ "$VERSION" == 'Auto' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K${V}notes.json | grep -cm1 "$sum")" == 1 ];then
 echo "! Là phiên bản mới nhất."
