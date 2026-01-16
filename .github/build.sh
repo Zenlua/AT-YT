@@ -1,5 +1,5 @@
 # kakathic
-set -x
+
 # Home
 HOME="$GITHUB_WORKSPACE"
 date="$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S.%3N GMT%Z")"
