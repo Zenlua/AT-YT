@@ -256,7 +256,7 @@ echo "Upload: $vn"
 upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
 
-if [ "UPTG" == true ];then
+if [ "$UPTG" == "true" ];then
 
 echo "Telegram"
 chat_tg="Auto build Youtube tool
