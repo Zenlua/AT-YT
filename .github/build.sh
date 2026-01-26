@@ -259,10 +259,10 @@ done
 if [ "$UPTG" == "true" ];then
 
 echo "Telegram"
-chat_tg="Auto build Youtube tool
+chat_tg="New version of the patch tool
 
 • Mod by: ${GITPATCH%/*}
-• Version: $VER
+• Youtube version: $VER
 
 Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)"
 
