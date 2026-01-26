@@ -261,7 +261,7 @@ if [ "$UPTG" == "true" ];then
 echo "Telegram"
 chat_tg="New version of the patch tool
 
-• Mod by: ${GITPATCH%/*}
+• Mod by: ${V^}
 • Youtube version: $VER
 
 Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)"
