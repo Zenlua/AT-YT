@@ -28,7 +28,7 @@ Use for both non-root and root:
 
 - All support issues in this group
 
-   > [Telegram](https://t.me/yt_at_build)
+   > [Telegram](https://t.me/tooltree)
 
 - See the version that Revanced they support for the latest build.
 
