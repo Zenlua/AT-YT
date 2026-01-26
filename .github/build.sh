@@ -264,7 +264,9 @@ chat_tg="New version of the patch tool
 • Mod by: ${V^}
 • Youtube version: $VER
 
-Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)"
+Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)
+
+#youtube #bot_auto @kakathic"
 
 # tool_tree
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
