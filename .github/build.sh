@@ -43,7 +43,7 @@ urrl="https://www.apkmirror.com"
 uak1="$urrl$(wget -q -U "Mozilla/5.0 (Linux; Android 14; Mobile)" "$urrl/apk/$2" -O - | grep -m1 'downloadButton' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2)"
 uak2="$urrl$(wget -q -U "Mozilla/5.0 (Linux; Android 14; Mobile)" "$uak1" -O - | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
 wget -q -U "Mozilla/5.0 (Linux; Android 14; Mobile)" "$uak2" -O "apk/$1"
-echo "Link: $uak1 - $uak2"
+echo "Link: $uak2"
 file "apk/$1" | tee "apk/$1.txt"; }
 
 Taicli(){
