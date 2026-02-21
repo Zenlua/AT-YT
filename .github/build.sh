@@ -18,7 +18,7 @@ feature="$FEATURE"
 
 # khu vực fusion 
 Taive(){ curl -s -L -H "$User" --connect-timeout 50 "$1" -o "$2"; }
-Xem(){ curl -s -G -H "Cookie: cf_clearance=GIATRI_COOKIE" -A "Mozilla/5.0" --connect-timeout 50 "$1"; }
+Xem(){ curl -s -G -L -H "Cookie: cf_clearance=GIATRI_COOKIE" -A "Mozilla/5.0" --connect-timeout 50 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
 apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
