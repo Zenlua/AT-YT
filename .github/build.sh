@@ -43,7 +43,7 @@ urrl="https://www.apkmirror.com"
 uak1="$urrl$(Xem "$urrl/apk/$2" | grep -m1 'downloadButton' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2)"
 uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
 Taive "$uak2" "apk/$1"
-echo "Link ${VER//./-}: $uak2"
+echo "Link: $uak1 -- $uak2"
 file "apk/$1" | tee "apk/$1.txt"; }
 
 Taicli(){
