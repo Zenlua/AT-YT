@@ -264,7 +264,7 @@ chat_tg="New version of the patch tool
 • Mod by: ${V^}
 • Youtube version: $VER
 
-Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)
+Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad
 
 #youtube #bot_auto @kakathic"
 
