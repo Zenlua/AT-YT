@@ -122,8 +122,7 @@ fi
 # Tải Youtube
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
-TaiYT 'YouTube1' "$apk1"
-TaiYT 'YouTube2' "$apk2"
+TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
 wait
 
 echo
