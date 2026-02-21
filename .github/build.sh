@@ -11,21 +11,14 @@ echo
 # Tạo thư mục
 mkdir -p apk lib tmp jar Tav Up rmp
 User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
-echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" | sudo tee /etc/resolv.conf
+sudo echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" >> /etc/resolv.conf
 
 # Tính năng 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive(){ curl -s -L -H "$User" --connect-timeout 50 "$1" -o "$2"; }
-Xem(){ curl -s -G -L \
-  -A "Mozilla/5.0 (Linux; Android 14; Mobile)" \
-  -H "Accept: text/html,application/xhtml+xml" \
-  -H "Accept-Language: en-US,en;q=0.9" \
-  -H "Upgrade-Insecure-Requests: 1" \
-  -e "https://www.apkmirror.com/" \
-  --compressed \
---connect-timeout 50 "$1"; }
+Taive(){ curl -sL -H "$User" --connect-timeout 50 "$1" -o "$2"; }
+Xem(){ curl -sLG -H "$User" --connect-timeout 50 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
 apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
@@ -52,7 +45,6 @@ uak1="$urrl$(Xem "$urrl/apk/$2" | grep -m1 'downloadButton' | tr ' ' '\n' | grep
 uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
 Taive "$uak2" "apk/$1"
 echo "Link: $uak1 - $uak2"
-Xem "$urrl/apk/$2"
 file "apk/$1" | tee "apk/$1.txt"; }
 
 Taicli(){
