@@ -11,13 +11,13 @@ echo
 # Tạo thư mục
 mkdir -p apk lib tmp jar Tav Up rmp
 User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36"
-set -x
+
 # Tính năng 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive(){ curl -s -L -H "$User" --connect-timeout 50 "$1" -o "$2"; }
-Xem(){ curl -s -G -L -H "$User" --connect-timeout 50 "$1"; }
+Taive(){ curl -s -L -H "$User" "$1" -o "$2"; }
+Xem(){ curl -s -G -L -H "$User" "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
 apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
