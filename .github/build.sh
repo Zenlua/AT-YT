@@ -16,8 +16,8 @@ User="User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, 
 feature="$FEATURE"
 
 # khu vực fusion 
-Taive(){ curl -s -L -H "$User" "$1" -o "$2"; }
-Xem(){ curl -s -G -L -H "$User" "$1"; }
+Taive(){ curl -s -L -H "$User" --connect-timeout 50 "$1" -o "$2"; }
+Xem(){ curl -s -G -L -H "$User" --connect-timeout 50 "$1"; }
 XHex(){ xxd -p "$@" | tr -d "\n" | tr -d ' '; }
 ZHex(){ xxd -r -p "$@"; }
 apksign(){ java -jar $HOME/.github/Tools/apksigner.jar sign --cert "$HOME/.github/Tools/testkey.x509.pem" --key "$HOME/.github/Tools/testkey.pk8" --out "$2" "$1"; }
@@ -43,7 +43,8 @@ urrl="https://www.apkmirror.com"
 uak1="$urrl$(Xem "$urrl/apk/$2" | grep -m1 'downloadButton' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2)"
 uak2="$urrl$(Xem "$uak1" | grep -m1 '>here<' | tr ' ' '\n' | grep -m1 'href=' | cut -d \" -f2 | sed 's|amp;||')"
 Taive "$uak2" "apk/$1"
-echo "Link: $uak1 -- $uak2"
+echo "Link: $uak1 - $uak2"
+Xem "$urrl/apk/$2"
 file "apk/$1" | tee "apk/$1.txt"; }
 
 Taicli(){
