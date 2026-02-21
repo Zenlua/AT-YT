@@ -271,14 +271,12 @@ Link: [Download](https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad)
 # tool_tree
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
 -d chat_id="$TG_ID_TOOLTREE" \
--d parse_mode="Markdown" \
--d text="$chat_tg"
+--data-urlencode text="$chat_tg"
 
 # k20vn
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
 -d chat_id="$TG_ID_K20PVN" \
--d parse_mode="Markdown" \
--d text="$chat_tg"
+--data-urlencode text="$chat_tg"
 fi
 
 
