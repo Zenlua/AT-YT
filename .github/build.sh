@@ -236,6 +236,7 @@ body="**Note: Auto by kakathic**
 
 + Update $date
 + YouTube: $VER
++ Changelog: [See more](https://github.com/$GITPATCH/releases/latest)
 
 + ![GitHub Downloads (all assets, specific tag)](https://img.shields.io/github/downloads/$GITHUB_REPOSITORY/K-$V-$VER-$Kad/total?label=Download&color=%230072F4)"
 
@@ -263,8 +264,9 @@ chat_tg="New version of the patch tool
 
 • Mod by: ${V^}
 • Youtube version: $VER
+• Changelog: https://github.com/$GITPATCH/releases/latest
 
-Link: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad
+Link download: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad
 
 #youtube #bot_auto @kakathic"
 
