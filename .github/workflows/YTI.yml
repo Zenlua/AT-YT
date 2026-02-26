@@ -72,6 +72,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
+          UPTG=false
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
@@ -88,6 +89,7 @@ jobs:
         run: |
           # kakathic
           sleep 10
+          UPTG=false
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
@@ -105,6 +107,7 @@ jobs:
         run: |
           # kakathic
           sleep 10
+          UPTG=false
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
