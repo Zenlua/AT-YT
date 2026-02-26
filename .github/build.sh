@@ -264,7 +264,7 @@ chat_tg="New version of the patch tool
 
 • Mod by: ${V^}
 • Youtube version: $VER
-• <a href=\"https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad\">Download</a>
+• Link: <a href=\"https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad\">Download</a>
 • <a href=\"https://github.com/$GITPATCH/releases/latest\">Changelog</a>
 
 #youtube #bot_auto"
