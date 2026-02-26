@@ -88,6 +88,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
+          sleep 10
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
           [ "$GITPCLI" ] || GITPCLI="inotia00/revanced-cli"
