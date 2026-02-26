@@ -264,20 +264,21 @@ chat_tg="New version of the patch tool
 
 • Mod by: ${V^}
 • Youtube version: $VER
-• Changelog: https://github.com/$GITPATCH/releases/latest
+• <a href=\"https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad\">Download</a>
+• <a href=\"https://github.com/$GITPATCH/releases/latest\">Changelog</a>
 
-Link download: https://github.com/Zenlua/AT-YT/releases/tag/K-$V-$VER-$Kad
-
-#youtube #bot_auto @kakathic"
+#youtube #bot_auto"
 
 # tool_tree
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
 -d chat_id="$TG_ID_TOOLTREE" \
+-d parse_mode="HTML" \
 --data-urlencode text="$chat_tg"
 
 # k20vn
 curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN_TOOLTREE/sendMessage" \
 -d chat_id="$TG_ID_K20PVN" \
+-d parse_mode="HTML" \
 --data-urlencode text="$chat_tg"
 fi
 
