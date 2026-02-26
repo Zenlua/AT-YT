@@ -1,5 +1,5 @@
 
-# YT-RE [![YT-RE](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml/badge.svg?event=workflow_run)](https://github.com/Zenlua/AT-YT/actions/workflows/Install.yml)
+# YT-RE
 
 Use for both non-root and root:
 
