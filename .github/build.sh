@@ -145,8 +145,8 @@ done
 
 # check apk list
 ls apk/*
-[ -f apk/YouTube.apk ] || echo "Không thấy YT apk"
-[ -f apk/YouTube.apks ] || echo "Không thấy YT apks"
+[ -f apk/YouTube.apk ] || { echo "Không thấy YT apk"; exit 1; }
+[ -f apk/YouTube.apks ] || { echo "Không thấy YT apks"; exit 1; }
 
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
