@@ -157,6 +157,8 @@ lib='lib/*/*'
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
 fi
 
+ls apk/*
+
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
