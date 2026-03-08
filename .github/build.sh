@@ -134,7 +134,7 @@ if [ -e apk/YouTube$vv.zip ];then
     if [ "$(unzip -l apk/YouTube$vv.zip | grep -cm1 'base.apk')" == 1 ];then
     echo "- Apk $vv thành apks"
     mv apk/YouTube$vv.zip apk/YouTube.apks
-    elif [ "$(unzip -l apk/YouTube$vv.zip | grep -cm1 'AndroidManifest.xml'))" == 1 ];then
+    elif [ "$(unzip -l apk/YouTube$vv.zip | grep -cm1 'AndroidManifest.xml')" == 1 ];then
     echo "- Apk $vv thành apk"
     mv apk/YouTube$vv.zip apk/YouTube.apk
     else
