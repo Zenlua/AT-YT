@@ -121,29 +121,32 @@ fi
 # Tải Youtube
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
-TaiYT 'YouTube1.zip' "$apk1" & TaiYT 'YouTube2.zip' "$apk2"
+apk3="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-3-android-apk-download"
+apk4="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-4-android-apk-download"
+TaiYT 'YouTube1.zip' "$apk1" &
+TaiYT 'YouTube2.zip' "$apk2" &
+TaiYT 'YouTube3.zip' "$apk3" &
+TaiYT 'YouTube4.zip' "$apk4"
 wait
 
-echo
-if [ -e apk/YouTube1.zip ];then
-    if [ "$(unzip -l apk/YouTube1.zip | grep -cm1 'base.apk')" == 1 ];then
-    echo "- Apk thành apks"
-    mv apk/YouTube1.zip apk/YouTube.apks
+for vv in 1 2 3 4; do
+if [ -e apk/YouTube$vv.zip ];then
+    if [ "$(unzip -l apk/YouTube$vv.zip | grep -cm1 'base.apk')" == 1 ];then
+    echo "- Apk $vv thành apks"
+    mv apk/YouTube$vv.zip apk/YouTube.apks
+    elif [ "$(unzip -l apk/YouTube$vv.zip | grep -cm1 'AndroidManifest.xml'))" == 1 ];then
+    echo "- Apk $vv thành apk"
+    mv apk/YouTube$vv.zip apk/YouTube.apk
     else
-    echo "- Apk thành apk"
-    mv apk/YouTube1.zip apk/YouTube.apk
+    echo "- Không phải là zip YouTube$vv"
     fi
 fi
+done
 
-if [ -e apk/YouTube2.zip ];then
-    if [ "$(unzip -l apk/YouTube2.zip | grep -cm1 'base.apk')" == 1 ];then
-    echo "- Apk2 thành apks"
-    mv apk/YouTube2.zip apk/YouTube.apks
-    else
-    echo "- Apk2 thành apk"
-    mv apk/YouTube2.zip apk/YouTube.apk
-    fi
-fi
+# check apk list
+ls apk/*
+[ -f apk/YouTube.apk ] || echo "Không thấy YT apk"
+[ -f apk/YouTube.apks ] || echo "Không thấy YT apks"
 
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
@@ -156,8 +159,6 @@ lib='lib/*/*'
     fi
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
 fi
-
-ls apk/*
 
 # Copy 
 echo > $HOME/.github/Modun/common/$ach
