@@ -121,27 +121,27 @@ fi
 # Tải Youtube
 apk1="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-2-android-apk-download"
 apk2="google-inc/youtube/youtube-${VER//./-}-release/youtube-${VER//./-}-android-apk-download"
-TaiYT 'YouTube1' "$apk1" & TaiYT 'YouTube2' "$apk2"
+TaiYT 'YouTube1.zip' "$apk1" & TaiYT 'YouTube2.zip' "$apk2"
 wait
 
 echo
-if [ -e apk/YouTube1 ];then
-    if [ "$(unzip -l apk/YouTube1 | grep -cm1 'base.apk')" == 1 ];then
+if [ -e apk/YouTube1.zip ];then
+    if [ "$(unzip -l apk/YouTube1.zip | grep -cm1 'base.apk')" == 1 ];then
     echo "- Apk thành apks"
-    mv apk/YouTube1 apk/YouTube.apks
+    mv apk/YouTube1.zip apk/YouTube.apks
     else
     echo "- Apk thành apk"
-    mv apk/YouTube1 apk/YouTube.apk
+    mv apk/YouTube1.zip apk/YouTube.apk
     fi
 fi
 
-if [ -e apk/YouTube2 ];then
-    if [ "$(unzip -l apk/YouTube2 | grep -cm1 'base.apk')" == 1 ];then
+if [ -e apk/YouTube2.zip ];then
+    if [ "$(unzip -l apk/YouTube2.zip | grep -cm1 'base.apk')" == 1 ];then
     echo "- Apk2 thành apks"
-    mv apk/YouTube2 apk/YouTube.apks
+    mv apk/YouTube2.zip apk/YouTube.apks
     else
     echo "- Apk2 thành apk"
-    mv apk/YouTube2 apk/YouTube.apk
+    mv apk/YouTube2.zip apk/YouTube.apk
     fi
 fi
 
