@@ -88,7 +88,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
-          sleep 10
+          sleep 20
           UPTG=false
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
@@ -106,7 +106,7 @@ jobs:
       - name: See build
         run: |
           # kakathic
-          sleep 15
+          sleep 20
           UPTG=false
           [ "$VERSION" ] || VERSION="Auto"
           [ "$DEVICE" ] || DEVICE="arm64-v8a"
