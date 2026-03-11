@@ -60,7 +60,7 @@ gh release edit "$1" --latest -t "$3" -n "$4"
 gh release upload "$1" "$2" --clobber
 else
 echo "Đã tạo tag: $1"
-gh release create "$1" "$2" -t "$3" -n "$4"
+gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
 fi; }
 
 upload_gh2(){
@@ -70,7 +70,7 @@ gh release edit "$1" --prerelease -t "$3" -n "$4"
 gh release upload "$1" "$2" --clobber
 else
 echo "Đã tạo tag: $1"
-gh release create "$1" "$2" -t "$3" -n "$4"
+gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
 fi; }
 
 # Tải cli
