@@ -97,7 +97,7 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-java -Djava.io.tmpdir=$HOME -jar cli.jar
+java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions
 
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
