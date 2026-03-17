@@ -166,7 +166,7 @@ cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 zip -qr apk/YouTube.apk -d $lib
 
 # Xử lý revanced patches
-if [ "$Vidon" != "$VER" ];then
+if [ "$Vidon" != "$VER" ] && [ "$Vidon" ];then
 echo "- Chuyển đổi phiên bản $VER"
 unzip -qo "patch.jar" -d $HOME/jar
 for vak in $(grep -Rl "$Vidon" $HOME/jar); do
