@@ -97,8 +97,6 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions
-
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
 Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions -p patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
