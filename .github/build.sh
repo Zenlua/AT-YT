@@ -183,7 +183,7 @@ fi
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
 
-eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar -b apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
 echo
 
 echo '- Quá trình xây dựng apk xong.'
