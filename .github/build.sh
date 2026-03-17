@@ -99,7 +99,7 @@ fi
 
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
-Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions -p patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
 echo "  $Vidon"
 echo
 
