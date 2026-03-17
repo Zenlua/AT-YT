@@ -32,7 +32,7 @@ Use for both non-root and root:
 
 - See the version that Revanced they support for the latest build.
 
-   > [Revanced](https://github.com/revanced/revanced-patches) | [Version](https://revanced.app/patches?s=YouTube)
+   > [Revanced](https://github.com/revanced/revanced-patches)
 
    > [inotia00](https://github.com/inotia00/revanced-patches)
 
