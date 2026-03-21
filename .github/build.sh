@@ -97,9 +97,14 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
+if [ -z $Keytem ]; then
+kmss='-p'
+sskkm='-b'
+fi
+
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
-Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions -p patch.jar -b -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
+Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions $kmss patch.jar $sskkm -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
 echo "  $Vidon"
 echo
 
@@ -183,7 +188,7 @@ fi
 echo "▼ Bắt đầu quá trình xây dựng..."
 echo
 
-eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar -b apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
+eval "java -Djava.io.tmpdir=$HOME -jar cli.jar patch -p patch.jar $sskkm apk/YouTube.apk -o YT.apk "$Mro $theme $Tof $Ton $feature""
 echo
 
 echo '- Quá trình xây dựng apk xong.'
