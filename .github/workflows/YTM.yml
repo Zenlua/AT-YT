@@ -37,6 +37,7 @@ on:
         default: true
 permissions: write-all
 env:
+    Keytem: 1
     GH_TOKEN: ${{ github.token }}
     UPTG: ${{ inputs.UPTG }}
     VERSION: ${{ inputs.VERSION }}
