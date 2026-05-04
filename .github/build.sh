@@ -54,24 +54,26 @@ echo "Url: $uggrl"
 file "$2"; }
 
 upload_gh(){
-if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
-echo "Đã có tag: $1"
-gh release edit "$1" --latest -t "$3" -n "$4" || echo "Lỗi edit $1 - $3 - $4"
-gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
+if gh release view "$1" >/dev/null 2>&1; then
+    echo "Release đã tồn tại: $1"
+    gh release edit "$1" --latest -t "$3" -n "$4" || echo "Lỗi edit $1"
+    gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
 else
-echo "Đã tạo tag: $1"
-gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
-fi; }
+    echo "Tạo release mới: $1"
+    gh release create "$1" "$2" -t "$3" -n "$4" || echo "Lỗi create $1"
+fi
+}
 
 upload_gh2(){
-if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
-echo "Đã có tag: $1"
-gh release edit "$1" --prerelease -t "$3" -n "$4" || echo "Lỗi edit $1 - $3 - $4"
-gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
+if gh release view "$1" >/dev/null 2>&1; then
+    echo "Release đã tồn tại: $1"
+    gh release edit "$1" --prerelease -t "$3" -n "$4" || echo "Lỗi edit $1"
+    gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
 else
-echo "Đã tạo tag: $1"
-gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
-fi; }
+    echo "Tạo release mới: $1"
+    gh release create "$1" "$2" -t "$3" -n "$4" --prerelease || echo "Lỗi tạo release $1"
+fi
+}
 
 # Tải cli
 Taicli "$GITPCLI" "cli.jar"
