@@ -56,8 +56,8 @@ file "$2"; }
 upload_gh(){
 if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
 echo "Đã có tag: $1"
-gh release edit "$1" --latest -t "$3" -n "$4"
-gh release upload "$1" "$2" --clobber
+gh release edit "$1" --latest -t "$3" -n "$4" || echo "Lỗi edit $1 - $3 - $4"
+gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
 else
 echo "Đã tạo tag: $1"
 gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
@@ -66,8 +66,8 @@ fi; }
 upload_gh2(){
 if [ "$(gh release verify "$1" 2>&1 | grep -o "$1")" == "$1" ];then
 echo "Đã có tag: $1"
-gh release edit "$1" --prerelease -t "$3" -n "$4"
-gh release upload "$1" "$2" --clobber
+gh release edit "$1" --prerelease -t "$3" -n "$4" || echo "Lỗi edit $1 - $3 - $4"
+gh release upload "$1" "$2" --clobber || echo "Lỗi upload $1 - $2"
 else
 echo "Đã tạo tag: $1"
 gh release create "$1" "$2" -t "$3" -n "$4" || gh release upload "$1" "$2" --clobber
