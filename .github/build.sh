@@ -97,11 +97,6 @@ lib="lib/arm64-v8a/* lib/x86/* lib/x86_64/*"
 ach="arm"
 fi
 
-if [ -z $Keytem ]; then
-kmss='-p'
-sskkm='-b'
-fi
-
 echo
 echo "- Kiểm tra bản YouTube mới nhất..."
 Vidon="$(java -Djava.io.tmpdir=$HOME -jar cli.jar list-versions --patches patch.jar -f com.google.android.youtube | grep -w '(.*.)' | sort -n | tail -1 | awk '{print $1}')";
@@ -181,7 +176,7 @@ XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VER" | XHex)/" | ZH
 done
 cd $HOME/jar
 rm -fr patch.jar
-zip -r "$HOME/$lib2" *
+zip -qr "$HOME/$lib2" *
 cd $HOME
 fi
 
