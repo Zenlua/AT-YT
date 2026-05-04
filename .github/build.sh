@@ -154,9 +154,10 @@ lib='lib/*/*'
     echo "- Giải nén base.apk"
     unzip -qo apk/YouTube.apks 'base.apk' "split_config.${DEVICE//-/_}.apk" split_config.xxhdpi.apk -d Tav
     else
-    echo "- Giải nén Lib"
+    echo "- Sao chép apk gốc"
     cp apk/YouTube.apk Tav/base.apk
     fi
+echo "- Giải nén Lib"
 unzip -qo apk/YouTube.apk lib/$DEVICE/* -d tmp
 fi
 
