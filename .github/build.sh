@@ -194,9 +194,8 @@ echo
 echo '- Quá trình xây dựng apk xong.'
 echo
 
-ls
-ls YT-*/*.apk
-cp -rf YT-*/*.apk YT2.apk
+ls morphe-temporary-files/*.apk
+cp -rf morphe-temporary-files/*.apk YT2.apk
 
 # Chờ xây dựng xong
 if [ "$TYPE" == 'true' ];then
