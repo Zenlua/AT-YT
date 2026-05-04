@@ -193,8 +193,7 @@ apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* -type f
 Upenv FILE "$(find Up/* -type f)"
 for vv in $(find Up/* -type f); do
-upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" \
-"YT-RE"
+upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "YT-RE" || upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "YT-RE"
 done
 exit 0
 fi
@@ -238,13 +237,13 @@ cd $HOME
 echo "Upload apk, zip"
 for vv in $(find Up/* -type f); do
 echo "Upload: $vv"
-upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "$body"
+upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "$body" || upload_gh "K-$V-$VER-$Kad" "$vv" "YT-RE $VER ${V^}" "$body"
 done
 
 echo "Upload json, notes"
 for vn in $(find K*.json -type f); do
 echo "Upload: $vn"
-upload_gh2 "Up" "$vn" "Update" "YT-RE"
+upload_gh2 "Up" "$vn" "Update" "YT-RE" || upload_gh2 "Up" "$vn" "Update" "YT-RE"
 done
 
 if [ "$UPTG" == "true" ];then
