@@ -146,7 +146,7 @@ done
 # check apk list
 ls apk/*
 [ -f apk/YouTube.apk ] || { echo "Không thấy YT apk"; exit 1; }
-[ -f apk/YouTube.apks ] || { echo "Không thấy YT apks"; exit 1; }
+[ -f apk/YouTube.apks ] || { echo "Không thấy YT apks"; }
 
 if [ "$TYPE" == 'true' ];then
 lib='lib/*/*'
@@ -164,21 +164,6 @@ fi
 echo > $HOME/.github/Modun/common/$ach
 cp -rf $HOME/.github/Tools/sqlite3_$ach $HOME/.github/Modun/common/sqlite3
 zip -qr apk/YouTube.apk -d $lib
-
-# Xử lý revanced patches
-if [ "$Vidon" != "$VER" ] && [ "$Vidon" ];then
-echo "- Chuyển đổi phiên bản $Vidon --> $VER"
-unzip -qo "patch.jar" -d $HOME/jar
-for vak in $(grep -Rl "$Vidon" $HOME/jar); do
-echo "Patch: $vak"
-cp -rf $vak test
-XHex test | sed -e "s/$(echo -n "$Vidon" | XHex)/$(echo -n "$VER" | XHex)/" | ZHex > $vak
-done
-cd $HOME/jar
-rm -fr patch.jar
-zip -qr "$HOME/$lib2" *
-cd $HOME
-fi
 
 # MOD YouTube 
 echo "▼ Bắt đầu quá trình xây dựng..."
