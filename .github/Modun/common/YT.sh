@@ -27,17 +27,3 @@ mv $MODPATH/YouTube/* "${2%/*}";
 chcon u:object_r:apk_data_file:s0 "${2%/*}"/*.apk;
 fi; }
 
-offCH(){
-Sqlite3=$MODPATH/sqlite3
-PS=com.android.vending
-DB=/data/data/$PS/databases
-LDB=$DB/library.db
-LADB=$DB/localappstate.db
-PK=com.google.android.youtube
-cmd appops set --uid $PS GET_USAGE_STATS ignore
-pm disable $PS &>/dev/null
-$Sqlite3 $LDB "UPDATE ownership SET doc_type = '25' WHERE doc_id = '$PK'";
-$Sqlite3 $LADB "UPDATE appstate SET auto_update = '2' WHERE package_name = '$PK'";
-rm -rf /data/data/$PS/cache/*
-am force-stop $PK &>/dev/null
-pm enable $PS &>/dev/null; }
