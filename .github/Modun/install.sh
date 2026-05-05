@@ -36,10 +36,8 @@ on_install(){
 ui_print2 "Processing"
 ui_print
 # Giải nén
-cp -f $TMPDIR/sqlite3 $MODPATH/sqlite3 >&2
 cp -f $TMPDIR/YT.sh $MODPATH >&2
 cp -f $TMPDIR/action.sh $MODPATH >&2
-chmod -R 755 $MODPATH/sqlite3
 mkdir -p $MODPATH/YouTube
 
 checkYT
@@ -53,7 +51,6 @@ mountYT $MODPATH/YouTube.apk "$(linkAPK)"
 
 ui_print2 "Turn off update"
 ui_print
-offCH
 
 [ "$(Getp author)" == "$(echo -n 'a2FrYXRoaWM=' | base64 -d)" ] || abort "Copyright infringement"
 if [ -z "$(pm path com.google.android.youtube)" ];then
@@ -70,5 +67,4 @@ ui_print
 # Cấp quyền
 set_permissions(){
 set_perm_recursive $MODPATH 0 0 0755 0644
-chmod -R 755 $MODPATH/sqlite3
 }
