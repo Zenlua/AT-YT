@@ -9,9 +9,7 @@ sleep 10
 
 if [ "$(sha256sum "$(linkAPK)" | awk '{print $1}')" == "$(sha256sum "$MODPATH/base.apk" | awk '{print $1}')" ];then
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
-offCH
 else
 installYT
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
-offCH
 fi
