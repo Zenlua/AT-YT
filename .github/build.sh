@@ -114,10 +114,10 @@ echo "Sum: $sum"
 
 if [ "$VERSION" == 'Auto' ] && [ "$(Xem https://github.com/$GITHUB_REPOSITORY/releases/download/Up/K${V}notes.json | grep -cm1 "$sum")" == 1 ];then
 echo "! Là phiên bản mới nhất."
-sleep 5
-gh run cancel $GITHUB_RUN_ID
-sleep 5
-exit 1
+#sleep 1
+#gh run cancel $GITHUB_RUN_ID
+#sleep 5
+exit 0
 fi
 
 # Tải Youtube
