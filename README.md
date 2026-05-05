@@ -1,5 +1,5 @@
 
-# YT-RE
+# YT-RE [![YT-AT MorpheApp](https://github.com/Zenlua/AT-YT/actions/workflows/YTM.yml/badge.svg)](https://github.com/Zenlua/AT-YT/actions/workflows/YTM.yml)
 
 Use for both non-root and root:
 
