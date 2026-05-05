@@ -21,7 +21,6 @@ ui_print
 mountYT "$MODPATH/YouTube.apk" "$(linkAPK)"
 ui_print2 "Turn off update"
 ui_print
-offCH
 else
 ui_print2 "Install YouTube"
 installYT
@@ -29,7 +28,6 @@ ui_print
 mountYT $MODPATH/YouTube.apk "$(linkAPK)"
 ui_print2 "Turn off update"
 ui_print
-offCH
 fi
 
 if [ -z "$(pm path com.google.android.youtube)" ];then
