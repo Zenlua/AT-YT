@@ -178,7 +178,7 @@ echo
 echo '- Quá trình xây dựng apk xong.'
 echo
 
-ls morphe-temporary-files/*.apk
+ls */*.apk
 cp -rf morphe-temporary-files/*.apk YT2.apk
 
 # Chờ xây dựng xong
