@@ -179,17 +179,17 @@ echo '- Quá trình xây dựng apk xong.'
 echo
 
 ls */*.apk
-cp -rf morphe-temporary-files/*.apk YT2.apk
+#cp -rf morphe-temporary-files/*.apk YT2.apk
 
 # Chờ xây dựng xong
 if [ "$TYPE" == 'true' ];then
 echo "Tạo rsign..."
 echo
-mv YT.apk $HOME/Tav/YouTube.apk
+cp -f YT.apk $HOME/Tav/YouTube.apk
 cd tmp
-zip -qr $HOME/YT2.apk *
+zip -qr $HOME/YT.apk *
 cd $HOME
-rsign Tav/base.apk YT2.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
+rsign Tav/base.apk YT.apk $HOME/Up/ZT-$VER-$ach${amoled2}-rsign.apk
 else
 apksign YT.apk $HOME/Up/YT-$VER-$ach${amoled2}.apk
 find Up/* -type f
