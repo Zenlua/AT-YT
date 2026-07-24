@@ -1,5 +1,4 @@
 name: YT-AT MorpheApp
-
 on:
   schedule:
     - cron: '59 23 * * *'
@@ -35,64 +34,89 @@ on:
         description: 'Send telegram'
         required: false
         type: boolean
-
+        default: true
+permissions: write-all
+env:
+    Keytem: 1
+    GH_TOKEN: ${{ github.token }}
+    UPTG: ${{ inputs.UPTG }}
+    VERSION: ${{ inputs.VERSION }}
+    DEVICE: ${{ inputs.DEVICE }}
+    GITPCLI: ${{ inputs.CLI }}
+    GITPATCH: ${{ inputs.PATCH }}
+    FEATURE: ${{ inputs.FEATURE }}
+    TG_TOKEN_TOOLTREE: ${{ secrets.TG_TOKEN_TOOLTREE }}
+    TG_ID_TOOLTREE: ${{ secrets.TG_ID_TOOLTREE }}
+    TG_ID_K20PVN: ${{ secrets.TG_ID_K20PVN }}
 jobs:
-  build:
+  build1:
+    name: 'Buid Root'
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # BẮT BUỘC: Cài đặt JDK 21 để tránh lỗi UnsupportedClassVersionError (Class 65.0)
+      - uses: actions/checkout@v6
       - name: Setup Java JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
-
-      # Cài đặt Android SDK tools nếu cần thiết
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      # Tải các công cụ CLI và Patches dựa trên repo được chọn
-      - name: Download Morphe Tools
+      - name: See build
         run: |
-          CLI_REPO="${{ inputs.CLI || 'MorpheApp/morphe-cli' }}"
-          PATCH_REPO="${{ inputs.PATCH || 'MorpheApp/morphe-patches' }}"
-          
-          # Tải CLI mới nhất
-          CLI_URL=$(curl -s "https://api.github.com/repos/$CLI_REPO/releases/latest" | grep "browser_download_url.*jar" | cut -d : -f 2,3 | tr -d \")
-          curl -sL $CLI_URL -o morphe-cli.jar
-
-          # Tải Patches mới nhất
-          PATCH_URL=$(curl -s "https://api.github.com/repos/$PATCH_REPO/releases/latest" | grep "browser_download_url.*morphe" | cut -d : -f 2,3 | tr -d \")
-          curl -sL $PATCH_URL -o morphe-patches.morphe
-
-      # Bước thực thi Patch
-      - name: Run Patch Process
+          # kakathic
+          [ "$UPTG" ] || UPTG=true
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="MorpheApp/morphe-cli"
+          [ "$GITPATCH" ] || GITPATCH="MorpheApp/morphe-patches"
+          [ "$TYPE" ] || TYPE="true"
+          [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
+          . .github/build.sh
+  build2:
+    name: 'Buid No-root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
         run: |
-          java -jar morphe-cli.jar patch \
-            -m morphe-patches.morphe \
-            ${{ inputs.FEATURE }} \
-            --out "YouTube-patched.apk" \
-            "YouTube-base.apk"
-
-      # Tải APK sau khi patch lên Github Artifacts
-      - name: Upload Output APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: YouTube-Morphe-${{ inputs.DEVICE }}
-          path: YouTube-patched.apk
-
-      # Gửi qua Telegram nếu tích chọn UPTG
-      - name: Send Telegram Notification
-        if: ${{ inputs.UPTG == true }}
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_TO: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # kakathic
+          UPTG=false
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="MorpheApp/morphe-cli"
+          [ "$GITPATCH" ] || GITPATCH="MorpheApp/morphe-patches"
+          [ "$TYPE" ] || TYPE="false"
+          [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
+          . .github/build.sh
+  build3:
+    name: 'Buid Amoled Root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
         run: |
-          curl -F chat_id="$TELEGRAM_TO" \
-               -F document=@"YouTube-patched.apk" \
-               -F caption="Build YT-AT MorpheApp hoàn tất!" \
-               "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendDocument"
+          # kakathic
+          UPTG=false
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="MorpheApp/morphe-cli"
+          [ "$GITPATCH" ] || GITPATCH="MorpheApp/morphe-patches"
+          [ "$TYPE" ] || TYPE="true"
+          [ "$AMOLED" ] || AMOLED="true"
+          [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
+          . .github/build.sh
+  build4:
+    name: 'Buid Amoled No-root'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: See build
+        run: |
+          # kakathic
+          UPTG=false
+          [ "$VERSION" ] || VERSION="Auto"
+          [ "$DEVICE" ] || DEVICE="arm64-v8a"
+          [ "$GITPCLI" ] || GITPCLI="MorpheApp/morphe-cli"
+          [ "$GITPATCH" ] || GITPATCH="MorpheApp/morphe-patches"
+          [ "$TYPE" ] || TYPE="false"
+          [ "$AMOLED" ] || AMOLED="true"
+          [ "$FEATURE" ] || FEATURE='-d "Custom branding"'
+          . .github/build.sh
